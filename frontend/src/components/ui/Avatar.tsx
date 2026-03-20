@@ -21,7 +21,9 @@ function colorFor(name: string): string {
 
 export const Avatar: React.FC<AvatarProps> = ({ src, name, size = 40, style }) => {
   const apiBase = import.meta.env.VITE_API_URL?.replace('/api', '') || 'http://localhost:4000';
-  const fullSrc = src ? (src.startsWith('http') ? src : `${apiBase}${src}`) : null;
+  const fullSrc = src
+    ? (src.startsWith('http') || src.startsWith('blob:') ? src : `${apiBase}${src}`)
+    : null;
 
   if (fullSrc) {
     return (
