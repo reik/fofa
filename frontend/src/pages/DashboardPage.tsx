@@ -7,14 +7,16 @@ import { CreateAnnouncementForm } from '../components/announcements/CreateAnnoun
 import { Avatar } from '../components/ui/Avatar';
 import { Button, Spinner } from '../components/ui/Button';
 import { useAuthStore } from '../contexts/authStore';
+import { useIsMobile } from '../hooks/useIsMobile';
 import { Link } from 'react-router-dom';
 
 export const DashboardPage: React.FC = () => {
   const { user } = useAuthStore();
+  const isMobile = useIsMobile();
   const qc = useQueryClient();
   const [page, setPage] = useState(1);
 
-  const { data, isLoading, refetch } = useQuery({
+  const { data, isLoading } = useQuery({
     queryKey: ['announcements', page],
     queryFn: () => announcementService.getAll(page),
   });
@@ -40,53 +42,57 @@ export const DashboardPage: React.FC = () => {
 
   return (
     <div style={{
-      maxWidth: 1100, margin: '0 auto', padding: '24px 20px',
-      display: 'grid', gridTemplateColumns: '240px 1fr 240px', gap: 24,
+      maxWidth: 1100, margin: '0 auto', padding: isMobile ? '16px 12px' : '24px 20px',
+      display: 'grid',
+      gridTemplateColumns: isMobile ? '1fr' : '240px 1fr 240px',
+      gap: isMobile ? 16 : 24,
     }}>
-      {/* Left sidebar */}
-      <aside>
-        {user && (
-          <div style={{
-            background: 'var(--c-surface)', borderRadius: 'var(--radius-lg)',
-            border: '1.5px solid var(--c-border)', overflow: 'hidden',
-            boxShadow: 'var(--shadow-sm)',
-          }}>
-            {/* Cover */}
-            <div style={{ height: 60, background: 'linear-gradient(135deg, var(--c-brand) 0%, var(--c-accent) 100%)' }} />
-            <div style={{ padding: '0 16px 20px', textAlign: 'center', marginTop: -30 }}>
-              <Avatar src={user.thumbnail} name={user.name} size={60} style={{ margin: '0 auto', border: '3px solid #fff' }} />
-              <div style={{ fontWeight: 700, marginTop: 8 }}>{user.name}</div>
-              <div style={{ fontSize: '0.8rem', color: 'var(--c-text-muted)', marginTop: 2 }}>{user.city}, {user.state}</div>
-              <Link to="/profile">
-                <Button variant="secondary" size="sm" style={{ marginTop: 12, width: '100%', justifyContent: 'center' }}>
-                  Edit Profile
-                </Button>
-              </Link>
-            </div>
-
-            {/* Family preview */}
-            {familyData && familyData.length > 0 && (
-              <div style={{ borderTop: '1.5px solid var(--c-border)', padding: '14px 16px' }}>
-                <div style={{ fontWeight: 700, fontSize: '0.85rem', color: 'var(--c-text-muted)', marginBottom: 10 }}>MY FAMILY</div>
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
-                  {familyData.slice(0, 6).map(m => (
-                    <div key={m.id} style={{ textAlign: 'center' }}>
-                      <Avatar src={m.thumbnail} name={m.name} size={36} />
-                      <div style={{ fontSize: '0.7rem', marginTop: 3, color: 'var(--c-text-muted)' }}>{m.name.split(' ')[0]}</div>
-                    </div>
-                  ))}
-                </div>
-                <Link to="/family" style={{ fontSize: '0.82rem', color: 'var(--c-brand)', display: 'block', marginTop: 10, fontWeight: 600 }}>
-                  Manage family →
+      {/* Left sidebar — hidden on mobile */}
+      {!isMobile && (
+        <aside>
+          {user && (
+            <div style={{
+              background: 'var(--c-surface)', borderRadius: 'var(--radius-lg)',
+              border: '1.5px solid var(--c-border)', overflow: 'hidden',
+              boxShadow: 'var(--shadow-sm)',
+            }}>
+              {/* Cover */}
+              <div style={{ height: 60, background: 'linear-gradient(135deg, var(--c-brand) 0%, var(--c-accent) 100%)' }} />
+              <div style={{ padding: '0 16px 20px', textAlign: 'center', marginTop: -30 }}>
+                <Avatar src={user.thumbnail} name={user.name} size={60} style={{ margin: '0 auto', border: '3px solid #fff' }} />
+                <div style={{ fontWeight: 700, marginTop: 8 }}>{user.name}</div>
+                <div style={{ fontSize: '0.8rem', color: 'var(--c-text-muted)', marginTop: 2 }}>{user.city}, {user.state}</div>
+                <Link to="/profile">
+                  <Button variant="secondary" size="sm" style={{ marginTop: 12, width: '100%', justifyContent: 'center' }}>
+                    Edit Profile
+                  </Button>
                 </Link>
               </div>
-            )}
-          </div>
-        )}
-      </aside>
+
+              {/* Family preview */}
+              {familyData && familyData.length > 0 && (
+                <div style={{ borderTop: '1.5px solid var(--c-border)', padding: '14px 16px' }}>
+                  <div style={{ fontWeight: 700, fontSize: '0.85rem', color: 'var(--c-text-muted)', marginBottom: 10 }}>MY FAMILY</div>
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+                    {familyData.slice(0, 6).map(m => (
+                      <div key={m.id} style={{ textAlign: 'center' }}>
+                        <Avatar src={m.thumbnail} name={m.name} size={36} />
+                        <div style={{ fontSize: '0.7rem', marginTop: 3, color: 'var(--c-text-muted)' }}>{m.name.split(' ')[0]}</div>
+                      </div>
+                    ))}
+                  </div>
+                  <Link to="/family" style={{ fontSize: '0.82rem', color: 'var(--c-brand)', display: 'block', marginTop: 10, fontWeight: 600 }}>
+                    Manage family →
+                  </Link>
+                </div>
+              )}
+            </div>
+          )}
+        </aside>
+      )}
 
       {/* Feed */}
-      <main style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+      <main style={{ display: 'flex', flexDirection: 'column', gap: 16, minWidth: 0 }}>
         <CreateAnnouncementForm onCreated={handleCreated} />
 
         {isLoading ? (
@@ -135,30 +141,32 @@ export const DashboardPage: React.FC = () => {
         )}
       </main>
 
-      {/* Right sidebar */}
-      <aside>
-        <div style={{
-          background: 'var(--c-surface)', borderRadius: 'var(--radius-lg)',
-          border: '1.5px solid var(--c-border)', padding: '16px',
-          boxShadow: 'var(--shadow-sm)',
-        }}>
-          <div style={{ fontWeight: 700, fontSize: '0.85rem', color: 'var(--c-text-muted)', marginBottom: 12 }}>COMMUNITY MEMBERS</div>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-            {communityMembers?.slice(0, 8).map((m: any) => (
-              <div key={m.id} style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                <Avatar src={m.thumbnail} name={m.name} size={34} />
-                <div>
-                  <div style={{ fontWeight: 600, fontSize: '0.88rem' }}>{m.name}</div>
-                  <div style={{ fontSize: '0.75rem', color: 'var(--c-text-muted)' }}>{m.city}, {m.state}</div>
+      {/* Right sidebar — hidden on mobile */}
+      {!isMobile && (
+        <aside>
+          <div style={{
+            background: 'var(--c-surface)', borderRadius: 'var(--radius-lg)',
+            border: '1.5px solid var(--c-border)', padding: '16px',
+            boxShadow: 'var(--shadow-sm)',
+          }}>
+            <div style={{ fontWeight: 700, fontSize: '0.85rem', color: 'var(--c-text-muted)', marginBottom: 12 }}>COMMUNITY MEMBERS</div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+              {communityMembers?.slice(0, 8).map((m: any) => (
+                <div key={m.id} style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                  <Avatar src={m.thumbnail} name={m.name} size={34} />
+                  <div>
+                    <div style={{ fontWeight: 600, fontSize: '0.88rem' }}>{m.name}</div>
+                    <div style={{ fontSize: '0.75rem', color: 'var(--c-text-muted)' }}>{m.city}, {m.state}</div>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
+            <Link to="/community" style={{ display: 'block', marginTop: 14, fontSize: '0.82rem', color: 'var(--c-brand)', fontWeight: 600 }}>
+              View all members →
+            </Link>
           </div>
-          <Link to="/community" style={{ display: 'block', marginTop: 14, fontSize: '0.82rem', color: 'var(--c-brand)', fontWeight: 600 }}>
-            View all members →
-          </Link>
-        </div>
-      </aside>
+        </aside>
+      )}
     </div>
   );
 };

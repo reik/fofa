@@ -4,6 +4,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Toaster } from 'react-hot-toast';
 import { useAuthStore } from './contexts/authStore';
 import { Navbar } from './components/dashboard/Navbar';
+import { useIsMobile } from './hooks/useIsMobile';
 
 import { LoginPage } from './pages/LoginPage';
 import { RegisterPage } from './pages/RegisterPage';
@@ -20,11 +21,15 @@ const qc = new QueryClient({
 
 const ProtectedLayout: React.FC = () => {
   const { token } = useAuthStore();
+  const isMobile = useIsMobile();
   if (!token) return <Navigate to="/login" replace />;
   return (
     <>
       <Navbar />
-      <Outlet />
+      {/* Extra bottom padding on mobile so content isn't hidden behind the tab bar */}
+      <div style={{ paddingBottom: isMobile ? 64 : 0 }}>
+        <Outlet />
+      </div>
     </>
   );
 };

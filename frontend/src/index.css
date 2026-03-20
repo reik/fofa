@@ -84,3 +84,14 @@ input, textarea, select {
 @keyframes spin {
   to { transform: rotate(360deg); }
 }
+
+/* ── Responsive ─────────────────────────────────────── */
+@media (max-width: 768px) {
+  .nav-label         { display: none !important; }
+  .hide-mobile       { display: none !important; }
+}
+
+@media (min-width: 769px) {
+  .hide-desktop      { display: none !important; }
+  .mobile-bottom-nav { display: none !important; }
+}
