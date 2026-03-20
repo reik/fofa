@@ -42,7 +42,7 @@ export function updateFamilyMember(req: AuthRequest, res: Response): void {
   const newThumbnail = thumbnail ?? member.thumbnail;
 
   db().prepare(
-    'UPDATE family_members SET name = ?, age = ?, thumbnail = ?, updated_at = datetime("now") WHERE id = ?'
+    `UPDATE family_members SET name = ?, age = ?, thumbnail = ?, updated_at = datetime('now') WHERE id = ?`
   ).run(name || member.name, age ? parseInt(age) : member.age, newThumbnail, id);
 
   res.json(db().prepare('SELECT * FROM family_members WHERE id = ?').get(id));

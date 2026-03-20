@@ -20,7 +20,11 @@ export const MessagesPanel: React.FC = () => {
   const [sending, setSending] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState<User[]>([]);
+  const [page, setPage] = useState(1);
+  const [hasMore, setHasMore] = useState(false);
+  const [loadingMore, setLoadingMore] = useState(false);
   const bottomRef = useRef<HTMLDivElement>(null);
+  const topRef = useRef<HTMLDivElement>(null);
 
   const activeConv = conversations.find(c => c.partner_id === activePartnerId);
 
@@ -30,11 +34,29 @@ export const MessagesPanel: React.FC = () => {
 
   useEffect(() => {
     if (!activePartnerId) return;
-    messageService.getMessages(activePartnerId).then(msgs => {
+    setPage(1);
+    setHasMore(false);
+    messageService.getMessages(activePartnerId, 1).then(msgs => {
       setMessages(msgs);
+      setHasMore(msgs.length === 30);
       setTimeout(() => bottomRef.current?.scrollIntoView({ behavior: 'smooth' }), 50);
     });
   }, [activePartnerId]);
+
+  const loadOlderMessages = async () => {
+    if (!activePartnerId || loadingMore) return;
+    setLoadingMore(true);
+    const nextPage = page + 1;
+    try {
+      const older = await messageService.getMessages(activePartnerId, nextPage);
+      setMessages(prev => [...older, ...prev]);
+      setPage(nextPage);
+      setHasMore(older.length === 30);
+      setTimeout(() => topRef.current?.scrollIntoView({ behavior: 'instant' as ScrollBehavior }), 50);
+    } finally {
+      setLoadingMore(false);
+    }
+  };
 
   useEffect(() => {
     if (!searchQuery.trim()) { setSearchResults([]); return; }
@@ -179,6 +201,23 @@ export const MessagesPanel: React.FC = () => {
 
           {/* Messages */}
           <div style={{ flex: 1, overflowY: 'auto', padding: '20px', display: 'flex', flexDirection: 'column', gap: 12 }}>
+            {hasMore && (
+              <div style={{ textAlign: 'center' }}>
+                <button
+                  onClick={loadOlderMessages}
+                  disabled={loadingMore}
+                  style={{
+                    padding: '6px 16px', fontSize: '0.82rem', borderRadius: 'var(--radius-md)',
+                    border: '1.5px solid var(--c-border)', background: 'var(--c-bg)',
+                    color: 'var(--c-text-muted)', cursor: loadingMore ? 'not-allowed' : 'pointer',
+                    fontFamily: 'var(--font-body)',
+                  }}
+                >
+                  {loadingMore ? 'Loading…' : 'Load older messages'}
+                </button>
+              </div>
+            )}
+            <div ref={topRef} />
             {messages.map(msg => {
               const isMine = msg.sender_id === user?.id;
               return (

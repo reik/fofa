@@ -24,7 +24,7 @@ export function updateProfile(req: AuthRequest, res: Response): void {
   const newThumbnail = thumbnail ?? current.thumbnail;
 
   db().prepare(
-    'UPDATE users SET name = ?, city = ?, state = ?, thumbnail = ?, updated_at = datetime("now") WHERE id = ?'
+    `UPDATE users SET name = ?, city = ?, state = ?, thumbnail = ?, updated_at = datetime('now') WHERE id = ?`
   ).run(name, city, state, newThumbnail, req.userId);
 
   const updated = db().prepare(

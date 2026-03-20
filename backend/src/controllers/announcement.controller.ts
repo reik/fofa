@@ -101,7 +101,7 @@ export function updateAnnouncement(req: AuthRequest, res: Response): void {
   if (!ann) { res.status(404).json({ error: 'Announcement not found' }); return; }
 
   db().prepare(
-    'UPDATE announcements SET content = ?, updated_at = datetime("now") WHERE id = ?'
+    `UPDATE announcements SET content = ?, updated_at = datetime('now') WHERE id = ?`
   ).run(content, id);
 
   res.json({ message: 'Updated' });

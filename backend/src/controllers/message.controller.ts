@@ -9,7 +9,7 @@ export function getConversations(req: AuthRequest, res: Response): void {
       m.id, m.content, m.created_at, m.read,
       CASE WHEN m.sender_id = ? THEN m.receiver_id ELSE m.sender_id END AS partner_id,
       u.name AS partner_name, u.thumbnail AS partner_thumbnail,
-      (SELECT COUNT(*) FROM messages WHERE sender_id = partner_id AND receiver_id = ? AND read = 0) AS unread_count
+      (SELECT COUNT(*) FROM messages WHERE sender_id = (CASE WHEN m.sender_id = ? THEN m.receiver_id ELSE m.sender_id END) AND receiver_id = ? AND read = 0) AS unread_count
     FROM messages m
     JOIN users u ON u.id = (CASE WHEN m.sender_id = ? THEN m.receiver_id ELSE m.sender_id END)
     WHERE m.id IN (
@@ -19,7 +19,7 @@ export function getConversations(req: AuthRequest, res: Response): void {
                     ELSE receiver_id || sender_id END
     )
     ORDER BY m.created_at DESC
-  `).all(req.userId, req.userId, req.userId, req.userId, req.userId);
+  `).all(req.userId, req.userId, req.userId, req.userId, req.userId, req.userId);
 
   res.json(rows);
 }
