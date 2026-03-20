@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Lora:ital,wght@0,500;1,400&display=swap');
+
+:root {
+  /* Brand palette – warm forest green + golden amber */
+  --c-brand:       #3d7a4f;
+  --c-brand-dark:  #2c5c3a;
+  --c-brand-light: #e8f5ec;
+  --c-accent:      #e9a23b;
+  --c-accent-dark: #c8861e;
+
+  /* Neutrals */
+  --c-bg:          #f7f5f0;
+  --c-surface:     #ffffff;
+  --c-border:      #e2ddd6;
+  --c-text:        #1e1e1e;
+  --c-text-muted:  #6b7280;
+  --c-text-light:  #9ca3af;
+
+  /* Semantic */
+  --c-danger:      #dc2626;
+  --c-success:     #16a34a;
+  --c-info:        #2563eb;
+
+  /* Spacing */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0,0,0,.08);
+  --shadow-md: 0 4px 16px rgba(0,0,0,.10);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,.12);
+
+  /* Typography */
+  --font-body:    'Nunito', sans-serif;
+  --font-display: 'Lora', serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { font-size: 16px; scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--c-bg);
+  color: var(--c-text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--c-brand); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+img { max-width: 100%; display: block; }
+
+button { font-family: inherit; cursor: pointer; }
+
+input, textarea, select {
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--c-border); border-radius: 99px; }
+
+/* Utility classes */
+.sr-only {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}
+
+.truncate { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-in { animation: fadeIn 0.3s ease forwards; }
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}

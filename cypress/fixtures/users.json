@@ -1,0 +1,29 @@
+{
+  "primaryUser": {
+    "name": "Jane Foster",
+    "email": "jane.foster.test@fofa.dev",
+    "password": "TestPass123!",
+    "city": "Sacramento",
+    "state": "CA"
+  },
+  "secondaryUser": {
+    "name": "Bob Smith",
+    "email": "bob.smith.test@fofa.dev",
+    "password": "TestPass456!",
+    "city": "Portland",
+    "state": "OR"
+  },
+  "familyMember": {
+    "name": "Lily",
+    "age": "8"
+  },
+  "announcement": {
+    "content": "Excited to share that our foster family just welcomed a new child! 🌱 We are so grateful for this community."
+  },
+  "comment": {
+    "content": "Welcome to the FoFa family! Sending love and support your way."
+  },
+  "message": {
+    "content": "Hi! I saw your announcement and just wanted to reach out and say hello!"
+  }
+}
