@@ -43,16 +43,16 @@ export const RegisterPage: React.FC = () => {
 
   if (done) {
     return (
-      <div style={pageStyle}>
-        <div style={{ ...cardStyle, textAlign: 'center' }}>
-          <div style={{ fontSize: '3.5rem', marginBottom: 16 }}>📬</div>
-          <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '1.5rem', color: 'var(--c-brand-dark)' }}>
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-brand-light to-[#fff8ee] p-5">
+        <div className="bg-surface rounded-xl border-[1.5px] border-border p-10 w-full max-w-[420px] shadow-lg text-center">
+          <div className="text-[3.5rem] mb-4">📬</div>
+          <h2 className="font-display text-[1.5rem] text-brand-dark">
             Check your email!
           </h2>
-          <p style={{ color: 'var(--c-text-muted)', marginTop: 12, lineHeight: 1.7 }}>
+          <p className="text-muted mt-3 leading-[1.7]">
             We've sent a verification link to your email address. Please click the link to activate your account before signing in.
           </p>
-          <Button style={{ marginTop: 28, width: '100%', justifyContent: 'center' }} onClick={() => navigate('/login')}>
+          <Button className="mt-7 w-full justify-center" onClick={() => navigate('/login')}>
             Go to Sign In
           </Button>
         </div>
@@ -61,19 +61,19 @@ export const RegisterPage: React.FC = () => {
   }
 
   return (
-    <div style={pageStyle}>
-      <div style={cardStyle}>
-        <div style={{ textAlign: 'center', marginBottom: 28 }}>
-          <div style={{ fontSize: '2.5rem', marginBottom: 6 }}>🌱</div>
-          <h1 style={{ fontFamily: 'var(--font-display)', fontSize: '1.7rem', color: 'var(--c-brand-dark)', fontWeight: 500 }}>
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-brand-light to-[#fff8ee] p-5">
+      <div className="bg-surface rounded-xl border-[1.5px] border-border p-9 w-full max-w-[460px] shadow-lg">
+        <div className="text-center mb-7">
+          <div className="text-[2.5rem] mb-[6px]">🌱</div>
+          <h1 className="font-display text-[1.7rem] text-brand-dark font-medium">
             Join FoFa
           </h1>
-          <p style={{ color: 'var(--c-text-muted)', fontSize: '0.9rem', marginTop: 4 }}>
+          <p className="text-muted text-[0.9rem] mt-1">
             Connect with foster families in your community
           </p>
         </div>
 
-        <form onSubmit={handleSubmit(onSubmit)} style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
           <Input
             label="Full name"
             placeholder="Jane Smith"
@@ -88,27 +88,26 @@ export const RegisterPage: React.FC = () => {
             {...register('email', { required: 'Email is required' })}
           />
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
+          <div className="grid grid-cols-2 gap-3">
             <Input
               label="City"
               placeholder="Your city"
               error={errors.city?.message}
               {...register('city', { required: 'City is required' })}
             />
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 5 }}>
-              <label style={{ fontWeight: 600, fontSize: '0.88rem', color: 'var(--c-text-muted)' }}>State</label>
+            <div className="flex flex-col gap-[5px]">
+              <label className="font-semibold text-[0.88rem] text-muted">State</label>
               <select
                 {...register('state', { required: 'State is required' })}
-                style={{
-                  padding: '10px 14px', border: `1.5px solid ${errors.state ? 'var(--c-danger)' : 'var(--c-border)'}`,
-                  borderRadius: 'var(--radius-sm)', fontSize: '0.95rem',
-                  background: 'var(--c-surface)', fontFamily: 'var(--font-body)',
-                }}
+                className={[
+                  'px-[14px] py-[10px] rounded-sm text-[0.95rem] bg-surface font-body outline-none',
+                  errors.state ? 'border-[1.5px] border-red-600' : 'border-[1.5px] border-border',
+                ].join(' ')}
               >
                 <option value="">State</option>
                 {US_STATES.map(s => <option key={s} value={s}>{s}</option>)}
               </select>
-              {errors.state && <span style={{ fontSize: '0.8rem', color: 'var(--c-danger)' }}>{errors.state.message}</span>}
+              {errors.state && <span className="text-[0.8rem] text-red-600">{errors.state.message}</span>}
             </div>
           </div>
 
@@ -130,28 +129,16 @@ export const RegisterPage: React.FC = () => {
             })}
           />
 
-          <Button type="submit" loading={loading} style={{ width: '100%', justifyContent: 'center', marginTop: 4 }}>
+          <Button type="submit" loading={loading} className="w-full justify-center mt-1">
             Create Account
           </Button>
         </form>
 
-        <p style={{ textAlign: 'center', marginTop: 22, fontSize: '0.9rem', color: 'var(--c-text-muted)' }}>
+        <p className="text-center mt-[22px] text-[0.9rem] text-muted">
           Already have an account?{' '}
-          <Link to="/login" style={{ color: 'var(--c-brand)', fontWeight: 700 }}>Sign in</Link>
+          <Link to="/login" className="text-brand font-bold no-underline hover:underline">Sign in</Link>
         </p>
       </div>
     </div>
   );
-};
-
-const pageStyle: React.CSSProperties = {
-  minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center',
-  background: 'linear-gradient(135deg, var(--c-brand-light) 0%, #fff8ee 100%)',
-  padding: 20,
-};
-
-const cardStyle: React.CSSProperties = {
-  background: 'var(--c-surface)', borderRadius: 'var(--radius-xl)',
-  padding: '36px', width: '100%', maxWidth: 460,
-  boxShadow: 'var(--shadow-lg)', border: '1.5px solid var(--c-border)',
 };

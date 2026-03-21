@@ -31,20 +31,20 @@ export const LoginPage: React.FC = () => {
   };
 
   return (
-    <div style={pageStyle}>
-      <div style={cardStyle}>
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-brand-light to-[#fff8ee] p-5">
+      <div className="bg-surface rounded-xl border-[1.5px] border-border p-10 w-full max-w-[420px] shadow-lg">
         {/* Brand */}
-        <div style={{ textAlign: 'center', marginBottom: 32 }}>
-          <div style={{ fontSize: '3rem', marginBottom: 8 }}>🌱</div>
-          <h1 style={{ fontFamily: 'var(--font-display)', fontSize: '2rem', color: 'var(--c-brand-dark)', fontWeight: 500 }}>
+        <div className="text-center mb-8">
+          <div className="text-[3rem] mb-2">🌱</div>
+          <h1 className="font-display text-[2rem] text-brand-dark font-medium">
             FoFa
           </h1>
-          <p style={{ color: 'var(--c-text-muted)', fontSize: '0.93rem', marginTop: 4 }}>
+          <p className="text-muted text-[0.93rem] mt-1">
             Foster Families Community
           </p>
         </div>
 
-        <form onSubmit={handleSubmit(onSubmit)} style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
+        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-[18px]">
           <Input
             label="Email address"
             type="email"
@@ -60,34 +60,22 @@ export const LoginPage: React.FC = () => {
             {...register('password', { required: 'Password is required' })}
           />
 
-          <div style={{ textAlign: 'right', marginTop: -10 }}>
-            <Link to="/forgot-password" style={{ fontSize: '0.85rem', color: 'var(--c-brand)' }}>
+          <div className="text-right -mt-[10px]">
+            <Link to="/forgot-password" className="text-[0.85rem] text-brand no-underline hover:underline">
               Forgot password?
             </Link>
           </div>
 
-          <Button type="submit" loading={loading} style={{ width: '100%', justifyContent: 'center' }}>
+          <Button type="submit" loading={loading} className="w-full justify-center">
             Sign In
           </Button>
         </form>
 
-        <p style={{ textAlign: 'center', marginTop: 24, fontSize: '0.9rem', color: 'var(--c-text-muted)' }}>
+        <p className="text-center mt-6 text-[0.9rem] text-muted">
           Don't have an account?{' '}
-          <Link to="/register" style={{ color: 'var(--c-brand)', fontWeight: 700 }}>Sign up</Link>
+          <Link to="/register" className="text-brand font-bold no-underline hover:underline">Sign up</Link>
         </p>
       </div>
     </div>
   );
-};
-
-const pageStyle: React.CSSProperties = {
-  minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center',
-  background: 'linear-gradient(135deg, var(--c-brand-light) 0%, #fff8ee 100%)',
-  padding: 20,
-};
-
-const cardStyle: React.CSSProperties = {
-  background: 'var(--c-surface)', borderRadius: 'var(--radius-xl)',
-  padding: '40px 36px', width: '100%', maxWidth: 420,
-  boxShadow: 'var(--shadow-lg)', border: '1.5px solid var(--c-border)',
 };

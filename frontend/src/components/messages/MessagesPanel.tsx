@@ -105,56 +105,45 @@ export const MessagesPanel: React.FC = () => {
   const panelHeight = isMobile ? 'calc(100vh - 128px)' : 'calc(100vh - 130px)';
 
   return (
-    <div style={{
-      display: 'grid',
-      gridTemplateColumns: isMobile ? '1fr' : '300px 1fr',
-      height: panelHeight,
-      background: 'var(--c-surface)',
-      borderRadius: isMobile ? 0 : 'var(--radius-lg)',
-      border: isMobile ? 'none' : '1.5px solid var(--c-border)',
-      overflow: 'hidden',
-      boxShadow: isMobile ? 'none' : 'var(--shadow-sm)',
-    }}>
+    <div
+      className={[
+        'grid bg-surface overflow-hidden',
+        isMobile ? 'rounded-none border-none shadow-none' : 'rounded-lg border-[1.5px] border-border shadow-sm',
+      ].join(' ')}
+      style={{
+        gridTemplateColumns: isMobile ? '1fr' : '300px 1fr',
+        height: panelHeight,
+      }}
+    >
       {/* ── Conversation list ── */}
       {showList && (
-        <div style={{
-          borderRight: isMobile ? 'none' : '1.5px solid var(--c-border)',
-          display: 'flex', flexDirection: 'column',
-          borderBottom: isMobile ? '1.5px solid var(--c-border)' : 'none',
-        }}>
-          <div style={{ padding: '16px', borderBottom: '1px solid var(--c-border)' }}>
-            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '1.1rem', marginBottom: 10 }}>Messages</h2>
-            <div style={{ position: 'relative' }}>
+        <div
+          className={[
+            'flex flex-col',
+            isMobile ? 'border-b-[1.5px] border-border' : 'border-r-[1.5px] border-border',
+          ].join(' ')}
+        >
+          <div className="p-4 border-b border-border">
+            <h2 className="font-display text-[1.1rem] mb-[10px]">Messages</h2>
+            <div className="relative">
               <input
                 value={searchQuery}
                 onChange={e => setSearchQuery(e.target.value)}
                 placeholder="Search members…"
-                style={{
-                  width: '100%', padding: '8px 12px', borderRadius: 'var(--radius-md)',
-                  border: '1.5px solid var(--c-border)', fontSize: '0.88rem',
-                  background: 'var(--c-bg)', fontFamily: 'var(--font-body)',
-                }}
+                className="w-full px-3 py-2 rounded-md border-[1.5px] border-border text-[0.88rem] bg-bg font-body outline-none"
               />
               {searchResults.length > 0 && (
-                <div style={{
-                  position: 'absolute', top: 'calc(100% + 4px)', left: 0, right: 0,
-                  background: 'var(--c-surface)', border: '1.5px solid var(--c-border)',
-                  borderRadius: 'var(--radius-md)', boxShadow: 'var(--shadow-md)', zIndex: 10,
-                }}>
+                <div className="absolute top-[calc(100%+4px)] left-0 right-0 bg-surface border-[1.5px] border-border rounded-md shadow-md z-10">
                   {searchResults.map(u => (
                     <button
                       key={u.id}
                       onClick={() => startConversation(u)}
-                      style={{
-                        width: '100%', padding: '10px 14px', display: 'flex', alignItems: 'center',
-                        gap: 10, background: 'none', border: 'none', cursor: 'pointer',
-                        textAlign: 'left', fontFamily: 'var(--font-body)',
-                      }}
+                      className="w-full px-[14px] py-[10px] flex items-center gap-[10px] bg-transparent border-none cursor-pointer text-left font-body"
                     >
                       <Avatar src={u.thumbnail} name={u.name} size={32} />
                       <div>
-                        <div style={{ fontWeight: 600, fontSize: '0.88rem' }}>{u.name}</div>
-                        <div style={{ fontSize: '0.75rem', color: 'var(--c-text-muted)' }}>{u.city}, {u.state}</div>
+                        <div className="font-semibold text-[0.88rem]">{u.name}</div>
+                        <div className="text-[0.75rem] text-muted">{u.city}, {u.state}</div>
                       </div>
                     </button>
                   ))}
@@ -163,9 +152,9 @@ export const MessagesPanel: React.FC = () => {
             </div>
           </div>
 
-          <div style={{ flex: 1, overflowY: 'auto' }}>
+          <div className="flex-1 overflow-y-auto">
             {conversations.length === 0 ? (
-              <p style={{ padding: '20px', color: 'var(--c-text-muted)', fontSize: '0.88rem', textAlign: 'center' }}>
+              <p className="p-5 text-muted text-[0.88rem] text-center">
                 No conversations yet. Search for a member above.
               </p>
             ) : (
@@ -173,30 +162,24 @@ export const MessagesPanel: React.FC = () => {
                 <button
                   key={conv.partner_id}
                   onClick={() => setActivePartnerId(conv.partner_id)}
-                  style={{
-                    width: '100%', padding: '14px 16px', display: 'flex', gap: 12,
-                    alignItems: 'center',
-                    background: activePartnerId === conv.partner_id ? 'var(--c-brand-light)' : 'none',
-                    border: 'none', cursor: 'pointer', borderBottom: '1px solid var(--c-border)',
-                    textAlign: 'left', fontFamily: 'var(--font-body)',
-                    borderLeft: activePartnerId === conv.partner_id ? '3px solid var(--c-brand)' : '3px solid transparent',
-                  }}
+                  className={[
+                    'w-full px-4 py-[14px] flex gap-3 items-center border-none cursor-pointer border-b border-border text-left font-body',
+                    activePartnerId === conv.partner_id
+                      ? 'bg-brand-light border-l-[3px] border-l-brand'
+                      : 'bg-transparent border-l-[3px] border-l-transparent',
+                  ].join(' ')}
                 >
-                  <div style={{ position: 'relative' }}>
+                  <div className="relative">
                     <Avatar src={conv.partner_thumbnail} name={conv.partner_name} size={42} />
                     {conv.unread_count > 0 && (
-                      <span style={{
-                        position: 'absolute', top: -2, right: -2,
-                        background: 'var(--c-brand)', color: '#fff',
-                        borderRadius: '50%', width: 16, height: 16,
-                        fontSize: '0.65rem', display: 'flex', alignItems: 'center', justifyContent: 'center',
-                        fontWeight: 700,
-                      }}>{conv.unread_count}</span>
+                      <span className="absolute -top-[2px] -right-[2px] bg-brand text-white rounded-full w-4 h-4 text-[0.65rem] flex items-center justify-center font-bold">
+                        {conv.unread_count}
+                      </span>
                     )}
                   </div>
-                  <div style={{ flex: 1, minWidth: 0 }}>
-                    <div style={{ fontWeight: 700, fontSize: '0.9rem' }}>{conv.partner_name}</div>
-                    <div style={{ fontSize: '0.78rem', color: 'var(--c-text-muted)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                  <div className="flex-1 min-w-0">
+                    <div className="font-bold text-[0.9rem]">{conv.partner_name}</div>
+                    <div className="text-[0.78rem] text-muted overflow-hidden text-ellipsis whitespace-nowrap">
                       {conv.content || 'Start a conversation'}
                     </div>
                   </div>
@@ -210,41 +193,35 @@ export const MessagesPanel: React.FC = () => {
       {/* ── Chat area ── */}
       {showChat && (
         activePartnerId ? (
-          <div style={{ display: 'flex', flexDirection: 'column', minWidth: 0 }}>
+          <div className="flex flex-col min-w-0">
             {/* Chat header */}
-            <div style={{ padding: '14px 20px', borderBottom: '1.5px solid var(--c-border)', display: 'flex', alignItems: 'center', gap: 12 }}>
+            <div className="px-5 py-[14px] border-b-[1.5px] border-border flex items-center gap-3">
               {/* Back button on mobile */}
               {isMobile && (
                 <button
                   onClick={() => setActivePartnerId(null)}
-                  style={{
-                    background: 'none', border: 'none', cursor: 'pointer',
-                    fontSize: '1.2rem', padding: '4px 8px 4px 0',
-                    color: 'var(--c-brand)', fontWeight: 700,
-                  }}
+                  className="bg-transparent border-none cursor-pointer text-[1.2rem] pr-2 pl-0 py-1 text-brand font-bold"
                 >
                   ←
                 </button>
               )}
               <Avatar src={activeConv?.partner_thumbnail || null} name={activeConv?.partner_name || ''} size={40} />
               <div>
-                <div style={{ fontWeight: 700 }}>{activeConv?.partner_name}</div>
+                <div className="font-bold">{activeConv?.partner_name}</div>
               </div>
             </div>
 
             {/* Messages */}
-            <div style={{ flex: 1, overflowY: 'auto', padding: '20px', display: 'flex', flexDirection: 'column', gap: 12 }}>
+            <div className="flex-1 overflow-y-auto p-5 flex flex-col gap-3">
               {hasMore && (
-                <div style={{ textAlign: 'center' }}>
+                <div className="text-center">
                   <button
                     onClick={loadOlderMessages}
                     disabled={loadingMore}
-                    style={{
-                      padding: '6px 16px', fontSize: '0.82rem', borderRadius: 'var(--radius-md)',
-                      border: '1.5px solid var(--c-border)', background: 'var(--c-bg)',
-                      color: 'var(--c-text-muted)', cursor: loadingMore ? 'not-allowed' : 'pointer',
-                      fontFamily: 'var(--font-body)',
-                    }}
+                    className={[
+                      'px-4 py-[6px] text-[0.82rem] rounded-md border-[1.5px] border-border bg-bg text-muted font-body',
+                      loadingMore ? 'cursor-not-allowed' : 'cursor-pointer',
+                    ].join(' ')}
                   >
                     {loadingMore ? 'Loading…' : 'Load older messages'}
                   </button>
@@ -254,19 +231,18 @@ export const MessagesPanel: React.FC = () => {
               {messages.map(msg => {
                 const isMine = msg.sender_id === user?.id;
                 return (
-                  <div key={msg.id} style={{ display: 'flex', justifyContent: isMine ? 'flex-end' : 'flex-start', gap: 8 }}>
+                  <div key={msg.id} className={`flex gap-2 ${isMine ? 'justify-end' : 'justify-start'}`}>
                     {!isMine && <Avatar src={msg.sender_thumbnail} name={msg.sender_name} size={30} style={{ marginTop: 4 }} />}
-                    <div style={{ maxWidth: '78%' }}>
-                      <div style={{
-                        padding: '10px 14px', borderRadius: isMine ? '18px 18px 4px 18px' : '18px 18px 18px 4px',
-                        background: isMine ? 'var(--c-brand)' : 'var(--c-bg)',
-                        color: isMine ? '#fff' : 'var(--c-text)',
-                        border: isMine ? 'none' : '1.5px solid var(--c-border)',
-                        fontSize: '0.93rem', lineHeight: 1.5,
-                      }}>
+                    <div className="max-w-[78%]">
+                      <div className={[
+                        'px-[14px] py-[10px] text-[0.93rem] leading-[1.5]',
+                        isMine
+                          ? 'bg-brand text-white border-none rounded-[18px_18px_4px_18px]'
+                          : 'bg-bg border-[1.5px] border-border rounded-[18px_18px_18px_4px]',
+                      ].join(' ')}>
                         {msg.content}
                       </div>
-                      <div style={{ fontSize: '0.72rem', color: 'var(--c-text-muted)', marginTop: 4, textAlign: isMine ? 'right' : 'left' }}>
+                      <div className={`text-[0.72rem] text-muted mt-1 ${isMine ? 'text-right' : 'text-left'}`}>
                         {formatDistanceToNow(new Date(msg.created_at), { addSuffix: true })}
                       </div>
                     </div>
@@ -277,24 +253,20 @@ export const MessagesPanel: React.FC = () => {
             </div>
 
             {/* Input */}
-            <form onSubmit={handleSend} style={{ padding: '14px 20px', borderTop: '1.5px solid var(--c-border)', display: 'flex', gap: 10 }}>
+            <form onSubmit={handleSend} className="px-5 py-[14px] border-t-[1.5px] border-border flex gap-[10px]">
               <input
                 value={newMsg}
                 onChange={e => setNewMsg(e.target.value)}
                 placeholder="Type a message…"
-                style={{
-                  flex: 1, padding: '10px 16px', borderRadius: 'var(--radius-xl)',
-                  border: '1.5px solid var(--c-border)', fontSize: '0.93rem',
-                  fontFamily: 'var(--font-body)', background: 'var(--c-bg)',
-                }}
+                className="flex-1 px-4 py-[10px] rounded-xl border-[1.5px] border-border text-[0.93rem] font-body bg-bg outline-none"
               />
               <Button type="submit" loading={sending} disabled={!newMsg.trim()}>Send</Button>
             </form>
           </div>
         ) : (
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', gap: 12, color: 'var(--c-text-muted)' }}>
-            <span style={{ fontSize: '3rem' }}>💬</span>
-            <p style={{ fontWeight: 600 }}>Select a conversation or search for a member</p>
+          <div className="flex items-center justify-center flex-col gap-3 text-muted">
+            <span className="text-[3rem]">💬</span>
+            <p className="font-semibold">Select a conversation or search for a member</p>
           </div>
         )
       )}

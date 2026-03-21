@@ -71,24 +71,20 @@ export const AnnouncementCard: React.FC<Props> = ({ announcement, onUpdate }) =>
     : null;
 
   return (
-    <article style={{
-      background: 'var(--c-surface)', borderRadius: 'var(--radius-lg)',
-      border: '1.5px solid var(--c-border)', overflow: 'hidden',
-      boxShadow: 'var(--shadow-sm)', animation: 'fadeIn 0.3s ease',
-    }}>
+    <article className="bg-surface rounded-lg border-[1.5px] border-border overflow-hidden shadow-sm fade-in">
       {/* Header */}
-      <div style={{ padding: '16px 20px', display: 'flex', alignItems: 'center', gap: 12 }}>
+      <div className="px-5 py-4 flex items-center gap-3">
         <Avatar src={announcement.author.thumbnail} name={announcement.author.name} size={44} />
-        <div style={{ flex: 1 }}>
-          <div style={{ fontWeight: 700 }}>{announcement.author.name}</div>
-          <div style={{ fontSize: '0.78rem', color: 'var(--c-text-muted)' }}>
+        <div className="flex-1">
+          <div className="font-bold">{announcement.author.name}</div>
+          <div className="text-[0.78rem] text-muted">
             {formatDistanceToNow(new Date(announcement.createdAt), { addSuffix: true })}
           </div>
         </div>
         {isOwner && (
           <button
             onClick={handleDelete}
-            style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--c-text-light)', fontSize: '1.1rem' }}
+            className="bg-transparent border-none cursor-pointer text-light text-[1.1rem]"
             aria-label="Delete announcement"
           >
             🗑️
@@ -97,24 +93,24 @@ export const AnnouncementCard: React.FC<Props> = ({ announcement, onUpdate }) =>
       </div>
 
       {/* Content */}
-      <div style={{ padding: '0 20px 16px', fontSize: '0.97rem', lineHeight: 1.7, whiteSpace: 'pre-wrap' }}>
+      <div className="px-5 pb-4 text-[0.97rem] leading-[1.7] whitespace-pre-wrap">
         {announcement.content}
       </div>
 
       {/* Media */}
       {announcement.mediaUrl && (
-        <div style={{ background: '#000' }}>
+        <div className="bg-black">
           {announcement.mediaType === 'video' ? (
             <video
               src={`${apiBase}${announcement.mediaUrl}`}
               controls
-              style={{ width: '100%', maxHeight: 420, objectFit: 'contain' }}
+              className="w-full max-h-[420px] object-contain"
             />
           ) : (
             <img
               src={`${apiBase}${announcement.mediaUrl}`}
               alt="Announcement media"
-              style={{ width: '100%', maxHeight: 420, objectFit: 'cover' }}
+              className="w-full max-h-[420px] object-cover"
             />
           )}
         </div>
@@ -122,16 +118,13 @@ export const AnnouncementCard: React.FC<Props> = ({ announcement, onUpdate }) =>
 
       {/* Reaction summary */}
       {totalReactions > 0 && (
-        <div style={{ padding: '10px 20px 0', display: 'flex', gap: 6, flexWrap: 'wrap' }}>
+        <div className="px-5 pt-[10px] flex gap-[6px] flex-wrap">
           {Object.entries(reactions)
             .filter(([, count]) => count > 0)
             .map(([type, count]) => {
               const r = REACTIONS.find(x => x.type === type);
               return r ? (
-                <span key={type} style={{
-                  background: 'var(--c-brand-light)', borderRadius: 99,
-                  padding: '3px 10px', fontSize: '0.82rem', display: 'flex', alignItems: 'center', gap: 4,
-                }}>
+                <span key={type} className="bg-brand-light rounded-full px-[10px] py-[3px] text-[0.82rem] flex items-center gap-1">
                   {r.emoji} {count}
                 </span>
               ) : null;
@@ -140,40 +133,29 @@ export const AnnouncementCard: React.FC<Props> = ({ announcement, onUpdate }) =>
       )}
 
       {/* Actions */}
-      <div style={{
-        padding: '12px 20px', borderTop: '1.5px solid var(--c-border)',
-        display: 'flex', gap: 8, position: 'relative', marginTop: 10,
-      }}>
+      <div className="px-5 py-3 border-t-[1.5px] border-border flex gap-2 relative mt-[10px]">
         {/* Reaction picker */}
-        <div style={{ position: 'relative' }}>
+        <div className="relative">
           <Button
             variant="ghost"
             size="sm"
             onClick={() => setShowReactions(o => !o)}
-            style={{ color: userReaction ? 'var(--c-brand)' : undefined }}
+            className={userReaction ? 'text-brand' : ''}
           >
             {currentReactionEmoji || '👍'} {userReaction ? REACTIONS.find(r => r.type === userReaction)?.label : 'React'}
           </Button>
 
           {showReactions && (
-            <div style={{
-              position: 'absolute', bottom: 'calc(100% + 6px)', left: 0,
-              background: 'var(--c-surface)', border: '1.5px solid var(--c-border)',
-              borderRadius: 'var(--radius-xl)', padding: '8px 12px',
-              display: 'flex', gap: 6, boxShadow: 'var(--shadow-md)',
-              zIndex: 10, animation: 'fadeIn 0.15s ease',
-            }}>
+            <div className="absolute bottom-[calc(100%+6px)] left-0 bg-surface border-[1.5px] border-border rounded-xl px-3 py-2 flex gap-[6px] shadow-md z-10 fade-in">
               {REACTIONS.map(r => (
                 <button
                   key={r.type}
                   onClick={() => handleReaction(r.type)}
                   title={r.label}
-                  style={{
-                    background: userReaction === r.type ? 'var(--c-brand-light)' : 'none',
-                    border: 'none', cursor: 'pointer', fontSize: '1.4rem',
-                    borderRadius: '50%', padding: '4px', lineHeight: 1,
-                    transition: 'transform 0.1s',
-                  }}
+                  className={[
+                    'border-none cursor-pointer text-[1.4rem] rounded-full p-1 leading-none transition-transform duration-100',
+                    userReaction === r.type ? 'bg-brand-light' : 'bg-transparent',
+                  ].join(' ')}
                   onMouseEnter={e => (e.currentTarget.style.transform = 'scale(1.25)')}
                   onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1)')}
                 >

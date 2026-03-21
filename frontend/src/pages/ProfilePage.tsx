@@ -54,47 +54,42 @@ export const ProfilePage: React.FC = () => {
   const currentThumb = thumbPreview || user?.thumbnail || null;
 
   return (
-    <div style={{ maxWidth: 600, margin: '0 auto', padding: '40px 20px' }}>
-      <h1 style={{ fontFamily: 'var(--font-display)', fontSize: '1.8rem', fontWeight: 500, color: 'var(--c-brand-dark)', marginBottom: 32 }}>
+    <div className="max-w-[600px] mx-auto px-5 py-10">
+      <h1 className="font-display text-[1.8rem] font-medium text-brand-dark mb-8">
         Edit Profile
       </h1>
 
-      <div style={{
-        background: 'var(--c-surface)', borderRadius: 'var(--radius-xl)',
-        border: '1.5px solid var(--c-border)', padding: '36px',
-        boxShadow: 'var(--shadow-sm)',
-      }}>
+      <div className="bg-surface rounded-xl border-[1.5px] border-border p-9 shadow-sm">
         {/* Avatar */}
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 12, marginBottom: 28 }}>
+        <div className="flex flex-col items-center gap-3 mb-7">
           <Avatar src={currentThumb} name={user?.name || 'User'} size={96} />
-          <label style={{ cursor: 'pointer', color: 'var(--c-brand)', fontWeight: 600, fontSize: '0.9rem' }}>
+          <label className="cursor-pointer text-brand font-semibold text-[0.9rem]">
             Change profile photo
-            <input type="file" accept="image/*" onChange={handleFileChange} style={{ display: 'none' }} data-testid="thumbnail-input" />
+            <input type="file" accept="image/*" onChange={handleFileChange} className="hidden" data-testid="thumbnail-input" />
           </label>
         </div>
 
-        <form onSubmit={handleSubmit(onSubmit)} style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
+        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-[18px]">
           <Input
             label="Full name"
             error={errors.name?.message}
             {...register('name', { required: 'Name is required' })}
           />
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14 }}>
+          <div className="grid grid-cols-2 gap-[14px]">
             <Input
               label="City"
               error={errors.city?.message}
               {...register('city', { required: 'City is required' })}
             />
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 5 }}>
-              <label style={{ fontWeight: 600, fontSize: '0.88rem', color: 'var(--c-text-muted)' }}>State</label>
+            <div className="flex flex-col gap-[5px]">
+              <label className="font-semibold text-[0.88rem] text-muted">State</label>
               <select
                 {...register('state', { required: 'State is required' })}
-                style={{
-                  padding: '10px 14px', border: `1.5px solid ${errors.state ? 'var(--c-danger)' : 'var(--c-border)'}`,
-                  borderRadius: 'var(--radius-sm)', fontSize: '0.95rem',
-                  background: 'var(--c-surface)', fontFamily: 'var(--font-body)',
-                }}
+                className={[
+                  'px-[14px] py-[10px] rounded-sm text-[0.95rem] bg-surface font-body outline-none',
+                  errors.state ? 'border-[1.5px] border-red-600' : 'border-[1.5px] border-border',
+                ].join(' ')}
               >
                 <option value="">State</option>
                 {US_STATES.map(s => <option key={s} value={s}>{s}</option>)}
@@ -102,8 +97,8 @@ export const ProfilePage: React.FC = () => {
             </div>
           </div>
 
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 8 }}>
-            <div style={{ fontSize: '0.85rem', color: 'var(--c-text-muted)' }}>
+          <div className="flex justify-between items-center mt-2">
+            <div className="text-[0.85rem] text-muted">
               ✉️ {user?.email}
             </div>
             <Button type="submit" loading={saving}>Save Changes</Button>

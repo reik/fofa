@@ -26,71 +26,53 @@ export const Navbar: React.FC = () => {
   return (
     <>
       {/* ── Top bar ── */}
-      <nav style={{
-        position: 'sticky', top: 0, zIndex: 100,
-        background: 'var(--c-surface)', borderBottom: '1.5px solid var(--c-border)',
-        boxShadow: 'var(--shadow-sm)',
-      }}>
-        <div style={{
-          maxWidth: 1100, margin: '0 auto', padding: '0 20px',
-          display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 64,
-        }}>
+      <nav className="sticky top-0 z-[100] bg-surface border-b-[1.5px] border-border shadow-sm">
+        <div className="max-w-[1100px] mx-auto px-5 flex items-center justify-between h-16">
           {/* Logo */}
-          <Link to="/dashboard" style={{ display: 'flex', alignItems: 'center', gap: 10, textDecoration: 'none' }}>
-            <span style={{ fontSize: '1.7rem' }}>🌱</span>
-            <span style={{ fontFamily: 'var(--font-display)', fontSize: '1.4rem', color: 'var(--c-brand-dark)', fontWeight: 500 }}>
+          <Link to="/dashboard" className="flex items-center gap-[10px] no-underline">
+            <span className="text-[1.7rem]">🌱</span>
+            <span className="font-display text-[1.4rem] text-brand-dark font-medium">
               FoFa
             </span>
           </Link>
 
-          {/* Desktop nav — hidden on mobile via CSS */}
-          <div className="hide-mobile" style={{ display: 'flex', gap: '4px', alignItems: 'center' }}>
+          {/* Desktop nav — hidden on mobile */}
+          <div className="hidden md:flex gap-1 items-center">
             {NAV_LINKS.map(link => (
               <Link
                 key={link.to}
                 to={link.to}
-                style={{
-                  padding: '8px 16px', borderRadius: 'var(--radius-md)',
-                  fontWeight: 600, fontSize: '0.92rem',
-                  color: isActive(link.to) ? 'var(--c-brand)' : 'var(--c-text-muted)',
-                  background: isActive(link.to) ? 'var(--c-brand-light)' : 'transparent',
-                  textDecoration: 'none', transition: 'all 0.15s',
-                  display: 'flex', alignItems: 'center', gap: 6,
-                }}
+                className={[
+                  'px-4 py-2 rounded-md font-semibold text-[0.92rem] no-underline transition-all duration-150 flex items-center gap-[6px]',
+                  isActive(link.to)
+                    ? 'text-brand bg-brand-light'
+                    : 'text-muted bg-transparent',
+                ].join(' ')}
               >
                 <span>{link.icon}</span>
-                <span className="nav-label">{link.label}</span>
+                <span>{link.label}</span>
               </Link>
             ))}
           </div>
 
           {/* Profile */}
           {user && (
-            <div style={{ position: 'relative' }}>
+            <div className="relative">
               <button
                 onClick={() => setMenuOpen(o => !o)}
-                style={{
-                  display: 'flex', alignItems: 'center', gap: 10,
-                  background: 'none', border: 'none', cursor: 'pointer',
-                  padding: '6px 10px', borderRadius: 'var(--radius-md)',
-                }}
+                className="flex items-center gap-[10px] bg-transparent border-none cursor-pointer px-[10px] py-[6px] rounded-md"
               >
                 <Avatar src={user.thumbnail} name={user.name} size={36} />
                 {/* Name + location hidden on mobile */}
-                <div className="hide-mobile" style={{ textAlign: 'left' }}>
-                  <div style={{ fontWeight: 700, fontSize: '0.9rem', lineHeight: 1.2 }}>{user.name}</div>
-                  <div style={{ fontSize: '0.75rem', color: 'var(--c-text-muted)' }}>{user.city}, {user.state}</div>
+                <div className="hidden md:block text-left">
+                  <div className="font-bold text-[0.9rem] leading-[1.2]">{user.name}</div>
+                  <div className="text-[0.75rem] text-muted">{user.city}, {user.state}</div>
                 </div>
-                <span className="hide-mobile" style={{ color: 'var(--c-text-muted)', fontSize: '0.8rem' }}>▾</span>
+                <span className="hidden md:inline text-muted text-[0.8rem]">▾</span>
               </button>
 
               {menuOpen && (
-                <div style={{
-                  position: 'absolute', right: 0, top: 'calc(100% + 8px)',
-                  background: 'var(--c-surface)', border: '1.5px solid var(--c-border)',
-                  borderRadius: 'var(--radius-md)', boxShadow: 'var(--shadow-md)',
-                  minWidth: 180, overflow: 'hidden', zIndex: 200,
-                }}>
+                <div className="absolute right-0 top-[calc(100%+8px)] bg-surface border-[1.5px] border-border rounded-md shadow-md min-w-[180px] overflow-hidden z-[200]">
                   {[
                     { label: '⚙️  Profile', action: () => { navigate('/profile'); setMenuOpen(false); } },
                     { label: '👨‍👩‍👧‍👦  My Family', action: () => { navigate('/family'); setMenuOpen(false); } },
@@ -99,13 +81,10 @@ export const Navbar: React.FC = () => {
                     <button
                       key={item.label}
                       onClick={item.action}
-                      style={{
-                        width: '100%', padding: '12px 16px', textAlign: 'left',
-                        background: 'none', border: 'none', cursor: 'pointer',
-                        fontSize: '0.9rem', fontFamily: 'var(--font-body)',
-                        color: item.danger ? 'var(--c-danger)' : 'var(--c-text)',
-                        fontWeight: 600,
-                      }}
+                      className={[
+                        'w-full px-4 py-3 text-left bg-transparent border-none cursor-pointer text-[0.9rem] font-body font-semibold',
+                        item.danger ? 'text-red-600' : 'text-gray-800',
+                      ].join(' ')}
                     >
                       {item.label}
                     </button>
@@ -117,28 +96,19 @@ export const Navbar: React.FC = () => {
         </div>
       </nav>
 
-      {/* ── Mobile bottom tab bar — hidden on desktop via CSS ── */}
-      <nav className="mobile-bottom-nav" style={{
-        position: 'fixed', bottom: 0, left: 0, right: 0, zIndex: 100,
-        background: 'var(--c-surface)', borderTop: '1.5px solid var(--c-border)',
-        boxShadow: '0 -2px 12px rgba(0,0,0,.08)',
-        display: 'flex',
-      }}>
+      {/* ── Mobile bottom tab bar — hidden on desktop ── */}
+      <nav className="md:hidden fixed bottom-0 left-0 right-0 z-[100] bg-surface border-t-[1.5px] border-border shadow-[0_-2px_12px_rgba(0,0,0,.08)] flex">
         {NAV_LINKS.map(link => (
           <Link
             key={link.to}
             to={link.to}
-            style={{
-              flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center',
-              justifyContent: 'center', gap: 3, padding: '10px 4px 12px',
-              textDecoration: 'none',
-              color: isActive(link.to) ? 'var(--c-brand)' : 'var(--c-text-muted)',
-              background: isActive(link.to) ? 'var(--c-brand-light)' : 'transparent',
-              transition: 'all 0.15s',
-            }}
+            className={[
+              'flex-1 flex flex-col items-center justify-center gap-[3px] py-[10px] pb-3 no-underline transition-all duration-150',
+              isActive(link.to) ? 'text-brand bg-brand-light' : 'text-muted bg-transparent',
+            ].join(' ')}
           >
-            <span style={{ fontSize: '1.35rem', lineHeight: 1 }}>{link.icon}</span>
-            <span style={{ fontSize: '0.68rem', fontWeight: 700, letterSpacing: '0.01em' }}>{link.label}</span>
+            <span className="text-[1.35rem] leading-none">{link.icon}</span>
+            <span className="text-[0.68rem] font-bold tracking-[0.01em]">{link.label}</span>
           </Link>
         ))}
       </nav>

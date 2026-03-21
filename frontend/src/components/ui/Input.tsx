@@ -6,12 +6,12 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 }
 
 export const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ label, error, id, style, ...props }, ref) => {
+  ({ label, error, id, className, ...props }, ref) => {
     const inputId = id || label?.toLowerCase().replace(/\s+/g, '-');
     return (
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '5px', ...style as React.CSSProperties }}>
+      <div className={`flex flex-col gap-[5px] ${className ?? ''}`}>
         {label && (
-          <label htmlFor={inputId} style={{ fontWeight: 600, fontSize: '0.88rem', color: 'var(--c-text-muted)' }}>
+          <label htmlFor={inputId} className="font-semibold text-[0.88rem] text-muted">
             {label}
           </label>
         )}
@@ -19,15 +19,12 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
           ref={ref}
           id={inputId}
           {...props}
-          style={{
-            width: '100%', padding: '10px 14px',
-            border: `1.5px solid ${error ? 'var(--c-danger)' : 'var(--c-border)'}`,
-            borderRadius: 'var(--radius-sm)', fontSize: '0.95rem',
-            outline: 'none', transition: 'border-color 0.15s',
-            background: 'var(--c-surface)',
-          }}
+          className={[
+            'w-full px-[14px] py-[10px] rounded-sm text-[0.95rem] outline-none transition-colors duration-150 bg-surface',
+            error ? 'border-[1.5px] border-red-600' : 'border-[1.5px] border-border',
+          ].join(' ')}
         />
-        {error && <span style={{ fontSize: '0.8rem', color: 'var(--c-danger)' }}>{error}</span>}
+        {error && <span className="text-[0.8rem] text-red-600">{error}</span>}
       </div>
     );
   }
@@ -40,12 +37,12 @@ interface TextareaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement
 }
 
 export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
-  ({ label, error, id, style, ...props }, ref) => {
+  ({ label, error, id, className, ...props }, ref) => {
     const inputId = id || label?.toLowerCase().replace(/\s+/g, '-');
     return (
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '5px', ...style as React.CSSProperties }}>
+      <div className={`flex flex-col gap-[5px] ${className ?? ''}`}>
         {label && (
-          <label htmlFor={inputId} style={{ fontWeight: 600, fontSize: '0.88rem', color: 'var(--c-text-muted)' }}>
+          <label htmlFor={inputId} className="font-semibold text-[0.88rem] text-muted">
             {label}
           </label>
         )}
@@ -53,15 +50,12 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
           ref={ref}
           id={inputId}
           {...props}
-          style={{
-            width: '100%', padding: '10px 14px',
-            border: `1.5px solid ${error ? 'var(--c-danger)' : 'var(--c-border)'}`,
-            borderRadius: 'var(--radius-sm)', fontSize: '0.95rem',
-            outline: 'none', resize: 'vertical', minHeight: '90px',
-            background: 'var(--c-surface)', fontFamily: 'var(--font-body)',
-          }}
+          className={[
+            'w-full px-[14px] py-[10px] rounded-sm text-[0.95rem] outline-none resize-y min-h-[90px] bg-surface font-body',
+            error ? 'border-[1.5px] border-red-600' : 'border-[1.5px] border-border',
+          ].join(' ')}
         />
-        {error && <span style={{ fontSize: '0.8rem', color: 'var(--c-danger)' }}>{error}</span>}
+        {error && <span className="text-[0.8rem] text-red-600">{error}</span>}
       </div>
     );
   }

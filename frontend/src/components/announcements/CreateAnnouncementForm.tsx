@@ -74,45 +74,31 @@ export const CreateAnnouncementForm: React.FC<Props> = ({ onCreated }) => {
   return (
     <form
       onSubmit={handleSubmit}
-      style={{
-        background: 'var(--c-surface)', borderRadius: 'var(--radius-lg)',
-        border: '1.5px solid var(--c-border)', padding: '20px',
-        boxShadow: 'var(--shadow-sm)',
-      }}
+      className="bg-surface rounded-lg border-[1.5px] border-border p-5 shadow-sm"
     >
-      <div style={{ display: 'flex', gap: 12, marginBottom: 14 }}>
+      <div className="flex gap-3 mb-[14px]">
         <Avatar src={user.thumbnail} name={user.name} size={44} />
         <textarea
           value={content}
           onChange={e => setContent(e.target.value)}
           placeholder={`What's on your mind, ${user.name.split(' ')[0]}?`}
           rows={3}
-          style={{
-            flex: 1, padding: '12px 16px', borderRadius: 'var(--radius-md)',
-            border: '1.5px solid var(--c-border)', resize: 'none',
-            fontFamily: 'var(--font-body)', fontSize: '0.97rem',
-            background: 'var(--c-bg)', outline: 'none',
-          }}
+          className="flex-1 px-4 py-3 rounded-md border-[1.5px] border-border resize-none font-body text-[0.97rem] bg-bg outline-none"
         />
       </div>
 
       {/* Media preview */}
       {preview && (
-        <div style={{ position: 'relative', marginBottom: 14 }}>
+        <div className="relative mb-[14px]">
           {file?.type.startsWith('video/') ? (
-            <video src={preview} controls style={{ width: '100%', borderRadius: 'var(--radius-md)', maxHeight: 300 }} />
+            <video src={preview} controls className="w-full rounded-md max-h-[300px]" />
           ) : (
-            <img src={preview} alt="Preview" style={{ width: '100%', borderRadius: 'var(--radius-md)', maxHeight: 300, objectFit: 'cover' }} />
+            <img src={preview} alt="Preview" className="w-full rounded-md max-h-[300px] object-cover" />
           )}
           <button
             type="button"
             onClick={clearFile}
-            style={{
-              position: 'absolute', top: 8, right: 8,
-              background: 'rgba(0,0,0,0.55)', color: '#fff', border: 'none',
-              borderRadius: '50%', width: 30, height: 30, cursor: 'pointer',
-              fontSize: '1rem', lineHeight: 1, display: 'flex', alignItems: 'center', justifyContent: 'center',
-            }}
+            className="absolute top-2 right-2 bg-black/55 text-white border-none rounded-full w-[30px] h-[30px] cursor-pointer text-base leading-none flex items-center justify-center"
           >
             ×
           </button>
@@ -123,23 +109,20 @@ export const CreateAnnouncementForm: React.FC<Props> = ({ onCreated }) => {
       {!preview && (
         <div
           {...getRootProps()}
-          style={{
-            border: `2px dashed ${isDragActive ? 'var(--c-brand)' : 'var(--c-border)'}`,
-            borderRadius: 'var(--radius-md)', padding: '18px',
-            textAlign: 'center', cursor: 'pointer', marginBottom: 14,
-            background: isDragActive ? 'var(--c-brand-light)' : 'transparent',
-            transition: 'all 0.2s',
-          }}
+          className={[
+            'border-2 border-dashed rounded-md p-[18px] text-center cursor-pointer mb-[14px] transition-all duration-200',
+            isDragActive ? 'border-brand bg-brand-light' : 'border-border bg-transparent',
+          ].join(' ')}
         >
           <input {...getInputProps()} />
-          <span style={{ fontSize: '1.5rem' }}>📷</span>
-          <p style={{ color: 'var(--c-text-muted)', fontSize: '0.85rem', marginTop: 4 }}>
+          <span className="text-[1.5rem]">📷</span>
+          <p className="text-muted text-[0.85rem] mt-1">
             {isDragActive ? 'Drop it here!' : 'Add a photo or video (optional)'}
           </p>
         </div>
       )}
 
-      <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+      <div className="flex justify-end">
         <Button type="submit" loading={submitting} disabled={!content.trim()}>
           📢 Post Announcement
         </Button>

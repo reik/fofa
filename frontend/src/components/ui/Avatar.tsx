@@ -30,10 +30,8 @@ export const Avatar: React.FC<AvatarProps> = ({ src, name, size = 40, style }) =
       <img
         src={fullSrc}
         alt={name}
-        style={{
-          width: size, height: size, borderRadius: '50%',
-          objectFit: 'cover', flexShrink: 0, ...style,
-        }}
+        className="rounded-full object-cover shrink-0"
+        style={{ width: size, height: size, ...style }}
       />
     );
   }
@@ -41,12 +39,13 @@ export const Avatar: React.FC<AvatarProps> = ({ src, name, size = 40, style }) =
   return (
     <div
       aria-label={name}
+      className="rounded-full flex items-center justify-center font-bold text-white shrink-0"
       style={{
-        width: size, height: size, borderRadius: '50%',
+        width: size,
+        height: size,
         background: colorFor(name),
-        color: '#fff', display: 'flex', alignItems: 'center',
-        justifyContent: 'center', fontWeight: 700,
-        fontSize: size * 0.38, flexShrink: 0, ...style,
+        fontSize: size * 0.38,
+        ...style,
       }}
     >
       {initials(name)}

@@ -22,28 +22,20 @@ export const Modal: React.FC<ModalProps> = ({ open, onClose, title, children, ma
       role="dialog"
       aria-modal="true"
       onClick={onClose}
-      style={{
-        position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.45)',
-        display: 'flex', alignItems: 'center', justifyContent: 'center',
-        zIndex: 1000, padding: '16px',
-      }}
+      className="fixed inset-0 bg-black/45 flex items-center justify-center z-[1000] p-4"
     >
       <div
         onClick={e => e.stopPropagation()}
-        style={{
-          background: 'var(--c-surface)', borderRadius: 'var(--radius-lg)',
-          padding: '28px', width: '100%', maxWidth,
-          boxShadow: 'var(--shadow-lg)', animation: 'fadeIn 0.2s ease',
-          maxHeight: '90vh', overflowY: 'auto',
-        }}
+        className="bg-surface rounded-lg p-7 w-full shadow-lg fade-in max-h-[90vh] overflow-y-auto"
+        style={{ maxWidth }}
       >
         {title && (
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
-            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '1.3rem' }}>{title}</h2>
+          <div className="flex justify-between items-center mb-5">
+            <h2 className="font-display text-[1.3rem]">{title}</h2>
             <button
               onClick={onClose}
               aria-label="Close"
-              style={{ background: 'none', border: 'none', fontSize: '1.4rem', cursor: 'pointer', color: 'var(--c-text-muted)', lineHeight: 1 }}
+              className="bg-transparent border-none text-[1.4rem] cursor-pointer text-muted leading-none"
             >
               ×
             </button>

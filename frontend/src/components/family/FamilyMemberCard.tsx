@@ -32,21 +32,13 @@ export const FamilyMemberCard: React.FC<CardProps> = ({ member, onUpdate }) => {
 
   return (
     <>
-      <div style={{
-        background: 'var(--c-surface)', borderRadius: 'var(--radius-lg)',
-        border: '1.5px solid var(--c-border)', padding: '20px',
-        display: 'flex', flexDirection: 'column', alignItems: 'center',
-        gap: 12, boxShadow: 'var(--shadow-sm)', animation: 'fadeIn 0.3s ease',
-        textAlign: 'center',
-      }}>
+      <div className="bg-surface rounded-lg border-[1.5px] border-border p-5 flex flex-col items-center gap-3 shadow-sm fade-in text-center">
         <Avatar src={member.thumbnail} name={member.name} size={72} />
         <div>
-          <div style={{ fontWeight: 700, fontSize: '1.05rem' }}>{member.name}</div>
-          <div style={{ color: 'var(--c-text-muted)', fontSize: '0.85rem', marginTop: 2 }}>
-            Age {member.age}
-          </div>
+          <div className="font-bold text-[1.05rem]">{member.name}</div>
+          <div className="text-muted text-[0.85rem] mt-[2px]">Age {member.age}</div>
         </div>
-        <div style={{ display: 'flex', gap: 8 }}>
+        <div className="flex gap-2">
           <Button variant="secondary" size="sm" onClick={() => setEditing(true)}>Edit</Button>
           <Button variant="danger" size="sm" loading={deleting} onClick={handleDelete}>Remove</Button>
         </div>
@@ -113,22 +105,17 @@ export const FamilyMemberForm: React.FC<FormProps> = ({ existing, onSaved, onCan
     || (existing?.thumbnail ? `${apiBase}${existing.thumbnail}` : null);
 
   return (
-    <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+    <form onSubmit={handleSubmit} className="flex flex-col gap-4">
       {/* Thumbnail */}
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 10 }}>
+      <div className="flex flex-col items-center gap-[10px]">
         {currentThumb ? (
-          <img src={currentThumb} alt="thumbnail" style={{ width: 80, height: 80, borderRadius: '50%', objectFit: 'cover' }} />
+          <img src={currentThumb} alt="thumbnail" className="w-20 h-20 rounded-full object-cover" />
         ) : (
-          <div style={{
-            width: 80, height: 80, borderRadius: '50%', background: 'var(--c-brand-light)',
-            display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '2rem',
-          }}>👤</div>
+          <div className="w-20 h-20 rounded-full bg-brand-light flex items-center justify-center text-[2rem]">👤</div>
         )}
-        <label style={{
-          cursor: 'pointer', color: 'var(--c-brand)', fontWeight: 600, fontSize: '0.88rem',
-        }}>
+        <label className="cursor-pointer text-brand font-semibold text-[0.88rem]">
           {currentThumb ? 'Change photo' : 'Add photo'}
-          <input type="file" accept="image/*" onChange={handleFileChange} style={{ display: 'none' }} />
+          <input type="file" accept="image/*" onChange={handleFileChange} className="hidden" />
         </label>
       </div>
 
@@ -150,7 +137,7 @@ export const FamilyMemberForm: React.FC<FormProps> = ({ existing, onSaved, onCan
         required
       />
 
-      <div style={{ display: 'flex', gap: 10, justifyContent: 'flex-end' }}>
+      <div className="flex gap-[10px] justify-end">
         <Button type="button" variant="ghost" onClick={onCancel}>Cancel</Button>
         <Button type="submit" loading={saving} disabled={!name.trim() || !age}>
           {existing ? 'Save Changes' : 'Add Member'}

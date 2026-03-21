@@ -6,36 +6,32 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   loading?: boolean;
 }
 
-const styles: Record<string, React.CSSProperties> = {
-  base: {
-    display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-    gap: '8px', fontWeight: 600, borderRadius: 'var(--radius-md)',
-    border: 'none', transition: 'all 0.18s ease', cursor: 'pointer',
-    fontFamily: 'var(--font-body)',
-  },
-  primary: { background: 'var(--c-brand)', color: '#fff' },
-  secondary: { background: 'var(--c-brand-light)', color: 'var(--c-brand-dark)' },
-  ghost: { background: 'transparent', color: 'var(--c-text-muted)', border: '1.5px solid var(--c-border)' },
-  danger: { background: '#fee2e2', color: 'var(--c-danger)' },
-  sm: { padding: '6px 14px', fontSize: '0.85rem' },
-  md: { padding: '10px 20px', fontSize: '0.95rem' },
-  lg: { padding: '13px 28px', fontSize: '1rem' },
-  disabled: { opacity: 0.55, cursor: 'not-allowed' },
+const variantClasses: Record<string, string> = {
+  primary:   'bg-brand text-white',
+  secondary: 'bg-brand-light text-brand-dark',
+  ghost:     'bg-transparent text-muted border border-border',
+  danger:    'bg-red-100 text-red-600',
+};
+
+const sizeClasses: Record<string, string> = {
+  sm: 'px-[14px] py-[6px] text-[0.85rem]',
+  md: 'px-5 py-[10px] text-[0.95rem]',
+  lg: 'px-7 py-[13px] text-base',
 };
 
 export const Button: React.FC<ButtonProps> = ({
-  variant = 'primary', size = 'md', loading, disabled, children, style, ...props
+  variant = 'primary', size = 'md', loading, disabled, children, className = '', ...props
 }) => (
   <button
     {...props}
     disabled={disabled || loading}
-    style={{
-      ...styles.base,
-      ...styles[variant],
-      ...styles[size],
-      ...(disabled || loading ? styles.disabled : {}),
-      ...style,
-    }}
+    className={[
+      'inline-flex items-center justify-center gap-2 font-semibold rounded-md border-none transition-all duration-[180ms] cursor-pointer font-body',
+      variantClasses[variant],
+      sizeClasses[size],
+      (disabled || loading) ? 'opacity-55 cursor-not-allowed' : '',
+      className,
+    ].join(' ')}
   >
     {loading && <Spinner size={16} />}
     {children}
