@@ -70,7 +70,9 @@ export const CommentsSection: React.FC<Props> = ({ announcementId, onCommentAdde
                   </span>
                   {user?.id === c.user_id && (
                     <button
+                      type="button"
                       onClick={() => handleDelete(c.id)}
+                      aria-label={`Delete comment by ${c.author_name}`}
                       style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '0.75rem', color: 'var(--c-danger)' }}
                     >
                       Delete
@@ -92,6 +94,7 @@ export const CommentsSection: React.FC<Props> = ({ announcementId, onCommentAdde
               value={text}
               onChange={e => setText(e.target.value)}
               placeholder="Write a comment…"
+              aria-label="Write a comment"
               rows={2}
               style={{
                 flex: 1, padding: '10px 14px', borderRadius: 'var(--radius-md)',

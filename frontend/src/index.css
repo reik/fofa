@@ -1,31 +1,75 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Lora:ital,wght@0,500;1,400&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Titan+One&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
-  *, *::before, *::after { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body { font-family: 'Nunito', sans-serif; -webkit-font-smoothing: antialiased; }
-  a { color: #3d7a4f; }
-  img { max-width: 100%; display: block; }
-  button { font-family: inherit; cursor: pointer; }
-  input, textarea, select { font-family: inherit; font-size: 1rem; }
-  ::-webkit-scrollbar { width: 6px; }
-  ::-webkit-scrollbar-track { background: transparent; }
-  ::-webkit-scrollbar-thumb { background: #e2ddd6; border-radius: 99px; }
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+  /* Global focus-visible ring for keyboard navigation */
+  :focus-visible {
+    outline: 2px solid #4d9463;
+    outline-offset: 2px;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    font-family: "Nunito", sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  a {
+    color: #4d9463;
+  }
+  img {
+    max-width: 100%;
+    display: block;
+  }
+  button {
+    font-family: inherit;
+    cursor: pointer;
+  }
+  input,
+  textarea,
+  select {
+    font-family: inherit;
+    font-size: 1rem;
+  }
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #e6e2dc;
+    border-radius: 99px;
+  }
 }
 
 @layer utilities {
-  .fade-in { animation: fadeIn 0.3s ease forwards; }
+  .fade-in {
+    animation: fadeIn 0.3s ease forwards;
+  }
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(8px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }

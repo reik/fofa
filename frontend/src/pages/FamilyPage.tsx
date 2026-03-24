@@ -20,7 +20,7 @@ export const FamilyPage: React.FC = () => {
     <div className="max-w-[900px] mx-auto px-5 py-8">
       <div className="flex justify-between items-center mb-7">
         <div>
-          <h1 className="font-display text-[1.8rem] font-medium text-brand-dark">
+          <h1 className="font-heading text-[1.8rem] font-medium text-brand-dark">
             My Family
           </h1>
           <p className="text-muted mt-1">
@@ -35,7 +35,7 @@ export const FamilyPage: React.FC = () => {
       ) : members?.length === 0 ? (
         <div className="text-center py-[60px] px-5 bg-surface rounded-lg border-[1.5px] border-border">
           <div className="text-[3.5rem] mb-3">👨‍👩‍👧‍👦</div>
-          <h3 className="font-display">No family members yet</h3>
+          <h3 className="font-heading">No family members yet</h3>
           <p className="text-muted mt-2 mb-5">
             Add the members of your foster family to your profile.
           </p>

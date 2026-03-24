@@ -8,6 +8,7 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 export const Input = React.forwardRef<HTMLInputElement, InputProps>(
   ({ label, error, id, className, ...props }, ref) => {
     const inputId = id || label?.toLowerCase().replace(/\s+/g, '-');
+    const errorId = inputId ? `${inputId}-error` : undefined;
     return (
       <div className={`flex flex-col gap-[5px] ${className ?? ''}`}>
         {label && (
@@ -18,13 +19,15 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
         <input
           ref={ref}
           id={inputId}
+          aria-invalid={error ? 'true' : undefined}
+          aria-describedby={error && errorId ? errorId : undefined}
           {...props}
           className={[
             'w-full px-[14px] py-[10px] rounded-sm text-[0.95rem] outline-none transition-colors duration-150 bg-surface',
             error ? 'border-[1.5px] border-red-600' : 'border-[1.5px] border-border',
           ].join(' ')}
         />
-        {error && <span className="text-[0.8rem] text-red-600">{error}</span>}
+        {error && <span id={errorId} role="alert" className="text-[0.8rem] text-red-600">{error}</span>}
       </div>
     );
   }
@@ -39,6 +42,7 @@ interface TextareaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement
 export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
   ({ label, error, id, className, ...props }, ref) => {
     const inputId = id || label?.toLowerCase().replace(/\s+/g, '-');
+    const errorId = inputId ? `${inputId}-error` : undefined;
     return (
       <div className={`flex flex-col gap-[5px] ${className ?? ''}`}>
         {label && (
@@ -49,13 +53,15 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
         <textarea
           ref={ref}
           id={inputId}
+          aria-invalid={error ? 'true' : undefined}
+          aria-describedby={error && errorId ? errorId : undefined}
           {...props}
           className={[
             'w-full px-[14px] py-[10px] rounded-sm text-[0.95rem] outline-none resize-y min-h-[90px] bg-surface font-body',
             error ? 'border-[1.5px] border-red-600' : 'border-[1.5px] border-border',
           ].join(' ')}
         />
-        {error && <span className="text-[0.8rem] text-red-600">{error}</span>}
+        {error && <span id={errorId} role="alert" className="text-[0.8rem] text-red-600">{error}</span>}
       </div>
     );
   }

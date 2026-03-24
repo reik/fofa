@@ -23,7 +23,7 @@ export const CommunityPage: React.FC = () => {
   return (
     <div className="max-w-[900px] mx-auto px-5 py-8">
       <div className="mb-7">
-        <h1 className="font-display text-[1.8rem] font-medium text-brand-dark">
+        <h1 className="font-heading text-[1.8rem] font-medium text-brand-dark">
           Community
         </h1>
         <p className="text-muted mt-1">Connect with other foster families</p>

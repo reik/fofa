@@ -89,7 +89,7 @@ export const DashboardPage: React.FC = () => {
         ) : data?.data.length === 0 ? (
           <div className="text-center py-[60px] px-5 bg-surface rounded-lg border-[1.5px] border-border">
             <div className="text-[3rem] mb-3">🌿</div>
-            <h3 className="font-display">The feed is quiet</h3>
+            <h3 className="font-heading">The feed is quiet</h3>
             <p className="text-muted mt-2">Be the first to post an announcement!</p>
           </div>
         ) : (

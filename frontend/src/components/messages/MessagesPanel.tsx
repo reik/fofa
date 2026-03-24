@@ -124,12 +124,16 @@ export const MessagesPanel: React.FC = () => {
           ].join(' ')}
         >
           <div className="p-4 border-b border-border">
-            <h2 className="font-display text-[1.1rem] mb-[10px]">Messages</h2>
+            <h2 className="font-heading text-[1.1rem] mb-[10px]">Messages</h2>
             <div className="relative">
               <input
                 value={searchQuery}
                 onChange={e => setSearchQuery(e.target.value)}
                 placeholder="Search members…"
+                aria-label="Search members to message"
+                role="combobox"
+                aria-expanded={searchResults.length > 0}
+                aria-autocomplete="list"
                 className="w-full px-3 py-2 rounded-md border-[1.5px] border-border text-[0.88rem] bg-bg font-body outline-none"
               />
               {searchResults.length > 0 && (
@@ -172,8 +176,11 @@ export const MessagesPanel: React.FC = () => {
                   <div className="relative">
                     <Avatar src={conv.partner_thumbnail} name={conv.partner_name} size={42} />
                     {conv.unread_count > 0 && (
-                      <span className="absolute -top-[2px] -right-[2px] bg-brand text-white rounded-full w-4 h-4 text-[0.65rem] flex items-center justify-center font-bold">
-                        {conv.unread_count}
+                      <span
+                        aria-label={`${conv.unread_count} unread messages`}
+                        className="absolute -top-[2px] -right-[2px] bg-brand text-white rounded-full w-4 h-4 text-[0.65rem] flex items-center justify-center font-bold"
+                      >
+                        <span aria-hidden="true">{conv.unread_count}</span>
                       </span>
                     )}
                   </div>
@@ -199,10 +206,12 @@ export const MessagesPanel: React.FC = () => {
               {/* Back button on mobile */}
               {isMobile && (
                 <button
+                  type="button"
                   onClick={() => setActivePartnerId(null)}
+                  aria-label="Back to conversations"
                   className="bg-transparent border-none cursor-pointer text-[1.2rem] pr-2 pl-0 py-1 text-brand font-bold"
                 >
-                  ←
+                  <span aria-hidden="true">←</span>
                 </button>
               )}
               <Avatar src={activeConv?.partner_thumbnail || null} name={activeConv?.partner_name || ''} size={40} />
@@ -212,7 +221,7 @@ export const MessagesPanel: React.FC = () => {
             </div>
 
             {/* Messages */}
-            <div className="flex-1 overflow-y-auto p-5 flex flex-col gap-3">
+            <div aria-live="polite" aria-label="Messages" className="flex-1 overflow-y-auto p-5 flex flex-col gap-3">
               {hasMore && (
                 <div className="text-center">
                   <button
@@ -258,6 +267,7 @@ export const MessagesPanel: React.FC = () => {
                 value={newMsg}
                 onChange={e => setNewMsg(e.target.value)}
                 placeholder="Type a message…"
+                aria-label={`Message ${activeConv?.partner_name ?? ''}`}
                 className="flex-1 px-4 py-[10px] rounded-xl border-[1.5px] border-border text-[0.93rem] font-body bg-bg outline-none"
               />
               <Button type="submit" loading={sending} disabled={!newMsg.trim()}>Send</Button>

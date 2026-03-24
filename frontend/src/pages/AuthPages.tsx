@@ -160,5 +160,5 @@ export const ResetPasswordPage: React.FC = () => {
 
 const pageClass = 'min-h-screen flex items-center justify-center bg-gradient-to-br from-brand-light to-[#fff8ee] p-5';
 const cardClass = 'bg-surface rounded-xl border-[1.5px] border-border p-10 w-full max-w-[420px] shadow-lg text-center';
-const titleClass = 'font-display text-[1.5rem] font-medium text-brand-dark';
+const titleClass = 'font-heading text-[1.5rem] font-medium text-brand-dark';
 const subClass = 'text-muted mt-[10px] leading-[1.7] text-[0.93rem]';

@@ -25,8 +25,9 @@ export const Button: React.FC<ButtonProps> = ({
   <button
     {...props}
     disabled={disabled || loading}
+    aria-busy={loading || undefined}
     className={[
-      'inline-flex items-center justify-center gap-2 font-semibold rounded-md border-none transition-all duration-[180ms] cursor-pointer font-body',
+      'inline-flex items-center justify-center gap-2 font-semibold rounded-md border-none transition-all duration-[180ms] cursor-pointer font-body focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current',
       variantClasses[variant],
       sizeClasses[size],
       (disabled || loading) ? 'opacity-55 cursor-not-allowed' : '',
@@ -42,6 +43,7 @@ export const Spinner: React.FC<{ size?: number }> = ({ size = 20 }) => (
   <svg
     width={size} height={size} viewBox="0 0 24 24" fill="none"
     stroke="currentColor" strokeWidth="2.5"
+    aria-hidden="true"
     style={{ animation: 'spin 0.7s linear infinite', flexShrink: 0 }}
   >
     <circle cx="12" cy="12" r="10" strokeOpacity="0.25" />

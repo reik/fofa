@@ -139,19 +139,28 @@ export const AnnouncementCard: React.FC<Props> = ({ announcement, onUpdate }) =>
           <Button
             variant="ghost"
             size="sm"
+            aria-expanded={showReactions}
+            aria-label={userReaction ? `Change reaction, currently ${REACTIONS.find(r => r.type === userReaction)?.label}` : 'Add reaction'}
             onClick={() => setShowReactions(o => !o)}
             className={userReaction ? 'text-brand' : ''}
           >
-            {currentReactionEmoji || '👍'} {userReaction ? REACTIONS.find(r => r.type === userReaction)?.label : 'React'}
+            <span aria-hidden="true">{currentReactionEmoji || '👍'}</span>
+            {' '}{userReaction ? REACTIONS.find(r => r.type === userReaction)?.label : 'React'}
           </Button>
 
           {showReactions && (
-            <div className="absolute bottom-[calc(100%+6px)] left-0 bg-surface border-[1.5px] border-border rounded-xl px-3 py-2 flex gap-[6px] shadow-md z-10 fade-in">
+            <div
+              role="toolbar"
+              aria-label="Reaction picker"
+              className="absolute bottom-[calc(100%+6px)] left-0 bg-surface border-[1.5px] border-border rounded-xl px-3 py-2 flex gap-[6px] shadow-md z-10 fade-in"
+            >
               {REACTIONS.map(r => (
                 <button
                   key={r.type}
+                  type="button"
                   onClick={() => handleReaction(r.type)}
-                  title={r.label}
+                  aria-label={`${r.label}${userReaction === r.type ? ' (selected)' : ''}`}
+                  aria-pressed={userReaction === r.type}
                   className={[
                     'border-none cursor-pointer text-[1.4rem] rounded-full p-1 leading-none transition-transform duration-100',
                     userReaction === r.type ? 'bg-brand-light' : 'bg-transparent',
@@ -159,7 +168,7 @@ export const AnnouncementCard: React.FC<Props> = ({ announcement, onUpdate }) =>
                   onMouseEnter={e => (e.currentTarget.style.transform = 'scale(1.25)')}
                   onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1)')}
                 >
-                  {r.emoji}
+                  <span aria-hidden="true">{r.emoji}</span>
                 </button>
               ))}
             </div>
@@ -169,9 +178,11 @@ export const AnnouncementCard: React.FC<Props> = ({ announcement, onUpdate }) =>
         <Button
           variant="ghost"
           size="sm"
+          aria-expanded={showComments}
           onClick={() => setShowComments(o => !o)}
         >
-          💬 {announcement.commentCount > 0 ? `${announcement.commentCount} Comments` : 'Comment'}
+          <span aria-hidden="true">💬</span>
+          {' '}{announcement.commentCount > 0 ? `${announcement.commentCount} Comments` : 'Comment'}
         </Button>
       </div>
 

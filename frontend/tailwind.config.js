@@ -1,41 +1,41 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
       colors: {
         brand: {
-          DEFAULT: '#3d7a4f',
-          dark:    '#2c5c3a',
-          light:   '#e8f5ec',
+          DEFAULT: "#4d9463",
+          dark: "#3a7049",
+          light: "#edfaf2",
         },
         accent: {
-          DEFAULT: '#e9a23b',
-          dark:    '#c8861e',
+          DEFAULT: "#f0b24f",
+          dark: "#d4962b",
         },
-        surface: '#ffffff',
-        bg:      '#f7f5f0',
-        border:  '#e2ddd6',
-        muted:   '#6b7280',
-        light:   '#9ca3af',
+        surface: "#ffffff",
+        bg: "#fafaf7",
+        border: "#e6e2dc",
+        muted: "#7b8492",
+        light: "#a8b0bb",
       },
       fontFamily: {
-        body:    ['Nunito', 'sans-serif'],
-        display: ['Lora', 'serif'],
+        body: ["Nunito", "sans-serif"],
+        heading: ["Titan One", "cursive"],
       },
       borderRadius: {
-        sm: '6px',
-        md: '12px',
-        lg: '20px',
-        xl: '28px',
-        full: '9999px',
+        sm: "6px",
+        md: "12px",
+        lg: "20px",
+        xl: "28px",
+        full: "9999px",
       },
       boxShadow: {
-        sm: '0 1px 3px rgba(0,0,0,.08)',
-        md: '0 4px 16px rgba(0,0,0,.10)',
-        lg: '0 8px 32px rgba(0,0,0,.12)',
+        sm: "0 1px 3px rgba(0,0,0,.08)",
+        md: "0 4px 16px rgba(0,0,0,.10)",
+        lg: "0 8px 32px rgba(0,0,0,.12)",
       },
     },
   },
   plugins: [],
-}
+};

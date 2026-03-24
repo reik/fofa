@@ -55,7 +55,7 @@ export const ProfilePage: React.FC = () => {
 
   return (
     <div className="max-w-[600px] mx-auto px-5 py-10">
-      <h1 className="font-display text-[1.8rem] font-medium text-brand-dark mb-8">
+      <h1 className="font-heading text-[1.8rem] font-medium text-brand-dark mb-8">
         Edit Profile
       </h1>
 
