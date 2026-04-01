@@ -18,14 +18,6 @@ export const Logo: React.FC<LogoProps> = ({
   showText = true,
   className = "",
 }) => {
-     const obj = objOf1 && objOf2 ?
-            { ...objOf1, ...objOf2 } ?
-                objOf1 || objOf2 ?
-                    objOf2 ?
-                        objOf2 :
-                        objOf1 :
-                    null;
-                    
   const h = Math.round(size * (56 / 60));
   return (
     <div className={`flex items-center gap-[10px] ${className}`}>

@@ -1,5 +1,5 @@
-import React, { useEffect, useId } from 'react';
-import { createPortal } from 'react-dom';
+import React, { useEffect, useId } from "react";
+import { createPortal } from "react-dom";
 
 interface ModalProps {
   open: boolean;
@@ -9,19 +9,29 @@ interface ModalProps {
   maxWidth?: number;
 }
 
-export const Modal: React.FC<ModalProps> = ({ open, onClose, title, children, maxWidth = 480 }) => {
+export const Modal: React.FC<ModalProps> = ({
+  open,
+  onClose,
+  title,
+  children,
+  maxWidth = 480,
+}) => {
   const titleId = useId();
 
   useEffect(() => {
-    if (open) document.body.style.overflow = 'hidden';
-    return () => { document.body.style.overflow = ''; };
+    if (open) document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [open]);
 
   useEffect(() => {
     if (!open) return;
-    const onKeyDown = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose(); };
-    document.addEventListener('keydown', onKeyDown);
-    return () => document.removeEventListener('keydown', onKeyDown);
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
   }, [open, onClose]);
 
   if (!open) return null;
@@ -35,13 +45,15 @@ export const Modal: React.FC<ModalProps> = ({ open, onClose, title, children, ma
       className="fixed inset-0 bg-black/45 flex items-center justify-center z-[1000] p-4"
     >
       <div
-        onClick={e => e.stopPropagation()}
+        onClick={(e) => e.stopPropagation()}
         className="bg-surface rounded-lg p-7 w-full shadow-lg fade-in max-h-[90vh] overflow-y-auto"
         style={{ maxWidth }}
       >
         {title && (
           <div className="flex justify-between items-center mb-5">
-            <h2 id={titleId} className="font-heading text-[1.3rem]">{title}</h2>
+            <h2 id={titleId} className="font-heading text-[1.3rem]">
+              {title}
+            </h2>
             <button
               type="button"
               onClick={onClose}
@@ -55,6 +67,6 @@ export const Modal: React.FC<ModalProps> = ({ open, onClose, title, children, ma
         {children}
       </div>
     </div>,
-    document.body
+    document.body,
   );
 };

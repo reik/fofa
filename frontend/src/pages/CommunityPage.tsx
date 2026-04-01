@@ -1,19 +1,22 @@
-import React, { useState, useEffect } from 'react';
-import { userService } from '../services';
-import { User } from '../types';
-import { Avatar } from '../components/ui/Avatar';
-import { Button } from '../components/ui/Button';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { userService } from "../services";
+import { User } from "../types";
+import { Avatar } from "../components/ui/Avatar";
+import { Button } from "../components/ui/Button";
+import { useNavigate } from "react-router-dom";
 
 export const CommunityPage: React.FC = () => {
   const navigate = useNavigate();
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState("");
   const [members, setMembers] = useState<User[]>([]);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     setLoading(true);
-    userService.search(query).then(setMembers).finally(() => setLoading(false));
+    userService
+      .search(query)
+      .then(setMembers)
+      .finally(() => setLoading(false));
   }, [query]);
 
   const startMessage = async (memberId: string) => {
@@ -31,7 +34,7 @@ export const CommunityPage: React.FC = () => {
 
       <input
         value={query}
-        onChange={e => setQuery(e.target.value)}
+        onChange={(e) => setQuery(e.target.value)}
         placeholder="Search by name, city, or state…"
         className="w-full px-5 py-3 rounded-xl border-[1.5px] border-border text-[0.97rem] font-body mb-6 bg-surface shadow-sm outline-none"
       />
@@ -39,13 +42,19 @@ export const CommunityPage: React.FC = () => {
       {loading ? (
         <div className="text-center p-10 text-muted">Searching…</div>
       ) : members.length === 0 ? (
-        <div className="text-center p-10 text-muted">
-          No members found
-        </div>
+        <div className="text-center p-10 text-muted">No members found</div>
       ) : (
-        <div className="grid gap-4" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))' }}>
-          {members.map(m => (
-            <div key={m.id} className="bg-surface rounded-lg border-[1.5px] border-border p-5 flex items-center gap-[14px] shadow-sm fade-in">
+        <div
+          className="grid gap-4"
+          style={{
+            gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))",
+          }}
+        >
+          {members.map((m) => (
+            <div
+              key={m.id}
+              className="bg-surface rounded-lg border-[1.5px] border-border p-5 flex items-center gap-[14px] shadow-sm fade-in"
+            >
               <Avatar src={m.thumbnail} name={m.name} size={52} />
               <div className="flex-1 min-w-0">
                 <div className="font-bold text-[0.97rem]">{m.name}</div>
@@ -53,7 +62,8 @@ export const CommunityPage: React.FC = () => {
                   📍 {m.city}, {m.state}
                 </div>
                 <Button
-                  variant="secondary" size="sm"
+                  variant="secondary"
+                  size="sm"
                   className="mt-[10px]"
                   onClick={() => startMessage(m.id)}
                 >

@@ -1,10 +1,13 @@
 // MessagesPage.tsx
-import React from 'react';
-import { MessagesPanel } from '../components/messages/MessagesPanel';
+import React from "react";
+import { MessagesPanel } from "../components/messages/MessagesPanel";
 
 export const MessagesPage: React.FC = () => (
-  <div style={{ maxWidth: 1100, margin: '0 auto', padding: '24px 20px' }}>
-    <h1 className="font-heading text-[1.8rem] text-brand-dark" style={{ fontWeight: 400, marginBottom: 24 }}>
+  <div style={{ maxWidth: 1100, margin: "0 auto", padding: "24px 20px" }}>
+    <h1
+      className="font-heading text-[1.8rem] text-brand-dark"
+      style={{ fontWeight: 400, marginBottom: 24 }}
+    >
       Messages
     </h1>
     <MessagesPanel />
