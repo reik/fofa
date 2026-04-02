@@ -24,7 +24,7 @@ export const CommunityPage: React.FC = () => {
   };
 
   return (
-    <div className="max-w-[900px] mx-auto px-5 py-8">
+    <main className="max-w-[900px] mx-auto px-5 py-8">
       <div className="mb-7">
         <h1 className="font-heading text-[1.8rem] font-medium text-brand-dark">
           Community
@@ -32,7 +32,11 @@ export const CommunityPage: React.FC = () => {
         <p className="text-muted mt-1">Connect with other foster families</p>
       </div>
 
+      <label htmlFor="community-search" className="sr-only">
+        Search members
+      </label>
       <input
+        id="community-search"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         placeholder="Search by name, city, or state…"
@@ -53,7 +57,7 @@ export const CommunityPage: React.FC = () => {
           {members.map((m) => (
             <div
               key={m.id}
-              className="bg-surface rounded-lg border-[1.5px] border-border p-5 flex items-center gap-[14px] shadow-sm fade-in"
+              className="bg-surface rounded-lg border-[1.5px] border-border elevated-card p-5 flex items-center gap-[14px] shadow-sm fade-in"
             >
               <Avatar src={m.thumbnail} name={m.name} size={52} />
               <div className="flex-1 min-w-0">
@@ -74,6 +78,6 @@ export const CommunityPage: React.FC = () => {
           ))}
         </div>
       )}
-    </div>
+    </main>
   );
 };

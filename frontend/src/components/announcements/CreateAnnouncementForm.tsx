@@ -74,11 +74,15 @@ export const CreateAnnouncementForm: React.FC<Props> = ({ onCreated }) => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="bg-surface rounded-lg border-[1.5px] border-border p-5 shadow-sm"
+      className="bg-surface rounded-lg border-[1.5px] border-border elevated-card p-5 shadow-sm"
     >
       <div className="flex gap-3 mb-[14px]">
         <Avatar src={user.thumbnail} name={user.name} size={44} />
+        <label htmlFor="announcement-content" className="sr-only">
+          Write an announcement
+        </label>
         <textarea
+          id="announcement-content"
           value={content}
           onChange={e => setContent(e.target.value)}
           placeholder={`What's on your mind, ${user.name.split(' ')[0]}?`}
@@ -93,11 +97,12 @@ export const CreateAnnouncementForm: React.FC<Props> = ({ onCreated }) => {
           {file?.type.startsWith('video/') ? (
             <video src={preview} controls className="w-full rounded-md max-h-[300px]" />
           ) : (
-            <img src={preview} alt="Preview" className="w-full rounded-md max-h-[300px] object-cover" />
+            <img src={preview} alt="Selected media preview" className="w-full rounded-md max-h-[300px] object-cover" />
           )}
           <button
             type="button"
             onClick={clearFile}
+            aria-label="Remove selected media"
             className="absolute top-2 right-2 bg-black/55 text-white border-none rounded-full w-[30px] h-[30px] cursor-pointer text-base leading-none flex items-center justify-center"
           >
             ×

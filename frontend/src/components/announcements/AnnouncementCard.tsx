@@ -71,7 +71,7 @@ export const AnnouncementCard: React.FC<Props> = ({ announcement, onUpdate }) =>
     : null;
 
   return (
-    <article className="bg-surface rounded-lg border-[1.5px] border-border overflow-hidden shadow-sm fade-in">
+    <article className="bg-surface rounded-lg border-[1.5px] border-border elevated-card overflow-hidden shadow-sm fade-in">
       {/* Header */}
       <div className="px-5 py-4 flex items-center gap-3">
         <Avatar src={announcement.author.thumbnail} name={announcement.author.name} size={44} />
@@ -109,7 +109,7 @@ export const AnnouncementCard: React.FC<Props> = ({ announcement, onUpdate }) =>
           ) : (
             <img
               src={`${apiBase}${announcement.mediaUrl}`}
-              alt="Announcement media"
+              alt={`Photo shared by ${announcement.author.name}`}
               className="w-full max-h-[420px] object-cover"
             />
           )}
@@ -152,7 +152,7 @@ export const AnnouncementCard: React.FC<Props> = ({ announcement, onUpdate }) =>
             <div
               role="toolbar"
               aria-label="Reaction picker"
-              className="absolute bottom-[calc(100%+6px)] left-0 bg-surface border-[1.5px] border-border rounded-xl px-3 py-2 flex gap-[6px] shadow-md z-10 fade-in"
+              className="absolute bottom-[calc(100%+6px)] left-0 bg-surface border-[1.5px] border-border elevated-popover rounded-xl px-3 py-2 flex gap-[6px] shadow-md z-10 fade-in"
             >
               {REACTIONS.map(r => (
                 <button

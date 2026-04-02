@@ -41,7 +41,7 @@ export const Navbar: React.FC = () => {
   return (
     <>
       {/* ── Top bar ── */}
-      <nav aria-label="Main navigation" className="sticky top-0 z-[100] bg-surface border-b-[1.5px] border-border shadow-sm">
+      <nav aria-label="Main navigation" className="sticky top-0 z-[100] bg-surface border-b-[3px] border-brand shadow-md">
         <div className="max-w-[1100px] mx-auto px-5 flex items-center justify-between h-16">
           {/* Logo */}
           <Link to="/dashboard" aria-label="FoFa home" className="flex items-center no-underline">
@@ -59,7 +59,7 @@ export const Navbar: React.FC = () => {
                 className={[
                   "px-4 py-2 rounded-md font-semibold text-[0.92rem] no-underline transition-all duration-150 flex items-center gap-[6px]",
                   isActive(link.to)
-                    ? "text-brand bg-brand-light"
+                    ? "text-brand-dark bg-brand-light"
                     : "text-muted bg-transparent",
                 ].join(" ")}
               >
@@ -97,7 +97,7 @@ export const Navbar: React.FC = () => {
                 <div
                   role="menu"
                   aria-label="Profile menu"
-                  className="absolute right-0 top-[calc(100%+8px)] bg-surface border-[1.5px] border-border rounded-md shadow-md min-w-[180px] overflow-hidden z-[200]"
+                  className="absolute right-0 top-[calc(100%+8px)] bg-surface border-[1.5px] border-border elevated-popover rounded-md shadow-md min-w-[180px] overflow-hidden z-[200]"
                 >
                   {MENU_ITEMS.map((item) => (
                     <button
@@ -132,7 +132,7 @@ export const Navbar: React.FC = () => {
             className={[
               "flex-1 flex flex-col items-center justify-center gap-[3px] py-[10px] pb-3 no-underline transition-all duration-150",
               isActive(link.to)
-                ? "text-brand bg-brand-light"
+                ? "text-brand-dark bg-brand-light"
                 : "text-muted bg-transparent",
             ].join(" ")}
           >

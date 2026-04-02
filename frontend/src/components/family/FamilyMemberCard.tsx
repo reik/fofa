@@ -32,7 +32,7 @@ export const FamilyMemberCard: React.FC<CardProps> = ({ member, onUpdate }) => {
 
   return (
     <>
-      <div className="bg-surface rounded-lg border-[1.5px] border-border p-5 flex flex-col items-center gap-3 shadow-sm fade-in text-center">
+      <div className="bg-surface rounded-lg border-[1.5px] border-border elevated-card p-5 flex flex-col items-center gap-3 shadow-sm fade-in text-center">
         <Avatar src={member.thumbnail} name={member.name} size={72} />
         <div>
           <div className="font-bold text-[1.05rem]">{member.name}</div>

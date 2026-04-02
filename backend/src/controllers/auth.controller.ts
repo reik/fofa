@@ -101,23 +101,29 @@ export async function login(req: Request, res: Response): Promise<void> {
 }
 
 export async function forgotPassword(req: Request, res: Response): Promise<void> {
-  const { email } = req.body;
-  const user = db().prepare('SELECT * FROM users WHERE email = ?').get(email.toLowerCase()) as any;
+  try {
+    const { email } = req.body;
+    const user = db().prepare('SELECT * FROM users WHERE email = ?').get(email.toLowerCase()) as any;
 
-  // Always return 200 to prevent email enumeration
-  if (!user) {
+    // Always return 200 to prevent email enumeration
+    if (!user) {
+      res.json({ message: 'If that email exists, a reset link has been sent' });
+      return;
+    }
+
+    const token = uuidv4();
+    const expiresAt = new Date(Date.now() + 3600 * 1000).toISOString();
+    db().prepare(
+      'INSERT INTO password_reset_tokens (id, user_id, token, expires_at) VALUES (?, ?, ?, ?)'
+    ).run(uuidv4(), user.id, token, expiresAt);
+
+    await sendPasswordResetEmail(user.email, user.name, token);
     res.json({ message: 'If that email exists, a reset link has been sent' });
-    return;
+  } catch (err) {
+    console.error('Forgot password email send failed:', err);
+    // Keep generic success response to avoid account enumeration.
+    res.json({ message: 'If that email exists, a reset link has been sent' });
   }
-
-  const token = uuidv4();
-  const expiresAt = new Date(Date.now() + 3600 * 1000).toISOString();
-  db().prepare(
-    'INSERT INTO password_reset_tokens (id, user_id, token, expires_at) VALUES (?, ?, ?, ?)'
-  ).run(uuidv4(), user.id, token, expiresAt);
-
-  await sendPasswordResetEmail(user.email, user.name, token);
-  res.json({ message: 'If that email exists, a reset link has been sent' });
 }
 
 export async function resetPassword(req: Request, res: Response): Promise<void> {

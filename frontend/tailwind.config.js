@@ -16,8 +16,8 @@ export default {
         surface: "#ffffff",
         bg: "#fafaf7",
         border: "#e6e2dc",
-        muted: "#7b8492",
-        light: "#a8b0bb",
+        muted: "#5a6270",
+        light: "#6b7380",
       },
       fontFamily: {
         body: ["Nunito", "sans-serif"],

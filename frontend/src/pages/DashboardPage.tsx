@@ -43,7 +43,7 @@ export const DashboardPage: React.FC = () => {
       {/* Left sidebar — hidden on mobile */}
       <aside className="hidden md:block">
         {user && (
-          <div className="bg-surface rounded-lg border-[1.5px] border-border overflow-hidden shadow-sm">
+          <div className="bg-surface rounded-lg border-[1.5px] border-border elevated-card overflow-hidden shadow-sm">
             {/* Cover */}
             <div className="h-[60px] bg-gradient-to-br from-brand to-accent" />
             <div className="px-4 pb-5 text-center -mt-[30px]">
@@ -152,7 +152,7 @@ export const DashboardPage: React.FC = () => {
 
       {/* Right sidebar — hidden on mobile */}
       <aside className="hidden md:block">
-        <div className="bg-surface rounded-lg border-[1.5px] border-border p-4 shadow-sm">
+        <div className="bg-surface rounded-lg border-[1.5px] border-border elevated-card p-4 shadow-sm">
           <div className="font-bold text-[0.85rem] text-muted mb-3 uppercase tracking-wide">
             Community Members
           </div>

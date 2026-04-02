@@ -165,7 +165,7 @@ export const MessagesPanel: React.FC = () => {
                 className="w-full px-3 py-2 rounded-md border-[1.5px] border-border text-[0.88rem] bg-bg font-body outline-none"
               />
               {searchResults.length > 0 && (
-                <div className="absolute top-[calc(100%+4px)] left-0 right-0 bg-surface border-[1.5px] border-border rounded-md shadow-md z-10">
+                <div className="absolute top-[calc(100%+4px)] left-0 right-0 bg-surface border-[1.5px] border-border elevated-popover rounded-md shadow-md z-10">
                   {searchResults.map((u) => (
                     <button
                       key={u.id}

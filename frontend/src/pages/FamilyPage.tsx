@@ -20,7 +20,7 @@ export const FamilyPage: React.FC = () => {
   const handleUpdate = () => qc.invalidateQueries({ queryKey: ["family"] });
 
   return (
-    <div className="max-w-[900px] mx-auto px-5 py-8">
+    <main className="max-w-[900px] mx-auto px-5 py-8">
       <div className="flex justify-between items-center mb-7">
         <div>
           <h1 className="font-heading text-[1.8rem] font-medium text-brand-dark">
@@ -77,6 +77,6 @@ export const FamilyPage: React.FC = () => {
           onCancel={() => setAdding(false)}
         />
       </Modal>
-    </div>
+    </main>
   );
 };

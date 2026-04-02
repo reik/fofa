@@ -81,6 +81,9 @@ export const ForgotPasswordPage: React.FC = () => {
     try {
       await authService.forgotPassword(email);
       setSent(true);
+      toast.success("If the email exists, a reset link was sent.");
+    } catch {
+      toast.error("Couldn't send reset link. Please try again.");
     } finally {
       setLoading(false);
     }
