@@ -50,7 +50,7 @@ export async function verifyEmail(req: Request, res: Response): Promise<void> {
   const { token } = req.query as { token: string };
 
   const row = db().prepare(
-    'SELECT * FROM email_tokens WHERE token = ? AND used = 0 AND expires_at > datetime("now")'
+    'SELECT * FROM email_tokens WHERE token = ? AND used = 0 AND datetime(expires_at) > datetime("now")'
   ).get(token) as { id: string; user_id: string } | undefined;
 
   if (!row) {
@@ -126,11 +126,33 @@ export async function forgotPassword(req: Request, res: Response): Promise<void>
   }
 }
 
+export async function changePassword(req: Request, res: Response): Promise<void> {
+  const userId = (req as any).userId;
+  const { currentPassword, newPassword } = req.body;
+
+  const user = db().prepare('SELECT * FROM users WHERE id = ?').get(userId) as any;
+  if (!user) {
+    res.status(404).json({ error: 'User not found' });
+    return;
+  }
+
+  const valid = await bcrypt.compare(currentPassword, user.password);
+  if (!valid) {
+    res.status(400).json({ error: 'Current password is incorrect' });
+    return;
+  }
+
+  const hashed = await bcrypt.hash(newPassword, 12);
+  db().prepare('UPDATE users SET password = ? WHERE id = ?').run(hashed, userId);
+
+  res.json({ message: 'Password changed successfully' });
+}
+
 export async function resetPassword(req: Request, res: Response): Promise<void> {
   const { token, password } = req.body;
 
   const row = db().prepare(
-    'SELECT * FROM password_reset_tokens WHERE token = ? AND used = 0 AND expires_at > datetime("now")'
+    'SELECT * FROM password_reset_tokens WHERE token = ? AND used = 0 AND datetime(expires_at) > datetime("now")'
   ).get(token) as { id: string; user_id: string } | undefined;
 
   if (!row) {

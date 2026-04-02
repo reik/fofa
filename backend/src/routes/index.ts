@@ -45,6 +45,13 @@ router.post('/auth/reset-password',
   auth.resetPassword
 );
 
+router.post('/auth/change-password',
+  authenticate,
+  [body('currentPassword').notEmpty(), body('newPassword').isLength({ min: 8 })],
+  validate,
+  auth.changePassword
+);
+
 // ── Users ─────────────────────────────────────────────────────────
 router.get('/users/me', authenticate, user.getMe);
 router.put('/users/me', authenticate, thumbnailUpload.single('thumbnail'), user.updateProfile);
