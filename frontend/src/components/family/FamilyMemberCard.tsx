@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import { FamilyMember } from '../../types';
-import { Avatar } from '../ui/Avatar';
-import { Button } from '../ui/Button';
-import { Input } from '../ui/Input';
-import { Modal } from '../ui/Modal';
-import { familyService } from '../../services';
-import toast from 'react-hot-toast';
+import React, { useState } from "react";
+import { FamilyMember } from "../../types";
+import { Avatar } from "../ui/Avatar";
+import { Button } from "../ui/Button";
+import { Input } from "../ui/Input";
+import { Modal } from "../ui/Modal";
+import { familyService } from "../../services";
+import toast from "react-hot-toast";
 
 interface CardProps {
   member: FamilyMember;
@@ -24,7 +24,7 @@ export const FamilyMemberCard: React.FC<CardProps> = ({ member, onUpdate }) => {
       toast.success(`${member.name} removed`);
       onUpdate();
     } catch {
-      toast.error('Failed to remove member');
+      toast.error("Failed to remove member");
     } finally {
       setDeleting(false);
     }
@@ -36,18 +36,40 @@ export const FamilyMemberCard: React.FC<CardProps> = ({ member, onUpdate }) => {
         <Avatar src={member.thumbnail} name={member.name} size={72} />
         <div>
           <div className="font-bold text-[1.05rem]">{member.name}</div>
-          <div className="text-muted text-[0.85rem] mt-[2px]">Age {member.age}</div>
+          <div className="text-muted text-[0.85rem] mt-[2px]">
+            Age {member.age}
+          </div>
         </div>
         <div className="flex gap-2">
-          <Button variant="secondary" size="sm" onClick={() => setEditing(true)}>Edit</Button>
-          <Button variant="danger" size="sm" loading={deleting} onClick={handleDelete}>Remove</Button>
+          <Button
+            variant="secondary"
+            size="sm"
+            onClick={() => setEditing(true)}
+          >
+            Edit
+          </Button>
+          <Button
+            variant="danger"
+            size="sm"
+            loading={deleting}
+            onClick={handleDelete}
+          >
+            Remove
+          </Button>
         </div>
       </div>
 
-      <Modal open={editing} onClose={() => setEditing(false)} title={`Edit ${member.name}`}>
+      <Modal
+        open={editing}
+        onClose={() => setEditing(false)}
+        title={`Edit ${member.name}`}
+      >
         <FamilyMemberForm
           existing={member}
-          onSaved={() => { setEditing(false); onUpdate(); }}
+          onSaved={() => {
+            setEditing(false);
+            onUpdate();
+          }}
           onCancel={() => setEditing(false)}
         />
       </Modal>
@@ -61,13 +83,19 @@ interface FormProps {
   onCancel: () => void;
 }
 
-export const FamilyMemberForm: React.FC<FormProps> = ({ existing, onSaved, onCancel }) => {
-  const [name, setName] = useState(existing?.name || '');
-  const [age, setAge] = useState(existing?.age?.toString() || '');
+export const FamilyMemberForm: React.FC<FormProps> = ({
+  existing,
+  onSaved,
+  onCancel,
+}) => {
+  const [name, setName] = useState(existing?.name || "");
+  const [age, setAge] = useState(existing?.age?.toString() || "");
   const [thumbFile, setThumbFile] = useState<File | null>(null);
   const [thumbPreview, setThumbPreview] = useState<string | null>(null);
   const [saving, setSaving] = useState(false);
-  const apiBase = import.meta.env.VITE_API_URL?.replace('/api', '') || 'http://localhost:4000';
+  const apiBase =
+    import.meta.env.VITE_API_URL?.replace("/api", "") ||
+    "http://localhost:4000";
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const f = e.target.files?.[0];
@@ -82,47 +110,59 @@ export const FamilyMemberForm: React.FC<FormProps> = ({ existing, onSaved, onCan
     setSaving(true);
     try {
       const fd = new FormData();
-      fd.append('name', name.trim());
-      fd.append('age', age);
-      if (thumbFile) fd.append('thumbnail', thumbFile);
+      fd.append("name", name.trim());
+      fd.append("age", age);
+      if (thumbFile) fd.append("thumbnail", thumbFile);
 
       if (existing) {
         await familyService.update(existing.id, fd);
-        toast.success('Member updated!');
+        toast.success("Member updated!");
       } else {
         await familyService.add(fd);
-        toast.success('Family member added!');
+        toast.success("Family member added!");
       }
       onSaved();
     } catch {
-      toast.error('Failed to save. Please try again.');
+      toast.error("Failed to save. Please try again.");
     } finally {
       setSaving(false);
     }
   };
 
-  const currentThumb = thumbPreview
-    || (existing?.thumbnail ? `${apiBase}${existing.thumbnail}` : null);
+  const currentThumb =
+    thumbPreview ||
+    (existing?.thumbnail ? `${apiBase}${existing.thumbnail}` : null);
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-4">
       {/* Thumbnail */}
       <div className="flex flex-col items-center gap-[10px]">
         {currentThumb ? (
-          <img src={currentThumb} alt="thumbnail" className="w-20 h-20 rounded-full object-cover" />
+          <img
+            src={currentThumb}
+            alt="thumbnail"
+            className="w-20 h-20 rounded-full object-cover"
+          />
         ) : (
-          <div className="w-20 h-20 rounded-full bg-brand-light flex items-center justify-center text-[2rem]">👤</div>
+          <div className="w-20 h-20 rounded-full bg-brand-light flex items-center justify-center text-[2rem]">
+            👤
+          </div>
         )}
         <label className="cursor-pointer text-brand font-semibold text-[0.88rem]">
-          {currentThumb ? 'Change photo' : 'Add photo'}
-          <input type="file" accept="image/*" onChange={handleFileChange} className="hidden" />
+          {currentThumb ? "Change photo" : "Add photo"}
+          <input
+            type="file"
+            accept="image/*"
+            onChange={handleFileChange}
+            className="hidden"
+          />
         </label>
       </div>
 
       <Input
         label="Name"
         value={name}
-        onChange={e => setName(e.target.value)}
+        onChange={(e) => setName(e.target.value)}
         placeholder="Family member's name"
         required
       />
@@ -130,7 +170,7 @@ export const FamilyMemberForm: React.FC<FormProps> = ({ existing, onSaved, onCan
         label="Age"
         type="number"
         value={age}
-        onChange={e => setAge(e.target.value)}
+        onChange={(e) => setAge(e.target.value)}
         placeholder="Age"
         min="0"
         max="120"
@@ -138,9 +178,11 @@ export const FamilyMemberForm: React.FC<FormProps> = ({ existing, onSaved, onCan
       />
 
       <div className="flex gap-[10px] justify-end">
-        <Button type="button" variant="ghost" onClick={onCancel}>Cancel</Button>
+        <Button type="button" variant="ghost" onClick={onCancel}>
+          Cancel
+        </Button>
         <Button type="submit" loading={saving} disabled={!name.trim() || !age}>
-          {existing ? 'Save Changes' : 'Add Member'}
+          {existing ? "Save Changes" : "Add Member"}
         </Button>
       </div>
     </form>

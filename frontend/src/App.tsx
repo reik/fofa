@@ -14,6 +14,7 @@ import { FamilyPage } from './pages/FamilyPage';
 import { MessagesPage } from './pages/MessagesPage';
 import { CommunityPage } from './pages/CommunityPage';
 import { ProfilePage } from './pages/ProfilePage';
+import { MemberProfilePage } from './pages/MemberProfilePage';
 
 const qc = new QueryClient({
   defaultOptions: { queries: { retry: 1, staleTime: 30_000 } },
@@ -62,6 +63,7 @@ export const App: React.FC = () => (
           <Route path="/messages" element={<MessagesPage />} />
           <Route path="/community" element={<CommunityPage />} />
           <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/members/:id" element={<MemberProfilePage />} />
         </Route>
 
         {/* Fallback */}

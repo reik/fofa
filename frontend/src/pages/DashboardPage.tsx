@@ -158,7 +158,7 @@ export const DashboardPage: React.FC = () => {
           </div>
           <div className="flex flex-col gap-[10px]">
             {communityMembers?.slice(0, 8).map((m: any) => (
-              <div key={m.id} className="flex items-center gap-[10px]">
+              <Link key={m.id} to={`/members/${m.id}`} className="flex items-center gap-[10px] no-underline text-inherit hover:opacity-80 transition-opacity">
                 <Avatar src={m.thumbnail} name={m.name} size={34} />
                 <div>
                   <div className="font-semibold text-[0.88rem]">{m.name}</div>
@@ -166,7 +166,7 @@ export const DashboardPage: React.FC = () => {
                     {m.city}, {m.state}
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
           <Link

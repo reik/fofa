@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { formatDistanceToNow } from 'date-fns';
+import { Link } from 'react-router-dom';
 import { Announcement, ReactionType } from '../../types';
 import { Avatar } from '../ui/Avatar';
 import { Button } from '../ui/Button';
@@ -74,7 +75,9 @@ export const AnnouncementCard: React.FC<Props> = ({ announcement, onUpdate }) =>
     <article className="bg-surface rounded-lg border-[1.5px] border-border elevated-card overflow-hidden shadow-sm fade-in">
       {/* Header */}
       <div className="px-5 py-4 flex items-center gap-3">
-        <Avatar src={announcement.author.thumbnail} name={announcement.author.name} size={44} />
+        <Link to={`/members/${announcement.userId}`} className="shrink-0 no-underline">
+          <Avatar src={announcement.author.thumbnail} name={announcement.author.name} size={44} />
+        </Link>
         <div className="flex-1">
           <div className="font-bold">{announcement.author.name}</div>
           <div className="text-[0.78rem] text-muted">

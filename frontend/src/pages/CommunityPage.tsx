@@ -3,7 +3,7 @@ import { userService } from "../services";
 import { User } from "../types";
 import { Avatar } from "../components/ui/Avatar";
 import { Button } from "../components/ui/Button";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 export const CommunityPage: React.FC = () => {
   const navigate = useNavigate();
@@ -59,7 +59,9 @@ export const CommunityPage: React.FC = () => {
               key={m.id}
               className="bg-surface rounded-lg border-[1.5px] border-border elevated-card p-5 flex items-center gap-[14px] shadow-sm fade-in"
             >
-              <Avatar src={m.thumbnail} name={m.name} size={52} />
+              <Link to={`/members/${m.id}`} className="shrink-0 no-underline">
+                <Avatar src={m.thumbnail} name={m.name} size={52} />
+              </Link>
               <div className="flex-1 min-w-0">
                 <div className="font-bold text-[0.97rem]">{m.name}</div>
                 <div className="text-muted text-[0.82rem] mt-[2px]">
