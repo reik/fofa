@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { useAuthStore } from "../../contexts/authStore";
-import { messageService } from "../../services";
+import { messageService, playdateService } from "../../services";
+import { PlaydateRequest } from "../../types";
 import { Avatar } from "../ui/Avatar";
 import { Logo } from "../ui/Logo";
 
@@ -27,6 +28,16 @@ export const Navbar: React.FC = () => {
     enabled: !!user,
   });
   const unreadCount = unreadData?.count ?? 0;
+
+  const { data: playdateRequests = [] } = useQuery({
+    queryKey: ["playdate-requests"],
+    queryFn: playdateService.getRequests,
+    refetchInterval: 30_000,
+    enabled: !!user,
+  });
+  const pendingPlaydates = playdateRequests.filter(
+    (r: PlaydateRequest) => r.owner_id === user?.id && r.status === "pending"
+  ).length;
 
   const handleLogout = () => {
     logout();
@@ -63,7 +74,9 @@ export const Navbar: React.FC = () => {
           <div className="hidden md:flex gap-1 items-center" role="list">
             {NAV_LINKS.map((link) => {
               const isMessages = link.to === "/messages";
-              const showBadge = isMessages && unreadCount > 0;
+              const isPlaydates = link.to === "/playdates";
+              const badgeCount = isMessages ? unreadCount : isPlaydates ? pendingPlaydates : 0;
+              const showBadge = badgeCount > 0;
               return (
                 <Link
                   key={link.to}
@@ -81,7 +94,7 @@ export const Navbar: React.FC = () => {
                   <span>{link.label}</span>
                   {showBadge && (
                     <span className="ml-1 min-w-[18px] h-[18px] px-1 rounded-full bg-red-500 text-white text-[0.68rem] font-bold flex items-center justify-center leading-none">
-                      {unreadCount > 99 ? "99+" : unreadCount}
+                      {badgeCount > 99 ? "99+" : badgeCount}
                     </span>
                   )}
                 </Link>
@@ -145,13 +158,15 @@ export const Navbar: React.FC = () => {
       <nav aria-label="Mobile navigation" className="md:hidden fixed bottom-0 left-0 right-0 z-[100] bg-surface border-t-[1.5px] border-border shadow-[0_-2px_12px_rgba(0,0,0,.08)] flex">
         {NAV_LINKS.map((link) => {
           const isMessages = link.to === "/messages";
-          const showBadge = isMessages && unreadCount > 0;
+          const isPlaydates = link.to === "/playdates";
+          const badgeCount = isMessages ? unreadCount : isPlaydates ? pendingPlaydates : 0;
+          const showBadge = badgeCount > 0;
           return (
             <Link
               key={link.to}
               to={link.to}
               aria-current={isActive(link.to) ? 'page' : undefined}
-              aria-label={showBadge ? `${link.label}, ${unreadCount} unread` : link.label}
+              aria-label={showBadge ? `${link.label}, ${badgeCount} pending` : link.label}
               className={[
                 "flex-1 flex flex-col items-center justify-center gap-[3px] py-[10px] pb-3 no-underline transition-all duration-150 relative",
                 isActive(link.to)
@@ -163,7 +178,7 @@ export const Navbar: React.FC = () => {
                 <span aria-hidden="true" className="text-[1.35rem] leading-none">{link.icon}</span>
                 {showBadge && (
                   <span className="absolute -top-1 -right-2 min-w-[16px] h-[16px] px-[3px] rounded-full bg-red-500 text-white text-[0.6rem] font-bold flex items-center justify-center leading-none">
-                    {unreadCount > 99 ? "99+" : unreadCount}
+                    {badgeCount > 99 ? "99+" : badgeCount}
                   </span>
                 )}
               </span>

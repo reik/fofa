@@ -22,7 +22,7 @@ describe('Modal', () => {
   it('calls onClose when close button clicked', async () => {
     const onClose = vi.fn();
     render(<Modal open={true} onClose={onClose} title="Test"><p>Body</p></Modal>);
-    await userEvent.click(screen.getByLabelText('Close'));
+    await userEvent.click(screen.getByLabelText('Close dialog'));
     expect(onClose).toHaveBeenCalledOnce();
   });
 

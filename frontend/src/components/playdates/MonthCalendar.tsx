@@ -127,7 +127,7 @@ export const MonthCalendar: React.FC<MonthCalendarProps> = ({
                       type="button"
                       onClick={(e) => {
                         e.stopPropagation();
-                        onSlotClick?.(slot);
+                        if (isClickable) onSlotClick?.(slot);
                       }}
                       title={
                         slot.note
