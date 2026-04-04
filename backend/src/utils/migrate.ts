@@ -103,6 +103,30 @@ export function runMigrations(): void {
       created_at  TEXT NOT NULL DEFAULT (datetime('now'))
     );
 
+    -- Availability slots
+    CREATE TABLE IF NOT EXISTS availability_slots (
+      id         TEXT PRIMARY KEY,
+      user_id    TEXT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+      date       TEXT NOT NULL,
+      start_time TEXT NOT NULL,
+      end_time   TEXT NOT NULL,
+      status     TEXT NOT NULL CHECK(status IN ('free', 'busy')) DEFAULT 'free',
+      note       TEXT,
+      created_at TEXT NOT NULL DEFAULT (datetime('now'))
+    );
+
+    -- Playdate requests
+    CREATE TABLE IF NOT EXISTS playdate_requests (
+      id           TEXT PRIMARY KEY,
+      requester_id TEXT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+      owner_id     TEXT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+      slot_id      TEXT NOT NULL REFERENCES availability_slots(id) ON DELETE CASCADE,
+      message      TEXT,
+      status       TEXT NOT NULL CHECK(status IN ('pending', 'accepted', 'declined')) DEFAULT 'pending',
+      created_at   TEXT NOT NULL DEFAULT (datetime('now')),
+      updated_at   TEXT NOT NULL DEFAULT (datetime('now'))
+    );
+
     -- Indexes
     CREATE INDEX IF NOT EXISTS idx_announcements_user    ON announcements(user_id);
     CREATE INDEX IF NOT EXISTS idx_announcements_created ON announcements(created_at DESC);
@@ -111,6 +135,9 @@ export function runMigrations(): void {
     CREATE INDEX IF NOT EXISTS idx_messages_sender       ON messages(sender_id);
     CREATE INDEX IF NOT EXISTS idx_messages_receiver     ON messages(receiver_id);
     CREATE INDEX IF NOT EXISTS idx_family_user           ON family_members(user_id);
+    CREATE INDEX IF NOT EXISTS idx_slots_user_date       ON availability_slots(user_id, date);
+    CREATE INDEX IF NOT EXISTS idx_requests_requester    ON playdate_requests(requester_id);
+    CREATE INDEX IF NOT EXISTS idx_requests_owner        ON playdate_requests(owner_id);
   `);
 
   console.log('✅ Database migrations complete');

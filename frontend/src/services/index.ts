@@ -1,7 +1,8 @@
 import api from './api';
 import {
   User, FamilyMember, Announcement, Comment,
-  Message, Conversation, PaginatedResponse, ReactionType
+  Message, Conversation, PaginatedResponse, ReactionType,
+  AvailabilitySlot, PlaydateRequest
 } from '../types';
 
 // ── Auth ──────────────────────────────────────────────────────────
@@ -78,6 +79,30 @@ export const announcementService = {
 
   toggleReaction: (id: string, type: ReactionType) =>
     api.post(`/announcements/${id}/reactions`, { type }).then(r => r.data),
+};
+
+// ── Playdates ─────────────────────────────────────────────────────
+export const playdateService = {
+  getAvailability: (userId: string) =>
+    api.get<AvailabilitySlot[]>(`/playdates/availability/${userId}`).then(r => r.data),
+
+  addSlot: (data: { date: string; start_time: string; end_time: string; status: 'free' | 'busy'; note?: string }) =>
+    api.post<AvailabilitySlot>('/playdates/availability', data).then(r => r.data),
+
+  updateSlot: (id: string, data: Partial<{ date: string; start_time: string; end_time: string; status: 'free' | 'busy'; note: string }>) =>
+    api.put<AvailabilitySlot>(`/playdates/availability/${id}`, data).then(r => r.data),
+
+  deleteSlot: (id: string) =>
+    api.delete(`/playdates/availability/${id}`).then(r => r.data),
+
+  getRequests: () =>
+    api.get<PlaydateRequest[]>('/playdates/requests').then(r => r.data),
+
+  createRequest: (slotId: string, message?: string) =>
+    api.post<PlaydateRequest>('/playdates/requests', { slotId, message }).then(r => r.data),
+
+  respond: (id: string, status: 'accepted' | 'declined') =>
+    api.put<PlaydateRequest>(`/playdates/requests/${id}/respond`, { status }).then(r => r.data),
 };
 
 // ── Messages ──────────────────────────────────────────────────────

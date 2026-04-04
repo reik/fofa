@@ -9,6 +9,7 @@ import * as user from '../controllers/user.controller';
 import * as family from '../controllers/family.controller';
 import * as announcement from '../controllers/announcement.controller';
 import * as message from '../controllers/message.controller';
+import * as playdates from '../controllers/playdates.controller';
 
 const router = Router();
 
@@ -110,5 +111,35 @@ router.post('/messages',
   message.sendMessage
 );
 router.get('/messages/unread/count', authenticate, message.getUnreadCount);
+
+// ── Playdates ─────────────────────────────────────────────────────
+router.get('/playdates/availability/:userId', authenticate, playdates.getAvailability);
+router.post('/playdates/availability',
+  authenticate,
+  [
+    body('date').matches(/^\d{4}-\d{2}-\d{2}$/),
+    body('start_time').matches(/^\d{2}:\d{2}$/),
+    body('end_time').matches(/^\d{2}:\d{2}$/),
+    body('status').optional().isIn(['free', 'busy']),
+  ],
+  validate,
+  playdates.addSlot
+);
+router.put('/playdates/availability/:id', authenticate, playdates.updateSlot);
+router.delete('/playdates/availability/:id', authenticate, playdates.deleteSlot);
+
+router.get('/playdates/requests', authenticate, playdates.getRequests);
+router.post('/playdates/requests',
+  authenticate,
+  [body('slotId').notEmpty()],
+  validate,
+  playdates.createRequest
+);
+router.put('/playdates/requests/:id/respond',
+  authenticate,
+  [body('status').isIn(['accepted', 'declined'])],
+  validate,
+  playdates.respondToRequest
+);
 
 export default router;

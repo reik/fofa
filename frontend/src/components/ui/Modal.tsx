@@ -41,19 +41,23 @@ export const Modal: React.FC<ModalProps> = ({
   useEffect(() => {
     if (!open) return;
 
-    // Move focus into the modal
-    const firstFocusable = containerRef.current?.querySelector<HTMLElement>(FOCUSABLE);
-    firstFocusable?.focus();
+    // Prefer focusing the first input/textarea/select; fall back to any focusable
+    const firstInput = containerRef.current?.querySelector<HTMLElement>(
+      "input:not([disabled]), textarea:not([disabled]), select:not([disabled])",
+    );
+    const firstFocusable =
+      containerRef.current?.querySelector<HTMLElement>(FOCUSABLE);
+    (firstInput ?? firstFocusable)?.focus();
 
-    const onKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
-        onClose();
-        return;
-      }
+    const onEscape = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+
+    const onTabTrap = (e: KeyboardEvent) => {
       if (e.key !== "Tab") return;
 
       const focusable = Array.from(
-        containerRef.current?.querySelectorAll<HTMLElement>(FOCUSABLE) ?? []
+        containerRef.current?.querySelectorAll<HTMLElement>(FOCUSABLE) ?? [],
       );
       if (focusable.length === 0) return;
 
@@ -73,8 +77,15 @@ export const Modal: React.FC<ModalProps> = ({
       }
     };
 
-    document.addEventListener("keydown", onKeyDown);
-    return () => document.removeEventListener("keydown", onKeyDown);
+    // Escape on document so it works regardless of focus position
+    document.addEventListener("keydown", onEscape);
+    // Tab trap scoped to the container so it doesn't interfere with typing
+    const container = containerRef.current;
+    container?.addEventListener("keydown", onTabTrap);
+    return () => {
+      document.removeEventListener("keydown", onEscape);
+      container?.removeEventListener("keydown", onTabTrap);
+    };
   }, [open, onClose]);
 
   if (!open) return null;

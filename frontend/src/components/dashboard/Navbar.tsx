@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
 import { useAuthStore } from "../../contexts/authStore";
+import { messageService } from "../../services";
 import { Avatar } from "../ui/Avatar";
 import { Logo } from "../ui/Logo";
 
 const NAV_LINKS = [
   { to: "/dashboard", label: "Feed", icon: "🏠" },
   { to: "/family", label: "Family", icon: "👨‍👩‍👧‍👦" },
+  { to: "/playdates", label: "Playdates", icon: "🗓️" },
   { to: "/messages", label: "Messages", icon: "💬" },
   { to: "/community", label: "Community", icon: "🌿" },
 ];
@@ -16,6 +19,14 @@ export const Navbar: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const { data: unreadData } = useQuery({
+    queryKey: ["unread-count"],
+    queryFn: messageService.getUnreadCount,
+    refetchInterval: 30_000,
+    enabled: !!user,
+  });
+  const unreadCount = unreadData?.count ?? 0;
 
   const handleLogout = () => {
     logout();
@@ -50,23 +61,32 @@ export const Navbar: React.FC = () => {
 
           {/* Desktop nav — hidden on mobile */}
           <div className="hidden md:flex gap-1 items-center" role="list">
-            {NAV_LINKS.map((link) => (
-              <Link
-                key={link.to}
-                to={link.to}
-                role="listitem"
-                aria-current={isActive(link.to) ? 'page' : undefined}
-                className={[
-                  "px-4 py-2 rounded-md font-semibold text-[0.92rem] no-underline transition-all duration-150 flex items-center gap-[6px]",
-                  isActive(link.to)
-                    ? "text-brand-dark bg-brand-light"
-                    : "text-muted bg-transparent",
-                ].join(" ")}
-              >
-                <span aria-hidden="true">{link.icon}</span>
-                <span>{link.label}</span>
-              </Link>
-            ))}
+            {NAV_LINKS.map((link) => {
+              const isMessages = link.to === "/messages";
+              const showBadge = isMessages && unreadCount > 0;
+              return (
+                <Link
+                  key={link.to}
+                  to={link.to}
+                  role="listitem"
+                  aria-current={isActive(link.to) ? 'page' : undefined}
+                  className={[
+                    "px-4 py-2 rounded-md font-semibold text-[0.92rem] no-underline transition-all duration-150 flex items-center gap-[6px] relative",
+                    isActive(link.to)
+                      ? "text-brand-dark bg-brand-light"
+                      : "text-muted bg-transparent",
+                  ].join(" ")}
+                >
+                  <span aria-hidden="true">{link.icon}</span>
+                  <span>{link.label}</span>
+                  {showBadge && (
+                    <span className="ml-1 min-w-[18px] h-[18px] px-1 rounded-full bg-red-500 text-white text-[0.68rem] font-bold flex items-center justify-center leading-none">
+                      {unreadCount > 99 ? "99+" : unreadCount}
+                    </span>
+                  )}
+                </Link>
+              );
+            })}
           </div>
 
           {/* Profile */}
@@ -123,25 +143,36 @@ export const Navbar: React.FC = () => {
 
       {/* ── Mobile bottom tab bar — hidden on desktop ── */}
       <nav aria-label="Mobile navigation" className="md:hidden fixed bottom-0 left-0 right-0 z-[100] bg-surface border-t-[1.5px] border-border shadow-[0_-2px_12px_rgba(0,0,0,.08)] flex">
-        {NAV_LINKS.map((link) => (
-          <Link
-            key={link.to}
-            to={link.to}
-            aria-current={isActive(link.to) ? 'page' : undefined}
-            aria-label={link.label}
-            className={[
-              "flex-1 flex flex-col items-center justify-center gap-[3px] py-[10px] pb-3 no-underline transition-all duration-150",
-              isActive(link.to)
-                ? "text-brand-dark bg-brand-light"
-                : "text-muted bg-transparent",
-            ].join(" ")}
-          >
-            <span aria-hidden="true" className="text-[1.35rem] leading-none">{link.icon}</span>
-            <span className="text-[0.68rem] font-bold tracking-[0.01em]">
-              {link.label}
-            </span>
-          </Link>
-        ))}
+        {NAV_LINKS.map((link) => {
+          const isMessages = link.to === "/messages";
+          const showBadge = isMessages && unreadCount > 0;
+          return (
+            <Link
+              key={link.to}
+              to={link.to}
+              aria-current={isActive(link.to) ? 'page' : undefined}
+              aria-label={showBadge ? `${link.label}, ${unreadCount} unread` : link.label}
+              className={[
+                "flex-1 flex flex-col items-center justify-center gap-[3px] py-[10px] pb-3 no-underline transition-all duration-150 relative",
+                isActive(link.to)
+                  ? "text-brand-dark bg-brand-light"
+                  : "text-muted bg-transparent",
+              ].join(" ")}
+            >
+              <span className="relative inline-flex">
+                <span aria-hidden="true" className="text-[1.35rem] leading-none">{link.icon}</span>
+                {showBadge && (
+                  <span className="absolute -top-1 -right-2 min-w-[16px] h-[16px] px-[3px] rounded-full bg-red-500 text-white text-[0.6rem] font-bold flex items-center justify-center leading-none">
+                    {unreadCount > 99 ? "99+" : unreadCount}
+                  </span>
+                )}
+              </span>
+              <span className="text-[0.68rem] font-bold tracking-[0.01em]">
+                {link.label}
+              </span>
+            </Link>
+          );
+        })}
       </nav>
     </>
   );

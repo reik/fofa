@@ -50,7 +50,7 @@ export async function verifyEmail(req: Request, res: Response): Promise<void> {
   const { token } = req.query as { token: string };
 
   const row = db().prepare(
-    'SELECT * FROM email_tokens WHERE token = ? AND used = 0 AND datetime(expires_at) > datetime("now")'
+    "SELECT * FROM email_tokens WHERE token = ? AND used = 0 AND datetime(expires_at) > datetime('now')"
   ).get(token) as { id: string; user_id: string } | undefined;
 
   if (!row) {
@@ -152,7 +152,7 @@ export async function resetPassword(req: Request, res: Response): Promise<void> 
   const { token, password } = req.body;
 
   const row = db().prepare(
-    'SELECT * FROM password_reset_tokens WHERE token = ? AND used = 0 AND datetime(expires_at) > datetime("now")'
+    "SELECT * FROM password_reset_tokens WHERE token = ? AND used = 0 AND datetime(expires_at) > datetime('now')"
   ).get(token) as { id: string; user_id: string } | undefined;
 
   if (!row) {
