@@ -123,7 +123,7 @@ describe('UC-07b: Route Protection & Logout', () => {
     });
 
     cy.visit('/dashboard');
-    cy.contains('Jane').first().click();
+    cy.get('button[aria-label="Open profile menu"]').click();
     cy.contains('Sign out').click();
     cy.url().should('include', '/login');
   });

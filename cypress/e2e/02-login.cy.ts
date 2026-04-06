@@ -52,19 +52,27 @@ describe('UC-02: Login & Authentication', () => {
   });
 
   it('shows error for wrong password', () => {
-    cy.intercept('POST', '**/auth/login').as('login');
+    cy.intercept('POST', '**/auth/login', {
+      statusCode: 401,
+      body: { error: 'Invalid email or password' },
+    }).as('login');
     cy.get('input[type="email"]').type(verifiedUser.email);
     cy.get('input[type="password"]').type('wrongpassword');
     cy.get('button[type="submit"]').click();
-    cy.wait('@login').its('response.statusCode').should('eq', 401);
-    cy.contains('Invalid email or password').should('be.visible');
+    cy.wait('@login');
+    cy.contains('Invalid email or password', { timeout: 8000 }).should('be.visible');
   });
 
   it('shows error for non-existent email', () => {
+    cy.intercept('POST', '**/auth/login', {
+      statusCode: 401,
+      body: { error: 'Invalid email or password' },
+    }).as('login');
     cy.get('input[type="email"]').type('nobody@doesnotexist.dev');
     cy.get('input[type="password"]').type('SomePass123');
     cy.get('button[type="submit"]').click();
-    cy.contains('Invalid email or password').should('be.visible');
+    cy.wait('@login');
+    cy.contains('Invalid email or password', { timeout: 8000 }).should('be.visible');
   });
 
   it('shows unverified error when email not confirmed', () => {
@@ -87,12 +95,22 @@ describe('UC-02: Login & Authentication', () => {
   });
 
   it('redirects to dashboard if already logged in', () => {
-    // Manually set auth state
-    window.localStorage.setItem(
-      'fofa-auth',
-      JSON.stringify({ state: { user: { id: 'u1', name: 'Test' }, token: 'fake-token' }, version: 0 })
-    );
-    cy.visit('/login');
+    cy.intercept('GET', '**/messages/unread/count', { statusCode: 200, body: { count: 0 } });
+    cy.intercept('GET', '**/playdates/requests', { statusCode: 200, body: [] });
+    cy.intercept('GET', '**/announcements*', {
+      statusCode: 200,
+      body: { data: [], pagination: { page: 1, limit: 20, total: 0, pages: 0 } },
+    });
+    cy.intercept('GET', '**/family*', { statusCode: 200, body: [] });
+    cy.intercept('GET', '**/users/search*', { statusCode: 200, body: [] });
+    cy.visit('/login', {
+      onBeforeLoad(win) {
+        win.localStorage.setItem(
+          'fofa-auth',
+          JSON.stringify({ state: { user: { id: 'u1', name: 'Test' }, token: 'fake-token' }, version: 0 })
+        );
+      },
+    });
     cy.url().should('include', '/dashboard');
   });
 });

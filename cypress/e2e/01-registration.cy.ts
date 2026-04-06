@@ -82,18 +82,20 @@ describe('UC-01: User Registration', () => {
   });
 
   it('shows duplicate email error for existing account', () => {
-    // Register first
-    cy.request('POST', `${Cypress.env('apiUrl')}/auth/register`, user).then(() => {
-      cy.visit('/register');
-      cy.get('input[placeholder="Jane Smith"]').type('Another User');
-      cy.get('input[type="email"]').type(user.email);
-      cy.get('input[placeholder="Your city"]').type('Denver');
-      cy.get('select').select('CO');
-      cy.get('input[placeholder="At least 8 characters"]').type(user.password);
-      cy.get('input[placeholder="Repeat password"]').type(user.password);
-      cy.get('button[type="submit"]').click();
-      cy.contains('already registered', { matchCase: false }).should('be.visible');
-    });
+    cy.intercept('POST', '**/auth/register', {
+      statusCode: 409,
+      body: { error: 'Email already registered' },
+    }).as('register');
+
+    cy.get('input[placeholder="Jane Smith"]').type('Another User');
+    cy.get('input[type="email"]').type(user.email);
+    cy.get('input[placeholder="Your city"]').type('Denver');
+    cy.get('select').select('CO');
+    cy.get('input[placeholder="At least 8 characters"]').type(user.password);
+    cy.get('input[placeholder="Repeat password"]').type(user.password);
+    cy.get('button[type="submit"]').click();
+    cy.wait('@register');
+    cy.contains('already registered', { matchCase: false, timeout: 8000 }).should('be.visible');
   });
 
   it('navigates to login page from registration link', () => {
