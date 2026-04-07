@@ -7,10 +7,10 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const variantClasses: Record<string, string> = {
-  primary:   'bg-brand text-white',
-  secondary: 'bg-brand-light text-brand-dark',
+  primary:   'bg-brand text-white border border-brand-dark',
+  secondary: 'bg-brand-light text-brand-dark border border-brand',
   ghost:     'bg-transparent text-muted border border-border',
-  danger:    'bg-red-100 text-red-600',
+  danger:    'bg-red-100 text-red-600 border border-red-300',
 };
 
 const sizeClasses: Record<string, string> = {
@@ -27,7 +27,7 @@ export const Button: React.FC<ButtonProps> = ({
     disabled={disabled || loading}
     aria-busy={loading || undefined}
     className={[
-      'inline-flex items-center justify-center gap-2 font-semibold rounded-md border-none transition-all duration-[180ms] cursor-pointer font-body focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current',
+      'inline-flex items-center justify-center gap-2 font-semibold rounded-md transition-all duration-[180ms] cursor-pointer font-body focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current',
       variantClasses[variant],
       sizeClasses[size],
       (disabled || loading) ? 'opacity-55 cursor-not-allowed' : '',

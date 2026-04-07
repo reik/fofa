@@ -217,7 +217,7 @@ export const ResetPasswordPage: React.FC = () => {
 };
 
 const pageClass =
-  "min-h-screen flex items-center justify-center bg-gradient-to-br from-brand-light to-[#fff8ee] p-5";
+  "min-h-screen flex items-center justify-center bg-gradient-to-br from-brand-light to-[#fff8ee] dark:from-[#13151c] dark:to-[#1a1d23] p-5";
 const cardClass =
   "bg-surface rounded-xl border-[1.5px] border-border p-10 w-full max-w-[420px] shadow-lg text-center";
 const titleClass = "font-heading text-[1.5rem] font-medium text-brand-dark";

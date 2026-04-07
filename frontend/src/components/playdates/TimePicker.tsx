@@ -36,11 +36,11 @@ export const TimePicker: React.FC<TimePickerProps> = ({ label, value, onChange }
   }, [hour, minute, ampm]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const selectClass =
-    "appearance-none bg-transparent outline-none text-[0.92rem] font-semibold text-gray-800 cursor-pointer text-center";
+    "appearance-none bg-transparent outline-none text-[0.92rem] font-semibold text-[color:var(--color-text)] cursor-pointer text-center";
 
   return (
     <div>
-      <label className="block text-[0.85rem] font-semibold mb-1 text-gray-700">{label}</label>
+      <label className="block text-[0.85rem] font-semibold mb-1 text-muted">{label}</label>
       <div className="inline-flex items-center gap-0 rounded-lg border-[1.5px] border-border focus-within:border-brand transition-colors overflow-hidden bg-surface">
         {/* Hour */}
         <select
@@ -54,7 +54,7 @@ export const TimePicker: React.FC<TimePickerProps> = ({ label, value, onChange }
           ))}
         </select>
 
-        <span className="text-[0.92rem] font-bold text-gray-500 select-none">:</span>
+        <span className="text-[0.92rem] font-bold text-muted select-none">:</span>
 
         {/* Minute */}
         <select

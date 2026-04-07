@@ -39,7 +39,7 @@ export const LoginPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-brand-light to-[#fff8ee] p-5">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-brand-light to-[#fff8ee] dark:from-[#13151c] dark:to-[#1a1d23] p-5">
       <div className="bg-surface rounded-xl border-[1.5px] border-border p-10 w-full max-w-[420px] shadow-lg">
         {/* Brand */}
         <div className="text-center mb-8">

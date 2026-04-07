@@ -103,7 +103,7 @@ export const WeekCalendar: React.FC<WeekCalendarProps> = ({
               <div
                 className={[
                   "text-[1rem] font-bold mt-[1px]",
-                  isToday ? "text-brand-dark" : "text-gray-700",
+                  isToday ? "text-brand-dark" : "text-[color:var(--color-text)]",
                 ].join(" ")}
               >
                 {d.getDate()}
@@ -175,10 +175,10 @@ export const WeekCalendar: React.FC<WeekCalendarProps> = ({
                 const isFree = slot.status === "free";
                 const isMatch = matchingSlotIds?.has(slot.id) ?? false;
                 const baseColor = isMatch
-                  ? "bg-accent border-yellow-500 text-gray-900"
+                  ? "bg-accent border-yellow-500 text-[color:var(--color-text)]"
                   : isFree
                   ? "bg-brand/90 border-brand-dark text-white"
-                  : "bg-gray-300 border-gray-400 text-gray-600";
+                  : "bg-border border-muted text-muted";
 
                 return (
                   <div

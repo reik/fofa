@@ -4,6 +4,28 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Color tokens — outside @layer so they can't be beaten by Tailwind base styles */
+:root {
+  --color-surface: #ffffff;
+  --color-bg: #ffffff;
+  --color-border: #e6e2dc;
+  --color-muted: #5a6270;
+  --color-light: #6b7380;
+  --color-brand-light: #edfaf2;
+  --color-text: #1a1d23;
+}
+
+html.dark {
+  --color-surface: #1f2128;
+  --color-bg: #13151c;
+  --color-border: #2e3244;
+  --color-muted: #9aa5b4;
+  --color-light: #8d98a8;
+  --color-brand-light: #1a3328;
+  --color-text: #e8eaf0;
+  --date-picker-filter: invert(1);
+}
+
 @layer base {
   *,
   *::before,
@@ -21,6 +43,8 @@
   body {
     font-family: "Nunito", sans-serif;
     -webkit-font-smoothing: antialiased;
+    background-color: var(--color-bg);
+    color: var(--color-text);
   }
   a {
     color: #4d9463;
@@ -38,7 +62,13 @@
   select {
     font-family: inherit;
     font-size: 1rem;
+    color: var(--color-text);
   }
+
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: var(--date-picker-filter, none);
+  }
+
   ::-webkit-scrollbar {
     width: 6px;
   }
@@ -46,7 +76,7 @@
     background: transparent;
   }
   ::-webkit-scrollbar-thumb {
-    background: #e6e2dc;
+    background: var(--color-border);
     border-radius: 99px;
   }
 }
@@ -56,13 +86,54 @@
     animation: fadeIn 0.3s ease forwards;
   }
   .elevated-card {
-    border-color: #d5cfc6;
+    border-color: var(--color-border);
     box-shadow: 0 2px 10px rgba(25, 32, 45, 0.08);
   }
   .elevated-popover {
-    border-color: #cec8bf;
+    border-color: var(--color-border);
     box-shadow: 0 10px 24px rgba(25, 32, 45, 0.16);
   }
+}
+
+/* ── Dark mode overrides — explicit rules win over @layer utilities ── */
+html.dark .bg-surface     { background-color: #1f2128; }
+html.dark .bg-bg          { background-color: #13151c; }
+html.dark .bg-brand-light { background-color: #1a3328; }
+html.dark .border-border  { border-color: #2e3244; }
+html.dark .text-muted     { color: #9aa5b4; }
+html.dark .text-light     { color: #8d98a8; }
+
+/* Brand greens — lightened for sufficient contrast on dark backgrounds
+   #6bbf84: 7.20:1 on surface, 8.17:1 on bg  → passes AAA
+   #7ec89a: 6.86:1 on brand-light, 8.13:1 on surface → passes AA/AAA */
+html.dark a                { color: #6bbf84; }
+html.dark .text-brand      { color: #6bbf84; }
+html.dark .text-brand-dark { color: #7ec89a; }
+
+/* Status badge backgrounds */
+html.dark .bg-red-100    { background-color: rgba(185, 28, 28, 0.25); }
+html.dark .bg-yellow-100,
+html.dark .bg-yellow-50  { background-color: rgba(161, 98, 7, 0.25); }
+html.dark .bg-green-100  { background-color: rgba(21, 128, 61, 0.25); }
+
+/* Status badge text — lighten so it's readable on dark bg */
+html.dark .text-red-800    { color: #fca5a5; }
+html.dark .text-yellow-800 { color: #fde68a; }
+html.dark .text-green-800  { color: #86efac; }
+html.dark .border-yellow-300 { border-color: rgba(161, 98, 7, 0.5); }
+
+/* Form elements without an explicit bg class */
+html.dark input,
+html.dark textarea,
+html.dark select {
+  background-color: #1f2128;
+}
+
+html.dark .elevated-card {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+html.dark .elevated-popover {
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.4);
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -46,11 +46,11 @@ export const CommentsSection: React.FC<Props> = ({ announcementId, onCommentAdde
   };
 
   return (
-    <div style={{ borderTop: '1.5px solid var(--c-border)', padding: '16px 20px', background: '#fafaf8' }}>
+    <div style={{ borderTop: '1.5px solid var(--color-border)', padding: '16px 20px', background: 'var(--color-bg)' }}>
       {loading ? (
-        <p style={{ color: 'var(--c-text-muted)', fontSize: '0.9rem' }}>Loading comments…</p>
+        <p style={{ color: 'var(--color-muted)', fontSize: '0.9rem' }}>Loading comments…</p>
       ) : comments.length === 0 ? (
-        <p style={{ color: 'var(--c-text-muted)', fontSize: '0.88rem' }}>No comments yet. Be the first!</p>
+        <p style={{ color: 'var(--color-muted)', fontSize: '0.88rem' }}>No comments yet. Be the first!</p>
       ) : (
         <div style={{ display: 'flex', flexDirection: 'column', gap: 12, marginBottom: 16 }}>
           {comments.map(c => (
@@ -58,14 +58,14 @@ export const CommentsSection: React.FC<Props> = ({ announcementId, onCommentAdde
               <Avatar src={c.author_thumbnail} name={c.author_name} size={34} />
               <div style={{ flex: 1 }}>
                 <div style={{
-                  background: 'var(--c-surface)', borderRadius: 'var(--radius-md)',
-                  padding: '10px 14px', border: '1px solid var(--c-border)',
+                  background: 'var(--color-surface)', borderRadius: '12px',
+                  padding: '10px 14px', border: '1px solid var(--color-border)',
                 }}>
                   <div style={{ fontWeight: 700, fontSize: '0.87rem', marginBottom: 3 }}>{c.author_name}</div>
                   <div style={{ fontSize: '0.93rem', lineHeight: 1.5 }}>{c.content}</div>
                 </div>
                 <div style={{ display: 'flex', gap: 12, marginTop: 4, paddingLeft: 4 }}>
-                  <span style={{ fontSize: '0.75rem', color: 'var(--c-text-muted)' }}>
+                  <span style={{ fontSize: '0.75rem', color: 'var(--color-muted)' }}>
                     {formatDistanceToNow(new Date(c.created_at), { addSuffix: true })}
                   </span>
                   {user?.id === c.user_id && (
@@ -73,7 +73,7 @@ export const CommentsSection: React.FC<Props> = ({ announcementId, onCommentAdde
                       type="button"
                       onClick={() => handleDelete(c.id)}
                       aria-label={`Delete comment by ${c.author_name}`}
-                      style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '0.75rem', color: 'var(--c-danger)' }}
+                      style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '0.75rem', color: '#dc2626' }}
                     >
                       Delete
                     </button>
@@ -97,10 +97,10 @@ export const CommentsSection: React.FC<Props> = ({ announcementId, onCommentAdde
               aria-label="Write a comment"
               rows={2}
               style={{
-                flex: 1, padding: '10px 14px', borderRadius: 'var(--radius-md)',
-                border: '1.5px solid var(--c-border)', resize: 'none',
-                fontFamily: 'var(--font-body)', fontSize: '0.9rem',
-                background: 'var(--c-surface)',
+                flex: 1, padding: '10px 14px', borderRadius: '12px',
+                border: '1.5px solid var(--color-border)', resize: 'none',
+                fontFamily: 'inherit', fontSize: '0.9rem',
+                background: 'var(--color-surface)',
               }}
             />
             <Button type="submit" size="sm" loading={submitting} disabled={!text.trim()}>

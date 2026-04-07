@@ -103,7 +103,7 @@ export const RegisterPage: React.FC = () => {
 
   if (done) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-brand-light to-[#fff8ee] p-5">
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-brand-light to-[#fff8ee] dark:from-[#13151c] dark:to-[#1a1d23] p-5">
         <div className="bg-surface rounded-xl border-[1.5px] border-border p-10 w-full max-w-[420px] shadow-lg text-center">
           <div className="text-[3.5rem] mb-4">📬</div>
           <h2 className="font-heading text-[1.5rem] text-brand-dark">
@@ -125,7 +125,7 @@ export const RegisterPage: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-brand-light to-[#fff8ee] p-5">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-brand-light to-[#fff8ee] dark:from-[#13151c] dark:to-[#1a1d23] p-5">
       <div className="bg-surface rounded-xl border-[1.5px] border-border p-9 w-full max-w-[460px] shadow-lg">
         <div className="text-center mb-7">
           <div className="flex justify-center mb-3">

@@ -137,7 +137,7 @@ export const MemberProfilePage: React.FC = () => {
           onChange={(e) => setMessage(e.target.value)}
           placeholder={`Send ${firstName} a message…`}
           rows={3}
-          className="w-full px-4 py-3 rounded-lg border-[1.5px] border-border bg-[#f9fafb] text-[0.95rem] font-body resize-none outline-none focus:border-brand transition-colors"
+          className="w-full px-4 py-3 rounded-lg border-[1.5px] border-border bg-bg text-[0.95rem] font-body resize-none outline-none focus:border-brand transition-colors"
           onKeyDown={(e) => { if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) handleSend(); }}
         />
         <div className="flex items-center justify-between mt-2">
@@ -223,7 +223,7 @@ export const MemberProfilePage: React.FC = () => {
                 {requestSlot.start_time} – {requestSlot.end_time}
               </div>
               {requestSlot.note && (
-                <div className="mt-1 italic text-gray-600 text-[0.85rem]">"{requestSlot.note}"</div>
+                <div className="mt-1 italic text-muted text-[0.85rem]">"{requestSlot.note}"</div>
               )}
             </div>
             {matchingSlotIds.has(requestSlot.id) && (

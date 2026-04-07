@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  darkMode: "class",
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
@@ -7,17 +8,17 @@ export default {
         brand: {
           DEFAULT: "#4d9463",
           dark: "#3a7049",
-          light: "#edfaf2",
+          light: "var(--color-brand-light)",
         },
         accent: {
           DEFAULT: "#f0b24f",
           dark: "#d4962b",
         },
-        surface: "#ffffff",
-        bg: "#fafaf7",
-        border: "#e6e2dc",
-        muted: "#5a6270",
-        light: "#6b7380",
+        surface: "var(--color-surface)",
+        bg: "var(--color-bg)",
+        border: "var(--color-border)",
+        muted: "var(--color-muted)",
+        light: "var(--color-light)",
       },
       fontFamily: {
         body: ["Nunito", "sans-serif"],

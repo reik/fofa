@@ -92,7 +92,7 @@ export const MonthCalendar: React.FC<MonthCalendarProps> = ({
                 "min-h-[90px] p-1 border-r border-b border-border/60 last-of-type:border-r-0 flex flex-col gap-[3px] transition-colors",
                 !isLastRow ? "" : "border-b-0",
                 (idx + 1) % 7 === 0 ? "border-r-0" : "",
-                isCurrentMonth ? "bg-surface" : "bg-gray-50",
+                isCurrentMonth ? "bg-surface" : "bg-bg",
                 mode === "own" && isCurrentMonth ? "cursor-pointer hover:bg-brand-light/20" : "",
               ].join(" ")}
               onClick={() => {
@@ -107,8 +107,8 @@ export const MonthCalendar: React.FC<MonthCalendarProps> = ({
                     isToday
                       ? "bg-brand text-white"
                       : isCurrentMonth
-                      ? "text-gray-700"
-                      : "text-gray-300",
+                      ? "text-[color:var(--color-text)]"
+                      : "text-muted",
                   ].join(" ")}
                 >
                   {day.getDate()}
@@ -137,10 +137,10 @@ export const MonthCalendar: React.FC<MonthCalendarProps> = ({
                       className={[
                         "w-full text-left text-[0.68rem] font-semibold px-[5px] py-[2px] rounded leading-tight truncate border-none",
                         isMatch
-                          ? "bg-accent text-gray-900 ring-1 ring-yellow-400"
+                          ? "bg-accent text-[color:var(--color-text)] ring-1 ring-yellow-400"
                           : isFree
                           ? "bg-brand/85 text-white"
-                          : "bg-gray-200 text-gray-600",
+                          : "bg-border text-muted",
                         isClickable ? "cursor-pointer hover:opacity-75" : "cursor-default",
                       ].join(" ")}
                     >

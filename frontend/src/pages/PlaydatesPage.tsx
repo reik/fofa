@@ -103,7 +103,7 @@ const SlotForm: React.FC<SlotFormProps> = ({
                 status === s
                   ? s === "free"
                     ? "border-brand bg-brand-light text-brand-dark"
-                    : "border-gray-400 bg-gray-100 text-gray-700"
+                    : "border-border bg-bg text-muted"
                   : "border-border text-muted",
               ].join(" ")}
             >
@@ -196,7 +196,7 @@ const RequestCard: React.FC<RequestCardProps> = ({ request, myId, onUpdate }) =>
           {isOwner ? "Requested" : "You requested"} · {dateStr} · {request.slot_start_time}–{request.slot_end_time}
         </div>
         {request.message && (
-          <div className="text-[0.82rem] mt-1 italic text-gray-600">"{request.message}"</div>
+          <div className="text-[0.82rem] mt-1 italic text-muted">"{request.message}"</div>
         )}
         <div className="text-[0.72rem] text-muted mt-[2px]">
           {formatDistanceToNow(new Date(request.created_at), { addSuffix: true })}
@@ -355,7 +355,7 @@ export const PlaydatesPage: React.FC = () => {
 
           <div className="flex gap-4 text-[0.78rem] mb-2">
             <span className="flex items-center gap-1"><span className="w-3 h-3 rounded-sm bg-brand inline-block" /> Free</span>
-            <span className="flex items-center gap-1"><span className="w-3 h-3 rounded-sm bg-gray-300 inline-block" /> Busy</span>
+            <span className="flex items-center gap-1"><span className="w-3 h-3 rounded-sm bg-border inline-block" /> Busy</span>
             <span className="text-muted">
               {calView === "week" ? "Click a slot to edit · Click a cell to add" : "Click a slot to edit · Click a date to add"}
             </span>
