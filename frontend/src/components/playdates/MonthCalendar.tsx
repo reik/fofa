@@ -16,7 +16,9 @@ interface MonthCalendarProps {
 const DAY_LABELS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
 function fmtTime(t: string): string {
-  const [h, m] = t.split(":").map(Number);
+  const parts = t.split(":").map(Number);
+  const h = parts[0] ?? 0;
+  const m = parts[1] ?? 0;
   const ampm = h < 12 ? "am" : "pm";
   const display = h % 12 === 0 ? 12 : h % 12;
   return m === 0 ? `${display}${ampm}` : `${display}:${String(m).padStart(2, "0")}${ampm}`;
@@ -58,8 +60,7 @@ export const MonthCalendar: React.FC<MonthCalendarProps> = ({
   // Group slots by date
   const slotsByDate: Record<string, AvailabilitySlot[]> = {};
   slots.forEach((s) => {
-    if (!slotsByDate[s.date]) slotsByDate[s.date] = [];
-    slotsByDate[s.date].push(s);
+    (slotsByDate[s.date] ??= []).push(s);
   });
 
   return (

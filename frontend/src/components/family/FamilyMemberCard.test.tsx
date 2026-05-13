@@ -17,9 +17,11 @@ import { familyService } from '../../services';
 
 const member: FamilyMember = {
   id: 'fm-1',
+  user_id: 'user-1',
   name: 'Emma',
   age: 7,
   thumbnail: null,
+  created_at: new Date().toISOString(),
 };
 
 describe('FamilyMemberCard', () => {

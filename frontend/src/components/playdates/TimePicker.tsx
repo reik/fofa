@@ -15,7 +15,9 @@ function to24(hour: number, minute: string, ampm: "AM" | "PM"): string {
 }
 
 function parse24(value: string): { hour: number; minute: string; ampm: "AM" | "PM" } {
-  const [h, m] = value.split(":").map(Number);
+  const parts = value.split(":").map(Number);
+  const h = parts[0] ?? 0;
+  const m = parts[1] ?? 0;
   const ampm: "AM" | "PM" = h < 12 ? "AM" : "PM";
   const hour = h % 12 === 0 ? 12 : h % 12;
   const minute = MINUTES.includes(String(m).padStart(2, "0"))

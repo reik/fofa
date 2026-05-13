@@ -24,7 +24,7 @@ import { authService } from '../services';
 // ── VerifyEmailPage ─────────────────────────────────────────────────
 
 describe('VerifyEmailPage', () => {
-  beforeEach(() => vi.clearAllMocks());
+  beforeEach(() => { vi.clearAllMocks(); });
 
   it('shows verifying state initially', () => {
     vi.mocked(authService.verifyEmail).mockReturnValue(new Promise(() => {}));
@@ -78,7 +78,7 @@ describe('VerifyEmailPage', () => {
 // ── ForgotPasswordPage ──────────────────────────────────────────────
 
 describe('ForgotPasswordPage', () => {
-  beforeEach(() => vi.clearAllMocks());
+  beforeEach(() => { vi.clearAllMocks(); });
 
   it('renders email input and Send Reset Link button', () => {
     render(<MemoryRouter><ForgotPasswordPage /></MemoryRouter>);
@@ -115,7 +115,7 @@ describe('ForgotPasswordPage', () => {
 // ── ResetPasswordPage ───────────────────────────────────────────────
 
 describe('ResetPasswordPage', () => {
-  beforeEach(() => vi.clearAllMocks());
+  beforeEach(() => { vi.clearAllMocks(); });
 
   it('renders new password and confirm fields', () => {
     render(

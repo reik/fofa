@@ -50,7 +50,7 @@ describe('MonthCalendar', () => {
     );
     // Click on the 16th cell
     const cells = screen.getAllByText('16');
-    await userEvent.click(cells[0]);
+    await userEvent.click(cells[0]!);
     expect(onCellClick).toHaveBeenCalledWith('2025-06-16');
   });
 
@@ -60,7 +60,7 @@ describe('MonthCalendar', () => {
       <MonthCalendar monthDate={JUNE_2025} slots={[]} mode="view" onCellClick={onCellClick} />
     );
     const cells = screen.getAllByText('16');
-    await userEvent.click(cells[0]);
+    await userEvent.click(cells[0]!);
     expect(onCellClick).not.toHaveBeenCalled();
   });
 

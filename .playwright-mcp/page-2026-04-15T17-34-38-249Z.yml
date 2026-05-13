@@ -1,0 +1,866 @@
+- generic [ref=e2]:
+  - link "Skip to Main Content":
+    - /url: "#main"
+  - generic: ×
+  - navigation [ref=e8]:
+    - generic [ref=e10]:
+      - generic [ref=e11]:
+        - button "Open main menu" [ref=e12] [cursor=pointer]:
+          - img [ref=e13]
+        - button [ref=e24] [cursor=pointer]:
+          - img [ref=e25]
+        - link "Search" [ref=e28] [cursor=pointer]:
+          - /url: /search
+          - img [ref=e29]
+      - generic [ref=e33]:
+        - generic [ref=e34]: Power Our Journalism
+        - link "SUPPORT THE FREE PRESS" [ref=e35] [cursor=pointer]:
+          - /url: https://www.huffpost.com/support?utm_campaign=nav-web
+        - link "Log In" [ref=e37] [cursor=pointer]:
+          - /url: https://login.huffpost.com/login?dest=https%3A%2F%2Fwww.huffpost.com%2F%3Fhp_auth_done%3D1&src=huffpost-nav-hp&ncid=huffpost_homepagena_ybf3wf01afo
+  - generic [ref=e38]:
+    - link "HUFFPOST" [ref=e40] [cursor=pointer]:
+      - /url: https://www.huffpost.com
+      - heading "HUFFPOST" [level=1] [ref=e41]:
+        - generic [ref=e42]: HUFFPOST
+        - img [ref=e43]
+    - navigation [ref=e52]:
+      - generic [ref=e54]:
+        - link "NEWS" [ref=e55] [cursor=pointer]:
+          - /url: /news/
+        - link "POLITICS" [ref=e56] [cursor=pointer]:
+          - /url: /news/politics
+        - link "ENTERTAINMENT" [ref=e57] [cursor=pointer]:
+          - /url: /entertainment/
+        - link "LIFE" [ref=e58] [cursor=pointer]:
+          - /url: /life/
+        - link "SHOPPING" [ref=e59] [cursor=pointer]:
+          - /url: /life/huffpost-shopping
+        - link "PERSONAL" [ref=e60] [cursor=pointer]:
+          - /url: /section/huffpost-personal
+        - link "VOICES" [ref=e61] [cursor=pointer]:
+          - /url: /voices/
+        - link "GAMES" [ref=e62] [cursor=pointer]:
+          - /url: https://www.huffpost.com/games
+  - main [ref=e63]:
+    - generic [ref=e66]:
+      - 'link "TRUMP TURNS UP HEAT ON POWELL: ''I''LL HAVE TO FIRE HIM''" [ref=e69] [cursor=pointer]':
+        - /url: https://www.huffpost.com/entry/latest-news-live-updates_n_69dcb4aae4b00247ba9c0bc9/liveblog_69df8c8be4b05c8319cddd39
+      - link "trump/powell" [ref=e71] [cursor=pointer]:
+        - /url: https://www.huffpost.com/entry/latest-news-live-updates_n_69dcb4aae4b00247ba9c0bc9/liveblog_69df8c8be4b05c8319cddd39
+        - img "trump/powell" [ref=e73]
+      - 'link "PLUS: PIRRO PROSECUTORS UNANNOUNCED FED VISIT!" [ref=e76] [cursor=pointer]':
+        - /url: https://www.huffpost.com/entry/latest-news-live-updates_n_69dcb4aae4b00247ba9c0bc9/liveblog_69df59b4e4b0223b45845ac1
+      - 'link "LATEST UPDATES: Trump Posts Another Weird Jesus Photo, NATO''s Contingency Plans, Prez Goes After The Pope, MORE…" [ref=e79] [cursor=pointer]':
+        - /url: https://www.huffpost.com/entry/latest-news-live-updates_n_69dcb4aae4b00247ba9c0bc9
+    - generic [ref=e80]:
+      - generic [ref=e81]:
+        - generic [ref=e86]:
+          - heading "LATEST NEWS" [level=2] [ref=e88]
+          - generic [ref=e89]:
+            - group "article" [ref=e90]:
+              - link [ref=e91] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/democrats-israel-big-test_n_69df8e34e4b05c8319cddf38?origin=home-latest-news-unit
+              - link "Key Democrats Could Make A Surprising About-Face On Israel" [ref=e97] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/democrats-israel-big-test_n_69df8e34e4b05c8319cddf38?origin=home-latest-news-unit
+                - generic [ref=e98]: Key Democrats Could Make A Surprising About-Face On Israel
+            - group "article" [ref=e99]:
+              - link [ref=e100] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/presidents-health-white-house-secret_n_69d3ffafe4b05537a7f2098e?origin=home-latest-news-unit
+              - link "The White House Has Been Hiding Presidents’ Health Issues Longer Than You Think" [ref=e106] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/presidents-health-white-house-secret_n_69d3ffafe4b05537a7f2098e?origin=home-latest-news-unit
+                - generic [ref=e107]: The White House Has Been Hiding Presidents’ Health Issues Longer Than You Think
+            - group "article" [ref=e108]:
+              - link [ref=e109] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/latest-news-live-updates_n_69dcb4aae4b00247ba9c0bc9/liveblog_69dfa752e4b0f26bda630f6d?origin=home-latest-news-unit
+              - 'link "U.S. And Iran Move Closer To Agreement To End War: Report" [ref=e115] [cursor=pointer]':
+                - /url: https://www.huffpost.com/entry/latest-news-live-updates_n_69dcb4aae4b00247ba9c0bc9/liveblog_69dfa752e4b0f26bda630f6d?origin=home-latest-news-unit
+                - generic [ref=e116]: "U.S. And Iran Move Closer To Agreement To End War: Report"
+            - group "article" [ref=e117]:
+              - link [ref=e118] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/latest-news-live-updates_n_69dcb4aae4b00247ba9c0bc9/liveblog_69dfaaf9e4b0223b4584addf?origin=home-latest-news-unit
+              - link "Mike Johnson Says The Pope Had It Coming" [ref=e124] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/latest-news-live-updates_n_69dcb4aae4b00247ba9c0bc9/liveblog_69dfaaf9e4b0223b4584addf?origin=home-latest-news-unit
+                - generic [ref=e125]: Mike Johnson Says The Pope Had It Coming
+            - group "article" [ref=e126]:
+              - link [ref=e127] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/latest-news-live-updates_n_69dcb4aae4b00247ba9c0bc9/liveblog_69df7a5be4b05c8319cdd208?origin=home-latest-news-unit
+              - link "Trump Claims Oil Prices Will Be Lower By The Midterms" [ref=e133] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/latest-news-live-updates_n_69dcb4aae4b00247ba9c0bc9/liveblog_69df7a5be4b05c8319cdd208?origin=home-latest-news-unit
+                - generic [ref=e134]: Trump Claims Oil Prices Will Be Lower By The Midterms
+            - group "article" [ref=e135]:
+              - link [ref=e136] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/latest-news-live-updates_n_69dcb4aae4b00247ba9c0bc9/liveblog_69dfa85fe4b0223b4584a926?origin=home-latest-news-unit
+              - link "Russ Vought Testimony To Congress Immediately Disrupted By Protesters" [ref=e142] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/latest-news-live-updates_n_69dcb4aae4b00247ba9c0bc9/liveblog_69dfa85fe4b0223b4584a926?origin=home-latest-news-unit
+                - generic [ref=e143]: Russ Vought Testimony To Congress Immediately Disrupted By Protesters
+            - group "article" [ref=e144]:
+              - link [ref=e145] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/jd-vance-urges-pope-leo-xiv-be-careful-discussing-matters-of-theology_n_69df62ebe4b05c8319cdb774?origin=home-latest-news-unit
+              - generic [ref=e149]:
+                - generic [ref=e150]:
+                  - generic [ref=e151]: NEW
+                  - generic [ref=e152]: 4 min ago
+                - link "JD Vance Warns The Pope ‘To Be Careful’" [ref=e154] [cursor=pointer]:
+                  - /url: https://www.huffpost.com/entry/jd-vance-urges-pope-leo-xiv-be-careful-discussing-matters-of-theology_n_69df62ebe4b05c8319cdb774?origin=home-latest-news-unit
+                  - generic [ref=e155]: JD Vance Warns The Pope ‘To Be Careful’
+            - group "article" [ref=e156]:
+              - link [ref=e157] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/us-shuts-down-iran-maritime-trade_n_69df501fe4b0223b458455a5?origin=home-latest-news-unit
+              - link "U.S. Shuts Down Iran’s Maritime Trade Despite Optimism For More Peace Talks" [ref=e163] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/us-shuts-down-iran-maritime-trade_n_69df501fe4b0223b458455a5?origin=home-latest-news-unit
+                - generic [ref=e164]: U.S. Shuts Down Iran’s Maritime Trade Despite Optimism For More Peace Talks
+            - group "article" [ref=e165]:
+              - link [ref=e166] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/jd-vance-crowd-athen-georgia-turning-point_n_69df849ce4b05c8319cdd76e?origin=home-latest-news-unit
+              - generic [ref=e170]:
+                - generic [ref=e171]:
+                  - generic [ref=e172]: NEW
+                  - generic [ref=e173]: 54 min ago
+                - link "JD Vance's Abysmal Crowd Size At Speaking Event Goes Viral" [ref=e175] [cursor=pointer]:
+                  - /url: https://www.huffpost.com/entry/jd-vance-crowd-athen-georgia-turning-point_n_69df849ce4b05c8319cdd76e?origin=home-latest-news-unit
+                  - generic [ref=e176]: JD Vance's Abysmal Crowd Size At Speaking Event Goes Viral
+            - group "article" [ref=e177]:
+              - link [ref=e178] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/latest-news-live-updates_n_69dcb4aae4b00247ba9c0bc9/liveblog_69df98b8e4b0f26bda62fea9?origin=home-latest-news-unit
+              - link "Paramount CEO To Skip Senate Hearing On Warner Bros. Merger Due To Funeral, Company Says" [ref=e184] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/latest-news-live-updates_n_69dcb4aae4b00247ba9c0bc9/liveblog_69df98b8e4b0f26bda62fea9?origin=home-latest-news-unit
+                - generic [ref=e185]: Paramount CEO To Skip Senate Hearing On Warner Bros. Merger Due To Funeral, Company Says
+            - group "article" [ref=e186]:
+              - link [ref=e187] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/jd-vance-trump-epstein-hoax_n_69defa42e4b0223b4584226d?origin=home-latest-news-unit
+              - link "JD Vance's Brazenly False New Defense Of Trump Quickly Goes Off The Rails" [ref=e193] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/jd-vance-trump-epstein-hoax_n_69defa42e4b0223b4584226d?origin=home-latest-news-unit
+                - generic [ref=e194]: JD Vance's Brazenly False New Defense Of Trump Quickly Goes Off The Rails
+            - group "article" [ref=e195]:
+              - link [ref=e196] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/trump-midnight-truth-social-ramblings_n_69df1c7de4b05c8319cd87af?origin=home-latest-news-unit
+              - link "Trump’s Latest Midnight Ramblings Are Spiraling All Over The Map" [ref=e202] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/trump-midnight-truth-social-ramblings_n_69df1c7de4b05c8319cd87af?origin=home-latest-news-unit
+                - generic [ref=e203]: Trump’s Latest Midnight Ramblings Are Spiraling All Over The Map
+            - group "article" [ref=e204]:
+              - link [ref=e205] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/alexandria-ocasio-cortez-cory-mills-should-be-on-that-list_n_69df53f9e4b05c8319cdb013?origin=home-latest-news-unit
+              - link "Alexandria Ocasio-Cortez Names The Next Congressman Who Should Leave" [ref=e211] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/alexandria-ocasio-cortez-cory-mills-should-be-on-that-list_n_69df53f9e4b05c8319cdb013?origin=home-latest-news-unit
+                - generic [ref=e212]: Alexandria Ocasio-Cortez Names The Next Congressman Who Should Leave
+            - group "article" [ref=e213]:
+              - link [ref=e214] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/chris-hayes-jd-vance-veep-week_n_69df62cbe4b05c8319cdb6fe?origin=home-latest-news-unit
+              - link "Chris Hayes Makes A Mockery Out Of JD Vance's 'String Of Failures' With 1 Vicious Comparison" [ref=e220] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/chris-hayes-jd-vance-veep-week_n_69df62cbe4b05c8319cdb6fe?origin=home-latest-news-unit
+                - generic [ref=e221]: Chris Hayes Makes A Mockery Out Of JD Vance's 'String Of Failures' With 1 Vicious Comparison
+            - group "article" [ref=e222]:
+              - link [ref=e223] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/lawrence-odonnell-british-parliament-ed-davey-trump-dangerous-corrupt-gangster_n_69df62c0e4b05c8319cdb6e4?origin=home-latest-news-unit
+              - link "Lawrence O’Donnell Sums Up Trump In A Blistering 5-Word Label That’ll ‘Live In History’" [ref=e229] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/lawrence-odonnell-british-parliament-ed-davey-trump-dangerous-corrupt-gangster_n_69df62c0e4b05c8319cdb6e4?origin=home-latest-news-unit
+                - generic [ref=e230]: Lawrence O’Donnell Sums Up Trump In A Blistering 5-Word Label That’ll ‘Live In History’
+            - group "article" [ref=e231]:
+              - link [ref=e232] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/emily-austin-cnn-newsnight-discussion-defense-trump-ai-jesus-post_n_69df6307e4b0f26bda62cca4?origin=home-latest-news-unit
+              - 'link "Pro-Trump Guest Stuns CNN Panel With Defense Of AI Jesus Post: ‘Oh, My God’" [ref=e238] [cursor=pointer]':
+                - /url: https://www.huffpost.com/entry/emily-austin-cnn-newsnight-discussion-defense-trump-ai-jesus-post_n_69df6307e4b0f26bda62cca4?origin=home-latest-news-unit
+                - generic [ref=e239]: "Pro-Trump Guest Stuns CNN Panel With Defense Of AI Jesus Post: ‘Oh, My God’"
+        - generic [ref=e243]:
+          - generic [ref=e244]:
+            - generic [ref=e245]:
+              - generic [ref=e246]: Our Journalism
+              - generic [ref=e247]: Works
+              - generic [ref=e248]: For You
+            - paragraph [ref=e249]: While Washington spins the latest economic data and billionaires hedge their bets, working Americans are feeling the very real squeeze of rising costs and sudden instability. HuffPost reports on the real economy – the one that impacts you.
+          - link "Support HuffPost" [ref=e250] [cursor=pointer]:
+            - /url: https://www.huffpost.com/support?utm_campaign=homepage-in-line-web
+          - paragraph [ref=e251]:
+            - text: Already a member?
+            - link "Log in to hide these messages." [ref=e252] [cursor=pointer]:
+              - /url: https://login.huffpost.com/login?dest=https%3A%2F%2Fwww.huffpost.com%2F%3Fhp_auth_done%3D1
+        - generic [ref=e254]:
+          - heading "👇 WHAT'S HAPPENING 👇" [level=2] [ref=e256]
+          - generic [ref=e257]:
+            - group "article" [ref=e258]:
+              - link [ref=e259] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/police-are-investigating-ruby-roses-accusation-against-katy-perry_n_69dfa6fae4b0f26bda630efa?origin=home-whats-happening-unit
+              - generic [ref=e263]:
+                - generic [ref=e264]:
+                  - generic [ref=e265]: NEW
+                  - generic [ref=e266]: 38 min ago
+                - link "Police Are Investigating Ruby Rose’s Accusation Against Katy Perry" [ref=e268] [cursor=pointer]:
+                  - /url: https://www.huffpost.com/entry/police-are-investigating-ruby-roses-accusation-against-katy-perry_n_69dfa6fae4b0f26bda630efa?origin=home-whats-happening-unit
+                  - generic [ref=e269]: Police Are Investigating Ruby Rose’s Accusation Against Katy Perry
+            - group "article" [ref=e270]:
+              - link [ref=e271] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/bereaved-parent-what-to-say_n_69ce8abae4b0d214cc704836?origin=home-whats-happening-unit
+              - link "I Became A 'Vilomah' After I Lost My 40-Year-Old Daughter To Cancer. Here’s What It’s REALLY Like." [ref=e277] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/bereaved-parent-what-to-say_n_69ce8abae4b0d214cc704836?origin=home-whats-happening-unit
+                - generic [ref=e278]: I Became A 'Vilomah' After I Lost My 40-Year-Old Daughter To Cancer. Here’s What It’s REALLY Like.
+            - group "article" [ref=e279]:
+              - link [ref=e280] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/tech-products-huffpost-shopping-awards-2026_l_69b43643e4b05771d5b2371e?origin=home-whats-happening-unit
+              - link "These 10 Award-Winning Gadgets Make Life Easier — And They’re Worth Every Penny" [ref=e286] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/tech-products-huffpost-shopping-awards-2026_l_69b43643e4b05771d5b2371e?origin=home-whats-happening-unit
+                - generic [ref=e287]: These 10 Award-Winning Gadgets Make Life Easier — And They’re Worth Every Penny
+            - group "article" [ref=e288]:
+              - link [ref=e289] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/braden-peters-clavicular-looksmaxxing-hospitalized-live-stream_n_69dfa3eae4b05c8319cdf744?origin=home-whats-happening-unit
+              - generic [ref=e293]:
+                - generic [ref=e294]:
+                  - generic [ref=e295]: NEW
+                  - generic [ref=e296]: 54 min ago
+                - link "Top ‘Manosphere’ Star Suffers ‘Brutal’ Medical Emergency While Livestreaming" [ref=e298] [cursor=pointer]:
+                  - /url: https://www.huffpost.com/entry/braden-peters-clavicular-looksmaxxing-hospitalized-live-stream_n_69dfa3eae4b05c8319cdf744?origin=home-whats-happening-unit
+                  - generic [ref=e299]: Top ‘Manosphere’ Star Suffers ‘Brutal’ Medical Emergency While Livestreaming
+            - group "article" [ref=e300]:
+              - link [ref=e301] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/influencer-ashlee-jenae-found-dead-africa_n_69deb3c6e4b05c8319cd627d?origin=home-whats-happening-unit
+              - link "Influencer Found Dead In Africa Days After Getting Engaged" [ref=e307] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/influencer-ashlee-jenae-found-dead-africa_n_69deb3c6e4b05c8319cd627d?origin=home-whats-happening-unit
+                - generic [ref=e308]: Influencer Found Dead In Africa Days After Getting Engaged
+            - group "article" [ref=e309]:
+              - link [ref=e310] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/death-of-a-salesman-broadway-joe-mantello_n_69d86e10e4b048dba44c84cb?origin=home-whats-happening-unit
+              - link "Joe Mantello Spent 31 Years Envisioning This ‘Death Of A Salesman’ Casting — Now It’s On Broadway" [ref=e316] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/death-of-a-salesman-broadway-joe-mantello_n_69d86e10e4b048dba44c84cb?origin=home-whats-happening-unit
+                - generic [ref=e317]: Joe Mantello Spent 31 Years Envisioning This ‘Death Of A Salesman’ Casting — Now It’s On Broadway
+            - group "article" [ref=e318]:
+              - link [ref=e319] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/gosh-fox-news-host-rattles-off-reasons-why-its-so-expensive-to-have-a-kid-nowadays_n_69de8c4ce4b0223b4583d0a3?origin=home-whats-happening-unit
+              - 'link "‘Gosh!‘: Fox News Host Rattles Off Reasons Why It’s ‘So Expensive’ To Have A Kid Nowadays" [ref=e325] [cursor=pointer]':
+                - /url: https://www.huffpost.com/entry/gosh-fox-news-host-rattles-off-reasons-why-its-so-expensive-to-have-a-kid-nowadays_n_69de8c4ce4b0223b4583d0a3?origin=home-whats-happening-unit
+                - generic [ref=e326]: "‘Gosh!‘: Fox News Host Rattles Off Reasons Why It’s ‘So Expensive’ To Have A Kid Nowadays"
+            - group "article" [ref=e327]:
+              - link [ref=e328] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/vrabel-russini-resigns-the-athletic_n_69de9c02e4b05c8319cd5b4a?origin=home-whats-happening-unit
+              - link "NFL Reporter Resigns After Photos Surface Of Her With NFL Coach" [ref=e334] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/vrabel-russini-resigns-the-athletic_n_69de9c02e4b05c8319cd5b4a?origin=home-whats-happening-unit
+                - generic [ref=e335]: NFL Reporter Resigns After Photos Surface Of Her With NFL Coach
+            - group "article" [ref=e336]:
+              - link [ref=e337] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/trump-soda-kills-cancer-grass_n_69dea898e4b0f26bda627514?origin=home-whats-happening-unit
+              - link "Trump Apparently Thinks Soda Kills Cancer Cells Because ‘It Kills Grass’" [ref=e343] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/trump-soda-kills-cancer-grass_n_69dea898e4b0f26bda627514?origin=home-whats-happening-unit
+                - generic [ref=e344]: Trump Apparently Thinks Soda Kills Cancer Cells Because ‘It Kills Grass’
+            - group "article" [ref=e345]:
+              - link [ref=e346] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/trump-voters-ai-jesus-post_n_69dec7c1e4b05c8319cd670e?origin=home-whats-happening-unit
+              - link "'It's Disgusting:' Trump Supporters Sound Off On President's AI Jesus Post" [ref=e352] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/trump-voters-ai-jesus-post_n_69dec7c1e4b05c8319cd670e?origin=home-whats-happening-unit
+                - generic [ref=e353]: "'It's Disgusting:' Trump Supporters Sound Off On President's AI Jesus Post"
+            - group "article" [ref=e354]:
+              - link [ref=e355] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/jimmy-kimmel-trump-pardons_n_69df43a4e4b05c8319cda11f?origin=home-whats-happening-unit
+              - link "Jimmy Kimmel Goes There With Absolutely Vicious Trump ‘Pedophile’ Joke" [ref=e361] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/jimmy-kimmel-trump-pardons_n_69df43a4e4b05c8319cda11f?origin=home-whats-happening-unit
+                - generic [ref=e362]: Jimmy Kimmel Goes There With Absolutely Vicious Trump ‘Pedophile’ Joke
+            - group "article" [ref=e363]:
+              - link [ref=e364] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/stephen-colbert-trump-pope_n_69df247ce4b05c8319cd90b0?origin=home-whats-happening-unit
+              - 'link "''It''s Gotta Piss Trump Off'': Stephen Colbert Has ''Insane'' Reminder For The President" [ref=e370] [cursor=pointer]':
+                - /url: https://www.huffpost.com/entry/stephen-colbert-trump-pope_n_69df247ce4b05c8319cd90b0?origin=home-whats-happening-unit
+                - generic [ref=e371]: "'It's Gotta Piss Trump Off': Stephen Colbert Has 'Insane' Reminder For The President"
+            - group "article" [ref=e372]:
+              - link [ref=e373] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/snap-job-cuts_n_69df9de9e4b0223b45849ce1?origin=home-whats-happening-unit
+              - link "Snap To Cut 1,000 Jobs After Activist Pressure, Bets On AI Efficiency" [ref=e379] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/snap-job-cuts_n_69df9de9e4b0223b45849ce1?origin=home-whats-happening-unit
+                - generic [ref=e380]: Snap To Cut 1,000 Jobs After Activist Pressure, Bets On AI Efficiency
+            - group "article" [ref=e382]:
+              - link [ref=e383] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/daily-show-rfk-jr-podcast_n_69df090be4b05c8319cd7f06?origin=home-whats-happening-unit
+              - link "RFK Jr.'s Weird New Project Leaves 'Daily Show' Host Feeling Really 'Uncomfortable'" [ref=e389] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/daily-show-rfk-jr-podcast_n_69df090be4b05c8319cd7f06?origin=home-whats-happening-unit
+                - generic [ref=e390]: RFK Jr.'s Weird New Project Leaves 'Daily Show' Host Feeling Really 'Uncomfortable'
+            - group "article" [ref=e391]:
+              - link [ref=e392] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/jarren-duran-flips-off-fan-kill-myself_n_69df5b05e4b05c8319cdb332?origin=home-whats-happening-unit
+              - link "Watch Red Sox Player Flip Off Fan For What He Says Was ‘Triggering’ Reason" [ref=e398] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/jarren-duran-flips-off-fan-kill-myself_n_69df5b05e4b05c8319cdb332?origin=home-whats-happening-unit
+                - generic [ref=e399]: Watch Red Sox Player Flip Off Fan For What He Says Was ‘Triggering’ Reason
+        - heading "From Our Partner" [level=2] [ref=e404]
+        - heading "HUFFPOST VIDEO" [level=2] [ref=e409]
+        - generic [ref=e411]:
+          - heading "LIFE" [level=2] [ref=e413]
+          - generic [ref=e414]:
+            - group "article" [ref=e415]:
+              - link [ref=e416] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/how-much-diet-soda-is-too-much-diet-soda-doctors-weigh-in-goog_l_69dfa172e4b0f26bda630a9b?origin=home-life-unit
+              - link "Experts Reveal The Limits To How Much Diet Soda Someone Should Drink" [ref=e422] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/how-much-diet-soda-is-too-much-diet-soda-doctors-weigh-in-goog_l_69dfa172e4b0f26bda630a9b?origin=home-life-unit
+                - generic [ref=e423]: Experts Reveal The Limits To How Much Diet Soda Someone Should Drink
+            - group "article" [ref=e424]:
+              - link [ref=e425] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/federal-tax-resistance-trump_l_69d84577e4b00247ba9a78e6?origin=home-life-unit
+              - 'link "‘This Is The Last Straw’: More Americans Aren’t Paying Federal Taxes This Year To Resist Trump. Here’s What Could Happen." [ref=e431] [cursor=pointer]':
+                - /url: https://www.huffpost.com/entry/federal-tax-resistance-trump_l_69d84577e4b00247ba9a78e6?origin=home-life-unit
+                - generic [ref=e432]: "‘This Is The Last Straw’: More Americans Aren’t Paying Federal Taxes This Year To Resist Trump. Here’s What Could Happen."
+            - group "article" [ref=e433]:
+              - link [ref=e434] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/gen-z-behaviors-stress-out-millennials_n_69a9ae7ae4b0d84f0de0e35f?origin=home-life-unit
+              - link "Millennials Spill The Gen Z Habits That Totally Stress Them Out" [ref=e440] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/gen-z-behaviors-stress-out-millennials_n_69a9ae7ae4b0d84f0de0e35f?origin=home-life-unit
+                - generic [ref=e441]: Millennials Spill The Gen Z Habits That Totally Stress Them Out
+            - group "article" [ref=e442]:
+              - link [ref=e443] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/become-better-conversationalist_l_69d65d5ce4b0ccb589e9cd06?origin=home-life-unit
+              - link "Learning To Tolerate This 1 Thing Will Make You Better In Every Conversation" [ref=e449] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/become-better-conversationalist_l_69d65d5ce4b0ccb589e9cd06?origin=home-life-unit
+                - generic [ref=e450]: Learning To Tolerate This 1 Thing Will Make You Better In Every Conversation
+            - group "article" [ref=e451]:
+              - link [ref=e452] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/natural-glp1-experts-thoughts_l_69caa0fde4b0128a9ef8ee0a?origin=home-life-unit
+              - link "These Foods Are Being Called ‘Natural GLP-1s,' But Do They Work? — Here’s What Experts Say" [ref=e458] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/natural-glp1-experts-thoughts_l_69caa0fde4b0128a9ef8ee0a?origin=home-life-unit
+                - generic [ref=e459]: These Foods Are Being Called ‘Natural GLP-1s,' But Do They Work? — Here’s What Experts Say
+            - group "article" [ref=e460]:
+              - link [ref=e461] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/funniest-marriage-social-media-posts-2026-4-13_l_69de7ee7e4b0f26bda62237e?origin=home-life-unit
+              - link "The Funniest Tweets From Couples To Get You Through This Week" [ref=e467] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/funniest-marriage-social-media-posts-2026-4-13_l_69de7ee7e4b0f26bda62237e?origin=home-life-unit
+                - generic [ref=e468]: The Funniest Tweets From Couples To Get You Through This Week
+        - generic [ref=e471]:
+          - heading "STAFF PICKS" [level=2] [ref=e473]
+          - group "article" [ref=e475]:
+            - link [ref=e476] [cursor=pointer]:
+              - /url: https://www.huffpost.com/life/topic/huffpicks?origin=home-games-unit
+            - 'link "The Only Shopping List You Need: Presenting Our HuffPost Shopping Awards Winners" [ref=e482] [cursor=pointer]':
+              - /url: https://www.huffpost.com/life/topic/huffpicks?origin=home-games-unit
+              - generic [ref=e483]: "The Only Shopping List You Need: Presenting Our HuffPost Shopping Awards Winners"
+        - heading "From Our Partner" [level=2] [ref=e488]
+        - generic [ref=e491]:
+          - heading "👀 DON'T MISS 👀" [level=2] [ref=e493]
+          - generic [ref=e494]:
+            - group "article" [ref=e495]:
+              - link [ref=e496] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/us-capitol-riot-seditious-conspiracy-toss_n_69deb787e4b0223b45840c55?origin=home-zone-c-unit
+              - link "Justice Department Moves To Toss Seditious Conspiracy Convictions Of Oath Keepers And Proud Boys" [ref=e502] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/us-capitol-riot-seditious-conspiracy-toss_n_69deb787e4b0223b45840c55?origin=home-zone-c-unit
+                - generic [ref=e503]: Justice Department Moves To Toss Seditious Conspiracy Convictions Of Oath Keepers And Proud Boys
+            - group "article" [ref=e504]:
+              - link [ref=e505] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/senator-roger-marshall-defends-gas-prices-trump-iran-war_n_69deb19be4b0f26bda627710?origin=home-zone-c-unit
+              - link "GOP Senator Argues Trump’s ‘Great Jujitsu Move’ Will Lead To 'Endgame’ In Iran War" [ref=e511] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/senator-roger-marshall-defends-gas-prices-trump-iran-war_n_69deb19be4b0f26bda627710?origin=home-zone-c-unit
+                - generic [ref=e512]: GOP Senator Argues Trump’s ‘Great Jujitsu Move’ Will Lead To 'Endgame’ In Iran War
+            - group "article" [ref=e513]:
+              - link [ref=e514] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/lena-dunham-adam-driver-girls-working-relationship_n_69de8143e4b0f26bda6224eb?origin=home-zone-c-unit
+              - link "Lena Dunham Claims Adam Driver Exhibited Violent Behavior On ‘Girls’ Set" [ref=e520] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/lena-dunham-adam-driver-girls-working-relationship_n_69de8143e4b0f26bda6224eb?origin=home-zone-c-unit
+                - generic [ref=e521]: Lena Dunham Claims Adam Driver Exhibited Violent Behavior On ‘Girls’ Set
+            - group "article" [ref=e522]:
+              - link [ref=e523] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/walter-tendernism-johnson-barbecue_n_69deb1b3e4b0223b45840b0d?origin=home-zone-c-unit
+              - link "Meet Mr. Tendernism, The Pitmaster Uncle The Internet Can't Get Enough Of" [ref=e529] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/walter-tendernism-johnson-barbecue_n_69deb1b3e4b0223b45840b0d?origin=home-zone-c-unit
+                - generic [ref=e530]: Meet Mr. Tendernism, The Pitmaster Uncle The Internet Can't Get Enough Of
+            - group "article" [ref=e531]:
+              - link [ref=e532] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/trump-reacts-waffle-house-teleportation-claim-gregg-phillips_n_69de8cd7e4b0223b4583d0e0?origin=home-zone-c-unit
+              - link "Trump Reacts To Top Official Who Says He Teleported 50 Miles To A Waffle House" [ref=e538] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/trump-reacts-waffle-house-teleportation-claim-gregg-phillips_n_69de8cd7e4b0223b4583d0e0?origin=home-zone-c-unit
+                - generic [ref=e539]: Trump Reacts To Top Official Who Says He Teleported 50 Miles To A Waffle House
+            - group "article" [ref=e540]:
+              - link [ref=e541] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/euphoria-season-3-premiere-reactions_n_69de452de4b0ceb952971f5a?origin=home-zone-c-unit
+              - link "Sydney Sweeney ‘Puppy’ Costume In ‘Euphoria’ Slammed As ‘Straight Up Fetish Porn’" [ref=e547] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/euphoria-season-3-premiere-reactions_n_69de452de4b0ceb952971f5a?origin=home-zone-c-unit
+                - generic [ref=e548]: Sydney Sweeney ‘Puppy’ Costume In ‘Euphoria’ Slammed As ‘Straight Up Fetish Porn’
+            - group "article" [ref=e549]:
+              - link [ref=e550] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/jack-white-trump-jesus-antichrist_n_69de6198e4b0223b45839f91?origin=home-zone-c-unit
+              - link "Anti-MAGA Rockstar Points Out The Most Ironic Part Of Trump’s Jesus AI Image" [ref=e556] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/jack-white-trump-jesus-antichrist_n_69de6198e4b0223b45839f91?origin=home-zone-c-unit
+                - generic [ref=e557]: Anti-MAGA Rockstar Points Out The Most Ironic Part Of Trump’s Jesus AI Image
+            - group "article" [ref=e558]:
+              - link [ref=e559] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/mike-johnson-donald-trump-ai-jesus_n_69de7d66e4b05c8319cd00bc?origin=home-zone-c-unit
+              - link "Mike Johnson Addresses Backlash Over Donald Trump AI Jesus Post" [ref=e565] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/mike-johnson-donald-trump-ai-jesus_n_69de7d66e4b05c8319cd00bc?origin=home-zone-c-unit
+                - generic [ref=e566]: Mike Johnson Addresses Backlash Over Donald Trump AI Jesus Post
+            - group "article" [ref=e567]:
+              - link [ref=e568] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/woman-alleges-eric-swalwell-drugged-and-raped-her-i-thought-i-died_n_69de89bde4b0223b4583c971?origin=home-zone-c-unit
+              - 'link "Woman Alleges Eric Swalwell Drugged And Raped Her: ‘I Thought I Died’" [ref=e574] [cursor=pointer]':
+                - /url: https://www.huffpost.com/entry/woman-alleges-eric-swalwell-drugged-and-raped-her-i-thought-i-died_n_69de89bde4b0223b4583c971?origin=home-zone-c-unit
+                - generic [ref=e575]: "Woman Alleges Eric Swalwell Drugged And Raped Her: ‘I Thought I Died’"
+            - group "article" [ref=e576]:
+              - link [ref=e577] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/ruben-gallego-eric-swalwell-predator_n_69de8788e4b0223b4583c65b?origin=home-zone-c-unit
+              - 'link "Ruben Gallego Turns On Close Friend, Eric Swalwell: ‘Predator’" [ref=e583] [cursor=pointer]':
+                - /url: https://www.huffpost.com/entry/ruben-gallego-eric-swalwell-predator_n_69de8788e4b0223b4583c65b?origin=home-zone-c-unit
+                - generic [ref=e584]: "Ruben Gallego Turns On Close Friend, Eric Swalwell: ‘Predator’"
+            - group "article" [ref=e585]:
+              - link [ref=e586] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/hal-lambert-maga-guest-stuns-cnn-panel-conspiracy-theory-obama-pope-leo_n_69de59e9e4b05c8319ccde9f?origin=home-zone-c-unit
+              - link "MAGA Guest Stuns CNN Panel With Pro-Trump Conspiracy Theory Involving Pope And Obama" [ref=e592] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/hal-lambert-maga-guest-stuns-cnn-panel-conspiracy-theory-obama-pope-leo_n_69de59e9e4b05c8319ccde9f?origin=home-zone-c-unit
+                - generic [ref=e593]: MAGA Guest Stuns CNN Panel With Pro-Trump Conspiracy Theory Involving Pope And Obama
+            - group "article" [ref=e594]:
+              - link [ref=e595] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/breaking-down-what-we-know-about-the-alix-earle-and-alex-cooper-feud_n_69de5ec9e4b0f26bda62006b?origin=home-zone-c-unit
+              - link "Breaking Down What We Know About The Alix Earle And Alex Cooper Feud" [ref=e601] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/breaking-down-what-we-know-about-the-alix-earle-and-alex-cooper-feud_n_69de5ec9e4b0f26bda62006b?origin=home-zone-c-unit
+                - generic [ref=e602]: Breaking Down What We Know About The Alix Earle And Alex Cooper Feud
+        - generic [ref=e606]:
+          - group "article" [ref=e607]:
+            - link [ref=e608] [cursor=pointer]:
+              - /url: https://www.huffpost.com/entry/donald-trump-pope-leo-attacks-crime-experts_n_69de5c80e4b0223b45839a06?origin=home-zone-d-unit
+            - link "Religion Experts Analyzed Trump's Comments About Pope Leo. There's 1 'Bizarre' Part That Stands Out." [ref=e614] [cursor=pointer]:
+              - /url: https://www.huffpost.com/entry/donald-trump-pope-leo-attacks-crime-experts_n_69de5c80e4b0223b45839a06?origin=home-zone-d-unit
+              - generic [ref=e615]: Religion Experts Analyzed Trump's Comments About Pope Leo. There's 1 'Bizarre' Part That Stands Out.
+          - group "article" [ref=e616]:
+            - link [ref=e617] [cursor=pointer]:
+              - /url: https://www.huffpost.com/entry/former-trump-adviser-david-urban-blasts-jesus-image-they-should-be-fired_n_69de13f4e4b0ac71a371b3e8?origin=home-zone-d-unit
+            - 'link "Ex-Trump Adviser Blasts President Over Latest ‘Terrible’ Blunder: ‘They Should Be Fired’" [ref=e623] [cursor=pointer]':
+              - /url: https://www.huffpost.com/entry/former-trump-adviser-david-urban-blasts-jesus-image-they-should-be-fired_n_69de13f4e4b0ac71a371b3e8?origin=home-zone-d-unit
+              - generic [ref=e624]: "Ex-Trump Adviser Blasts President Over Latest ‘Terrible’ Blunder: ‘They Should Be Fired’"
+          - group "article" [ref=e625]:
+            - link [ref=e626] [cursor=pointer]:
+              - /url: https://www.huffpost.com/entry/jimmy-kimmel-donald-trump-jesus-christ-jeffrey-epstein_n_69de57e3e4b0f26bda61faff?origin=home-zone-d-unit
+            - link "Jimmy Kimmel Points Out Incredibly Disturbing Detail Of Trump’s Christ-Like Post" [ref=e632] [cursor=pointer]:
+              - /url: https://www.huffpost.com/entry/jimmy-kimmel-donald-trump-jesus-christ-jeffrey-epstein_n_69de57e3e4b0f26bda61faff?origin=home-zone-d-unit
+              - generic [ref=e633]: Jimmy Kimmel Points Out Incredibly Disturbing Detail Of Trump’s Christ-Like Post
+          - group "article" [ref=e634]:
+            - link [ref=e635] [cursor=pointer]:
+              - /url: https://www.huffpost.com/entry/jd-vance-fox-news-economic-terrorism_n_69de6040e4b0223b45839d0d?origin=home-zone-d-unit
+            - link "JD Vance Accidentally Says The Truth Out Loud With Fox News Gaffe" [ref=e641] [cursor=pointer]:
+              - /url: https://www.huffpost.com/entry/jd-vance-fox-news-economic-terrorism_n_69de6040e4b0223b45839d0d?origin=home-zone-d-unit
+              - generic [ref=e642]: JD Vance Accidentally Says The Truth Out Loud With Fox News Gaffe
+          - group "article" [ref=e643]:
+            - link [ref=e644] [cursor=pointer]:
+              - /url: https://www.huffpost.com/entry/lindsey-graham-disney-world-bubble-wand-tmz_n_69de3ba2e4b005c85661a341?origin=home-zone-d-unit
+            - link "Watch Lindsey Graham Get Hilariously Chased By TMZ Over Unexpected Issue" [ref=e650] [cursor=pointer]:
+              - /url: https://www.huffpost.com/entry/lindsey-graham-disney-world-bubble-wand-tmz_n_69de3ba2e4b005c85661a341?origin=home-zone-d-unit
+              - generic [ref=e651]: Watch Lindsey Graham Get Hilariously Chased By TMZ Over Unexpected Issue
+          - group "article" [ref=e652]:
+            - link [ref=e653] [cursor=pointer]:
+              - /url: https://www.huffpost.com/entry/jon-stewart-trump-jesus-photo_n_69de4184e4b005c85661a75a?origin=home-zone-d-unit
+            - link "Jon Stewart Just Spotted Something In Trump's Jesus Pic — And We Can't Unsee It" [ref=e659] [cursor=pointer]:
+              - /url: https://www.huffpost.com/entry/jon-stewart-trump-jesus-photo_n_69de4184e4b005c85661a75a?origin=home-zone-d-unit
+              - generic [ref=e660]: Jon Stewart Just Spotted Something In Trump's Jesus Pic — And We Can't Unsee It
+          - group "article" [ref=e661]:
+            - link [ref=e662] [cursor=pointer]:
+              - /url: https://www.huffpost.com/entry/dr-thomas-shaknovsky-indicted-manslaughter-wrong-organ_n_69de9b13e4b05c8319cd5ae1?origin=home-zone-d-unit
+            - link "Florida Doctor Faces Manslaughter Charge After Allegedly Removing Wrong Organ" [ref=e668] [cursor=pointer]:
+              - /url: https://www.huffpost.com/entry/dr-thomas-shaknovsky-indicted-manslaughter-wrong-organ_n_69de9b13e4b05c8319cd5ae1?origin=home-zone-d-unit
+              - generic [ref=e669]: Florida Doctor Faces Manslaughter Charge After Allegedly Removing Wrong Organ
+          - group "article" [ref=e670]:
+            - link [ref=e671] [cursor=pointer]:
+              - /url: https://www.huffpost.com/entry/italy-israel-defence-deal-off_n_69de7db4e4b05c8319cd00f7?origin=home-zone-d-unit
+            - link "Italy’s Meloni Suspends Defence Cooperation Deal With Israel" [ref=e677] [cursor=pointer]:
+              - /url: https://www.huffpost.com/entry/italy-israel-defence-deal-off_n_69de7db4e4b05c8319cd00f7?origin=home-zone-d-unit
+              - generic [ref=e678]: Italy’s Meloni Suspends Defence Cooperation Deal With Israel
+          - group "article" [ref=e679]:
+            - link [ref=e680] [cursor=pointer]:
+              - /url: https://www.huffpost.com/entry/no-doubt-tom-dumont-parkinsons-disease_n_69de5e5fe4b0223b45839bb3?origin=home-zone-d-unit
+            - 'link "‘It’s Been A Struggle’: Tom Dumont Opens Up About Parkinson’s Diagnosis Ahead Of No Doubt Return" [ref=e686] [cursor=pointer]':
+              - /url: https://www.huffpost.com/entry/no-doubt-tom-dumont-parkinsons-disease_n_69de5e5fe4b0223b45839bb3?origin=home-zone-d-unit
+              - generic [ref=e687]: "‘It’s Been A Struggle’: Tom Dumont Opens Up About Parkinson’s Diagnosis Ahead Of No Doubt Return"
+          - group "article" [ref=e688]:
+            - link [ref=e689] [cursor=pointer]:
+              - /url: https://www.huffpost.com/entry/us-iran-war-talks-blockade-trump_n_69dec27ee4b05c8319cd65ac?origin=home-zone-d-unit
+            - link "U.S., Iran May Resume Talks This Week Despite Port Blockade" [ref=e695] [cursor=pointer]:
+              - /url: https://www.huffpost.com/entry/us-iran-war-talks-blockade-trump_n_69dec27ee4b05c8319cd65ac?origin=home-zone-d-unit
+              - generic [ref=e696]: U.S., Iran May Resume Talks This Week Despite Port Blockade
+        - generic [ref=e699]:
+          - heading "HUFFPOST PERSONAL" [level=2] [ref=e701]
+          - generic [ref=e702]:
+            - group "article" [ref=e703]:
+              - link [ref=e704] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/secret-singer-10000-maniacs-taylor-swift_n_69c53ff3e4b09f8e00502a3f?origin=home-huffpost-personal-unit
+              - link "I Was The Lead Singer Of A Legendary Rock Band. I Kept It A Secret For Years — Until I Got A Life-Changing Offer." [ref=e710] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/secret-singer-10000-maniacs-taylor-swift_n_69c53ff3e4b09f8e00502a3f?origin=home-huffpost-personal-unit
+                - generic [ref=e711]: I Was The Lead Singer Of A Legendary Rock Band. I Kept It A Secret For Years — Until I Got A Life-Changing Offer.
+            - group "article" [ref=e712]:
+              - link [ref=e713] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/death-doula-end-of-life-lesson-2_n_69dd4871e4b0ccb589eeb223?origin=home-huffpost-personal-unit
+              - link "I'm A Death Doula. I Was Surprised To Learn Many People Do This 1 Unexpected Thing Right Before They Die." [ref=e719] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/death-doula-end-of-life-lesson-2_n_69dd4871e4b0ccb589eeb223?origin=home-huffpost-personal-unit
+                - generic [ref=e720]: I'm A Death Doula. I Was Surprised To Learn Many People Do This 1 Unexpected Thing Right Before They Die.
+            - group "article" [ref=e721]:
+              - link [ref=e722] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/husband-died-revenge-suicide-safety_n_69c51605e4b0e447525c5996?origin=home-huffpost-personal-unit
+              - link "I'd Never Heard The Term 'Revenge Suicide.' Then I Walked In On What My Husband Wanted Me To Find." [ref=e728] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/husband-died-revenge-suicide-safety_n_69c51605e4b0e447525c5996?origin=home-huffpost-personal-unit
+                - generic [ref=e729]: I'd Never Heard The Term 'Revenge Suicide.' Then I Walked In On What My Husband Wanted Me To Find.
+            - group "article" [ref=e730]:
+              - link [ref=e731] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/cryptorchidism-ascending-testicle-childhood-trauma-private-parts_n_69dbb821e4b0ccb589ed3f22?origin=home-huffpost-personal-unit
+              - link "I Prayed For Years That No One Would Discover The Issue With My Private Parts. Now I'm Done Hiding." [ref=e737] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/cryptorchidism-ascending-testicle-childhood-trauma-private-parts_n_69dbb821e4b0ccb589ed3f22?origin=home-huffpost-personal-unit
+                - generic [ref=e738]: I Prayed For Years That No One Would Discover The Issue With My Private Parts. Now I'm Done Hiding.
+        - generic [ref=e741]:
+          - heading "POLITICS" [level=2] [ref=e743]
+          - generic [ref=e744]:
+            - group "article" [ref=e745]:
+              - link [ref=e746] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/trump-new-jesus-image_n_69df8f2ae4b0f26bda62f456?origin=home-politics-feed-unit
+              - link "Trump Posts Another Weird Jesus Photo" [ref=e752] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/trump-new-jesus-image_n_69df8f2ae4b0f26bda62f456?origin=home-politics-feed-unit
+                - generic [ref=e753]: Trump Posts Another Weird Jesus Photo
+            - group "article" [ref=e754]:
+              - link [ref=e755] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/republicans-dismiss-concerns-trump-mental-health_n_69de59b8e4b05c8319ccde81?origin=home-politics-feed-unit
+              - link "Republicans Dismiss Concerns About Trump’s Mental Fitness" [ref=e761] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/republicans-dismiss-concerns-trump-mental-health_n_69de59b8e4b05c8319ccde81?origin=home-politics-feed-unit
+                - generic [ref=e762]: Republicans Dismiss Concerns About Trump’s Mental Fitness
+            - group "article" [ref=e763]:
+              - link [ref=e764] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/donald-trump-not-a-big-fan-riley-gaines_n_69ddfd28e4b0ac71a371a30d?origin=home-politics-feed-unit
+              - link "Trump Abruptly Turns On Prominent Anti-Trans Ally In Break We Didn't See Coming" [ref=e770] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/donald-trump-not-a-big-fan-riley-gaines_n_69ddfd28e4b0ac71a371a30d?origin=home-politics-feed-unit
+                - generic [ref=e771]: Trump Abruptly Turns On Prominent Anti-Trans Ally In Break We Didn't See Coming
+            - group "article" [ref=e772]:
+              - link [ref=e773] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/marjorie-taylor-greene-slams-trump-jesus-image-blasphemy-apologize_n_69de0f3be4b0ceb9529703a2?origin=home-politics-feed-unit
+              - link "Marjorie Taylor Greene Calls On Trump To Apologize For Latest Stunt" [ref=e779] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/marjorie-taylor-greene-slams-trump-jesus-image-blasphemy-apologize_n_69de0f3be4b0ceb9529703a2?origin=home-politics-feed-unit
+                - generic [ref=e780]: Marjorie Taylor Greene Calls On Trump To Apologize For Latest Stunt
+          - button "More Politics" [ref=e782] [cursor=pointer]
+        - generic [ref=e785]:
+          - heading "ENTERTAINMENT" [level=2] [ref=e787]
+          - generic [ref=e788]:
+            - group "article" [ref=e789]:
+              - link [ref=e790] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/jon-stewart-donald-trump-ufc-fight-iran_n_69ddcb37e4b0ccb589eef6c2?origin=home-entertainment-feed-unit
+              - link "Jon Stewart Slams Trump For Doing One Thing During Iran Talks — And It’s Telling" [ref=e796] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/jon-stewart-donald-trump-ufc-fight-iran_n_69ddcb37e4b0ccb589eef6c2?origin=home-entertainment-feed-unit
+                - generic [ref=e797]: Jon Stewart Slams Trump For Doing One Thing During Iran Talks — And It’s Telling
+            - group "article" [ref=e798]:
+              - link [ref=e799] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/aubrey-plaza-pregnant-comments-christopher-abbott_n_69dd76ede4b00247ba9d57f6?origin=home-entertainment-feed-unit
+              - link "Aubrey Plaza Breaks Her Silence On Pregnancy News" [ref=e805] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/aubrey-plaza-pregnant-comments-christopher-abbott_n_69dd76ede4b00247ba9d57f6?origin=home-entertainment-feed-unit
+                - generic [ref=e806]: Aubrey Plaza Breaks Her Silence On Pregnancy News
+            - group "article" [ref=e807]:
+              - link [ref=e808] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/nicole-kidman-death-doula-mom-death_n_69dd5b6fe4b048dba44f1ca5?origin=home-entertainment-feed-unit
+              - link "Nicole Kidman Reveals New Career Path Inspired By Mom’s Death" [ref=e814] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/nicole-kidman-death-doula-mom-death_n_69dd5b6fe4b048dba44f1ca5?origin=home-entertainment-feed-unit
+                - generic [ref=e815]: Nicole Kidman Reveals New Career Path Inspired By Mom’s Death
+            - group "article" [ref=e816]:
+              - link [ref=e817] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/katie-couric-lauren-sanchez-bezos-nyt-profile_n_69dd0ff0e4b048dba44e5a5d?origin=home-entertainment-feed-unit
+              - link "New Lauren Sánchez Bezos’ Profile Prompts Katie Couric To Ask The Question We’re All Thinking" [ref=e823] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/katie-couric-lauren-sanchez-bezos-nyt-profile_n_69dd0ff0e4b048dba44e5a5d?origin=home-entertainment-feed-unit
+                - generic [ref=e824]: New Lauren Sánchez Bezos’ Profile Prompts Katie Couric To Ask The Question We’re All Thinking
+          - button "More Entertainment" [ref=e826] [cursor=pointer]
+        - generic [ref=e829]:
+          - heading "LIFE" [level=2] [ref=e831]
+          - generic [ref=e832]:
+            - group "article" [ref=e833]:
+              - link [ref=e834] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/trump-jesus-truth-social_n_69dd19d5e4b048dba44e9b6f?origin=home-life-feed-unit
+              - link "Faith Leaders Have THOUGHTS About Trump's 'Grotesque' Depiction Of Himself As Jesus" [ref=e840] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/trump-jesus-truth-social_n_69dd19d5e4b048dba44e9b6f?origin=home-life-feed-unit
+                - generic [ref=e841]: Faith Leaders Have THOUGHTS About Trump's 'Grotesque' Depiction Of Himself As Jesus
+            - group "article" [ref=e842]:
+              - link [ref=e843] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/bare-beating-rude-etiquette-goog_n_69d7df4ae4b048dba44be810?origin=home-life-feed-unit
+              - link "'Bare Beating' Is The Rudest Public Behavior — And You Are Likely Guilty Of It" [ref=e849] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/bare-beating-rude-etiquette-goog_n_69d7df4ae4b048dba44be810?origin=home-life-feed-unit
+                - generic [ref=e850]: "'Bare Beating' Is The Rudest Public Behavior — And You Are Likely Guilty Of It"
+            - group "article" [ref=e851]:
+              - link [ref=e852] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/trump-raged-at-fox-news-to-take-a-host-off-the-air-and-oof-it-revealed-a-lot-goog_n_69d7dad0e4b0ccb589eb8fa9?origin=home-life-feed-unit
+              - link "Trump Raged At Fox News To Take A Host 'Off The Air'... And Oof, It Revealed A Lot" [ref=e858] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/trump-raged-at-fox-news-to-take-a-host-off-the-air-and-oof-it-revealed-a-lot-goog_n_69d7dad0e4b0ccb589eb8fa9?origin=home-life-feed-unit
+                - generic [ref=e859]: Trump Raged At Fox News To Take A Host 'Off The Air'... And Oof, It Revealed A Lot
+            - group "article" [ref=e860]:
+              - link [ref=e861] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/narcissistic-collapse-meaning-trump_n_69d83d27e4b00247ba9a5e0a?origin=home-life-feed-unit
+              - link "Trump's Latest Meltdown Looks A Lot Like What Psychologists Call 'Narcissistic Collapse'" [ref=e867] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/narcissistic-collapse-meaning-trump_n_69d83d27e4b00247ba9a5e0a?origin=home-life-feed-unit
+                - generic [ref=e868]: Trump's Latest Meltdown Looks A Lot Like What Psychologists Call 'Narcissistic Collapse'
+          - button "More Life" [ref=e870] [cursor=pointer]
+        - generic [ref=e873]:
+          - heading "SHOPPING" [level=2] [ref=e875]
+          - generic [ref=e876]:
+            - group "article" [ref=e878]:
+              - link [ref=e879] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/cmf-watch-3-pro-amazon-sale_l_69dfa6cbe4b05c8319cdfa8c?origin=home-shopping-feed-unit
+              - link "This $65 Smartwatch Has A 10-Day Battery Life — And It Feels Way More Expensive Than It Is" [ref=e885] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/cmf-watch-3-pro-amazon-sale_l_69dfa6cbe4b05c8319cdfa8c?origin=home-shopping-feed-unit
+                - generic [ref=e886]: This $65 Smartwatch Has A 10-Day Battery Life — And It Feels Way More Expensive Than It Is
+            - group "article" [ref=e888]:
+              - link [ref=e889] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/gold-bond-crepe-corrector-body-lotion-sale-amazon_l_69dfa99ce4b0f26bda631386?origin=home-shopping-feed-unit
+              - 'link "‘This Stuff Is A Miracle’: The $10 Cream Reviewers Swear By For Crepey Skin" [ref=e895] [cursor=pointer]':
+                - /url: https://www.huffpost.com/entry/gold-bond-crepe-corrector-body-lotion-sale-amazon_l_69dfa99ce4b0f26bda631386?origin=home-shopping-feed-unit
+                - generic [ref=e896]: "‘This Stuff Is A Miracle’: The $10 Cream Reviewers Swear By For Crepey Skin"
+            - group "article" [ref=e898]:
+              - link [ref=e899] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/showershroom-drain-hair-catcher-amazon_l_69dd083ae4b00247ba9c4648?origin=home-shopping-feed-unit
+              - link "This Simple Drain Hack Could Save Your Pipes From Hair Clogs" [ref=e905] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/showershroom-drain-hair-catcher-amazon_l_69dd083ae4b00247ba9c4648?origin=home-shopping-feed-unit
+                - generic [ref=e906]: This Simple Drain Hack Could Save Your Pipes From Hair Clogs
+            - group "article" [ref=e907]:
+              - link [ref=e908] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/dalba-truffle-facial-spray-serum-ud_l_69dcf2bce4b0ccb589edc304?origin=home-shopping-feed-unit
+              - link "Reviewers Say They 'Hate' How Much They Love This Do-It-All $14 Serum Spray From Korea" [ref=e914] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/dalba-truffle-facial-spray-serum-ud_l_69dcf2bce4b0ccb589edc304?origin=home-shopping-feed-unit
+                - generic [ref=e915]: Reviewers Say They 'Hate' How Much They Love This Do-It-All $14 Serum Spray From Korea
+          - button "More Shopping" [ref=e917] [cursor=pointer]
+        - generic [ref=e920]:
+          - heading "VOICES" [level=2] [ref=e922]
+          - generic [ref=e923]:
+            - group "article" [ref=e924]:
+              - link [ref=e925] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/ariana-godoy-novelist-spanish-mental-health_n_69da8769e4b048dba44d6a07?origin=home-voices-feed-unit
+              - link "This Novelist Built Her Literary Empire Online — And Started Some Really Important Conversations About Mental Health" [ref=e931] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/ariana-godoy-novelist-spanish-mental-health_n_69da8769e4b048dba44d6a07?origin=home-voices-feed-unit
+                - generic [ref=e932]: This Novelist Built Her Literary Empire Online — And Started Some Really Important Conversations About Mental Health
+            - group "article" [ref=e933]:
+              - link [ref=e934] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/queer-people-trump-coping-skills_n_69d7ea8de4b00247ba9a07cf?origin=home-voices-feed-unit
+              - link "We Asked Queer People How They're Coping With Trump. Take Notes." [ref=e940] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/queer-people-trump-coping-skills_n_69d7ea8de4b00247ba9a07cf?origin=home-voices-feed-unit
+                - generic [ref=e941]: We Asked Queer People How They're Coping With Trump. Take Notes.
+            - group "article" [ref=e942]:
+              - link [ref=e943] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/conservative-men-dating-liberal-women_n_69d697e9e4b048dba44ad603?origin=home-voices-feed-unit
+              - link "Women Are Sharing Why Conservative Men Want To Date Liberal Women, And They Didn't Hold Back" [ref=e949] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/conservative-men-dating-liberal-women_n_69d697e9e4b048dba44ad603?origin=home-voices-feed-unit
+                - generic [ref=e950]: Women Are Sharing Why Conservative Men Want To Date Liberal Women, And They Didn't Hold Back
+            - group "article" [ref=e951]:
+              - link [ref=e952] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/secret-signs-right-wing-women_n_69d407dee4b05047ac8f5a3b?origin=home-voices-feed-unit
+              - link "People Are Sharing the Subtle Signs a Woman Is Secretly Right Wing, and They're Painfully Specific" [ref=e958] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/secret-signs-right-wing-women_n_69d407dee4b05047ac8f5a3b?origin=home-voices-feed-unit
+                - generic [ref=e959]: People Are Sharing the Subtle Signs a Woman Is Secretly Right Wing, and They're Painfully Specific
+          - button "More Voices" [ref=e961] [cursor=pointer]
+        - heading "From Our Partner" [level=2] [ref=e966]
+        - link "Go to Homepage" [ref=e968] [cursor=pointer]:
+          - /url: https://www.huffpost.com
+          - img [ref=e969]
+      - complementary [ref=e974]:
+        - generic [ref=e977]:
+          - heading "SHOPPING" [level=2] [ref=e979]
+          - generic [ref=e980]:
+            - group "article" [ref=e982]:
+              - link [ref=e983] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/zevo-flying-insect-trap-amazon_l_69dfa665e4b0223b4584a551?origin=home-shopping-unit
+              - link "If You Want To 'Rid Your Life Of Nasty Little Buggers,' Grab This $20 Bug Hack" [ref=e989] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/zevo-flying-insect-trap-amazon_l_69dfa665e4b0223b4584a551?origin=home-shopping-unit
+                - generic [ref=e990]: If You Want To 'Rid Your Life Of Nasty Little Buggers,' Grab This $20 Bug Hack
+            - group "article" [ref=e991]:
+              - link [ref=e992] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/boden-spring-dresses-2026_l_69df9b18e4b0f26bda6300da?origin=home-shopping-unit
+              - link "27 Dresses From Boden So Pretty They Might Just Make You A Dress Person" [ref=e998] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/boden-spring-dresses-2026_l_69df9b18e4b0f26bda6300da?origin=home-shopping-unit
+                - generic [ref=e999]: 27 Dresses From Boden So Pretty They Might Just Make You A Dress Person
+            - group "article" [ref=e1000]:
+              - link [ref=e1001] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/best-white-tshirts-men-women-ud_l_69dcf986e4b048dba44e2839?origin=home-shopping-unit
+              - link "'I Have Never Owned A Tee That Fit Me This Well' — These Are The Best White T-Shirts Money Can Buy" [ref=e1007] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/best-white-tshirts-men-women-ud_l_69dcf986e4b048dba44e2839?origin=home-shopping-unit
+                - generic [ref=e1008]: "'I Have Never Owned A Tee That Fit Me This Well' — These Are The Best White T-Shirts Money Can Buy"
+            - group "article" [ref=e1009]:
+              - link [ref=e1010] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/mothers-day-experience-gifts_l_69dcec41e4b00247ba9c29e7?origin=home-shopping-unit
+              - link "These Mother’s Day Gifts Are Perfect For The Mom Who Doesn’t Like 'Stuff'" [ref=e1016] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/mothers-day-experience-gifts_l_69dcec41e4b00247ba9c29e7?origin=home-shopping-unit
+                - generic [ref=e1017]: These Mother’s Day Gifts Are Perfect For The Mom Who Doesn’t Like 'Stuff'
+            - group "article" [ref=e1018]:
+              - link [ref=e1019] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/huffpost-shopping-awards-wellness-products_l_69b48778e4b05771d5b27bea?origin=home-shopping-unit
+              - link "The Most Game-Changing Health And Wellness Products That Earned HuffPost's Awards This Year" [ref=e1025] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/huffpost-shopping-awards-wellness-products_l_69b48778e4b05771d5b27bea?origin=home-shopping-unit
+                - generic [ref=e1026]: The Most Game-Changing Health And Wellness Products That Earned HuffPost's Awards This Year
+            - group "article" [ref=e1027]:
+              - link [ref=e1028] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/camping-safety-items-survivalist-experts-ud2_l_69dcefcfe4b00247ba9c2d0e?origin=home-shopping-unit
+              - link "These Camping Must-Haves Could Save Your Life, According To Survivalists" [ref=e1034] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/camping-safety-items-survivalist-experts-ud2_l_69dcefcfe4b00247ba9c2d0e?origin=home-shopping-unit
+                - generic [ref=e1035]: These Camping Must-Haves Could Save Your Life, According To Survivalists
+            - group "article" [ref=e1036]:
+              - link [ref=e1037] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/no-show-socks-amazon-ud2_l_69dcf29ae4b048dba44e256a?origin=home-shopping-unit
+              - link "These No-Show Socks Won't Stick Out Of Your Shoes And Won't Slide Down Your Foot" [ref=e1043] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/no-show-socks-amazon-ud2_l_69dcf29ae4b048dba44e256a?origin=home-shopping-unit
+                - generic [ref=e1044]: These No-Show Socks Won't Stick Out Of Your Shoes And Won't Slide Down Your Foot
+            - group "article" [ref=e1045]:
+              - link [ref=e1046] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/huffpost-shopping-awards-2026-style_l_69ab083ce4b08e0b3809f0c9?origin=home-shopping-unit
+              - link "People Love These 10 Clothing Items So Much, We Gave Them Awards" [ref=e1052] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/huffpost-shopping-awards-2026-style_l_69ab083ce4b08e0b3809f0c9?origin=home-shopping-unit
+                - generic [ref=e1053]: People Love These 10 Clothing Items So Much, We Gave Them Awards
+            - group "article" [ref=e1054]:
+              - link [ref=e1055] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/athleta-brooklyn-pants-2026_l_69dcf47ee4b0ccb589edc3e1?origin=home-shopping-unit
+              - 'link "''This Is My Fifth Pair'': Reviewers Are Devoted To These Lightweight Pants" [ref=e1061] [cursor=pointer]':
+                - /url: https://www.huffpost.com/entry/athleta-brooklyn-pants-2026_l_69dcf47ee4b0ccb589edc3e1?origin=home-shopping-unit
+                - generic [ref=e1062]: "'This Is My Fifth Pair': Reviewers Are Devoted To These Lightweight Pants"
+            - group "article" [ref=e1063]:
+              - link [ref=e1064] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/nespresso-vertuo-amazon-sale_l_69de4633e4b005c85661aa84?origin=home-shopping-unit
+              - link "This Nespresso Coffee Machine Feels Like ‘My Own Personal Barista’ — And It’s Nearly 50% Off" [ref=e1070] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/nespresso-vertuo-amazon-sale_l_69de4633e4b005c85661aa84?origin=home-shopping-unit
+                - generic [ref=e1071]: This Nespresso Coffee Machine Feels Like ‘My Own Personal Barista’ — And It’s Nearly 50% Off
+        - heading "From Our Partner" [level=2] [ref=e1076]
+        - generic [ref=e1079]:
+          - heading "HUFFPOST DAILY" [level=2] [ref=e1080]
+          - generic [ref=e1081]:
+            - generic [ref=e1082]:
+              - generic [ref=e1083]:
+                - generic [ref=e1084]: Good Morning ☀️
+                - generic [ref=e1085]: Good Morning ☀️
+                - generic [ref=e1086]: Good Morning ☀️
+                - generic [ref=e1087]: Good Morning ☀️
+                - generic [ref=e1088]: Good Morning ☀️
+                - generic [ref=e1089]: Good Morning ☀️
+                - generic [ref=e1090]: Good Morning ☀️
+                - generic [ref=e1091]: Good Morning ☀️
+                - generic [ref=e1092]: Good Morning ☀️
+                - generic [ref=e1093]: Good Morning ☀️
+                - generic [ref=e1094]: Good Morning ☀️
+                - generic [ref=e1095]: Good Morning ☀️
+                - generic [ref=e1096]: Good Morning ☀️
+                - generic [ref=e1097]: Good Morning ☀️
+                - generic [ref=e1098]: Good Morning ☀️
+                - generic [ref=e1099]: Good Morning ☀️
+                - generic [ref=e1100]: Good Morning ☀️
+                - generic [ref=e1101]: Good Morning ☀️
+                - generic [ref=e1102]: Good Morning ☀️
+                - generic [ref=e1103]: Good Morning ☀️
+              - button "Pause marquee animation" [ref=e1104] [cursor=pointer]:
+                - img [ref=e1105]
+            - generic [ref=e1108]:
+              - generic [ref=e1109]: Hello!
+              - generic [ref=e1110]: Complete your daily checklist.
+              - generic [ref=e1112] [cursor=pointer]:
+                - img [ref=e1114]
+                - generic [ref=e1117]: Log into HuffPost for the best experience
+                - img [ref=e1119]
+              - generic [ref=e1123] [cursor=pointer]:
+                - img [ref=e1125]
+                - generic [ref=e1128]: Play today's Pyramid Scheme Puzzle Game
+                - img [ref=e1130]
+              - generic [ref=e1134] [cursor=pointer]:
+                - img [ref=e1136]
+                - generic [ref=e1139]: Play Word Wipe
+                - img [ref=e1141]
+              - generic [ref=e1145] [cursor=pointer]:
+                - img [ref=e1147]
+                - generic [ref=e1151]: Plan your day with your horoscope
+                - img [ref=e1153]
+        - complementary [ref=e1158]:
+          - generic [ref=e1159]:
+            - text: ON THIS DAY IN
+            - text: HUFFINGTON POST HISTORY
+          - generic [ref=e1160]: April 15
+          - generic [ref=e1161]:
+            - generic [ref=e1162]:
+              - generic [ref=e1163]: U.S. News
+              - link "Sunday Roundup" [ref=e1164] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/sunday-roundup_89_b_45870
+              - generic [ref=e1165]: "2007"
+            - generic [ref=e1166]:
+              - generic [ref=e1167]: Crime
+              - link "Derek Chauvin Invokes 5th Amendment Right, Won't Testify In Murder Trial" [ref=e1168] [cursor=pointer]:
+                - /url: https://www.huffpost.com/entry/derek-chauvin-invokes-5th-amendment_n_60784d88e4b020e576c202bb
+              - generic [ref=e1169]: "2021"
+            - generic [ref=e1170]:
+              - generic [ref=e1171]: Politics
+              - 'link "Donald Trump''s Hush Money Trial: Live Updates" [ref=e1172] [cursor=pointer]':
+                - /url: https://www.huffpost.com/entry/donald-trump-hush-money-trial-live-updates_n_6619742ee4b084e936f11ad0
+              - generic [ref=e1173]: "2024"
+          - paragraph [ref=e1174]:
+            - text: FAIR, FEARLESS REPORTING
+            - text: SINCE 2005
+          - link "Support HuffPost" [ref=e1175] [cursor=pointer]:
+            - /url: /support
+        - region "Newsletter subscription" [ref=e1179]:
+          - generic [ref=e1180]:
+            - generic [ref=e1181]:
+              - generic [ref=e1182]: The Morning Email
+              - generic [ref=e1183]: Wake up to the day's most important news. Sign up for HuffPost's Morning Email.
+            - generic [ref=e1184]:
+              - textbox "Enter your email address" [ref=e1185]:
+                - /placeholder: address@email.com
+              - button "SIGN UP" [ref=e1186] [cursor=pointer]
+            - generic:
+              - generic: Successfully Signed Up!
+              - generic: Realness delivered to your inbox
+              - generic:
+                - img
+            - paragraph [ref=e1189]:
+              - text: By entering your email and clicking Sign Up, you're agreeing to let us send you customized marketing messages about us and our advertising partners. You are also agreeing to our
+              - link "Terms of Service" [ref=e1190] [cursor=pointer]:
+                - /url: https://www.huffpost.com/static/user-agreement
+              - text: and
+              - link "Privacy Policy" [ref=e1191] [cursor=pointer]:
+                - /url: https://www.huffpost.com/static/privacy-policy
+              - text: .
+        - heading "From Our Partner" [level=2] [ref=e1197]
+        - generic [ref=e1199] [cursor=pointer]:
+          - generic [ref=e1200]: Follow Us
+          - generic [ref=e1201]:
+            - link "Follow us on facebook" [ref=e1202]:
+              - /url: https://www.facebook.com/HuffPost
+              - img [ref=e1204]
+            - link "Follow us on x" [ref=e1206]:
+              - /url: https://www.x.com/HuffPost
+              - img [ref=e1208]
+            - link "Follow us on instagram" [ref=e1210]:
+              - /url: https://www.instagram.com/HuffPost
+              - img [ref=e1212]
+        - generic [ref=e1220]:
+          - generic [ref=e1221]:
+            - img [ref=e1222]
+            - text: Submit a tip
+          - paragraph [ref=e1230]:
+            - text: Do you have info to share with HuffPost reporters?
+            - link "Here’s how." [ref=e1231] [cursor=pointer]:
+              - /url: https://tips.huffpost.com/
+    - generic [ref=e1235]:
+      - generic [ref=e1236]:
+        - link "HuffPost homepage" [ref=e1237] [cursor=pointer]:
+          - /url: /
+          - img [ref=e1238]
+        - generic [ref=e1240]:
+          - link "NEWS" [ref=e1241] [cursor=pointer]:
+            - /url: /news/
+          - link "POLITICS" [ref=e1242] [cursor=pointer]:
+            - /url: /news/politics
+          - link "ENTERTAINMENT" [ref=e1243] [cursor=pointer]:
+            - /url: /entertainment/
+          - link "LIFE" [ref=e1244] [cursor=pointer]:
+            - /url: /life/
+          - link "VOICES" [ref=e1245] [cursor=pointer]:
+            - /url: /voices/
+          - link "HUFFPOST PERSONAL" [ref=e1246] [cursor=pointer]:
+            - /url: /section/huffpost-personal
+          - link "SHOPPING" [ref=e1247] [cursor=pointer]:
+            - /url: /life/huffpost-shopping
+          - link "NEWSLETTERS" [ref=e1248] [cursor=pointer]:
+            - /url: /newsletters
+        - generic [ref=e1249]:
+          - link "About Us" [ref=e1250] [cursor=pointer]:
+            - /url: https://www.huffpost.com/static/about-us
+          - link "Advertise" [ref=e1251] [cursor=pointer]:
+            - /url: https://advertise.buzzfeed.com/
+          - link "Contact Us" [ref=e1252] [cursor=pointer]:
+            - /url: https://www.huffpost.com/static/contact-us
+          - link "RSS" [ref=e1253] [cursor=pointer]:
+            - /url: https://www.huffpost.com/syndication
+          - link "FAQ" [ref=e1254] [cursor=pointer]:
+            - /url: https://www.huffpost.com/static/faq
+          - link "Careers" [ref=e1255] [cursor=pointer]:
+            - /url: https://www.buzzfeed.com/about/jobs
+          - link "User Agreement" [ref=e1256] [cursor=pointer]:
+            - /url: https://www.huffpost.com/static/user-agreement
+          - link "Comment Policy" [ref=e1257] [cursor=pointer]:
+            - /url: https://www.huffpost.com/static/comment-policy
+          - link "DMCA Policy" [ref=e1258] [cursor=pointer]:
+            - /url: https://www.huffpost.com/static/huffpost-dmca-copyright-policy
+          - link "Accessibility Statement" [ref=e1259] [cursor=pointer]:
+            - /url: https://www.huffpost.com/static/accessibility-statement
+          - link "Privacy Policy" [ref=e1260] [cursor=pointer]:
+            - /url: https://www.huffpost.com/static/privacy-policy
+          - link "Consent Preferences" [ref=e1261] [cursor=pointer]:
+            - /url: https://www.huffpost.com/static/consent-preferences
+          - button "Privacy Settings" [ref=e1262] [cursor=pointer]
+      - generic [ref=e1263]:
+        - generic [ref=e1264]: Part of HuffPost News. ©2026 BuzzFeed, Inc. All rights reserved.
+        - generic [ref=e1265]: The Huffington Post

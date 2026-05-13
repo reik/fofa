@@ -1,10 +1,13 @@
-import React from "react";
+import { ComponentType } from "react";
 
-// Question: Write a Higher-Order Component (HOC) called withAuthentication
-// that wraps a component and provides an isAuthenticated prop indicating whether
-//  the user is authenticated or not. Assume there’s an authenticate function that
-// returns a boolean value.
+interface AuthProps {
+  isAuthed: boolean;
+}
 
-export const WithAuthentication = (WrappingComponent) => {
-  return <WrappingComponent {...props} isAuthed="true" />;
+export const WithAuthentication = <P extends object>(
+  WrappingComponent: ComponentType<P & AuthProps>
+) => {
+  return function Wrapped(props: P) {
+    return <WrappingComponent {...props} isAuthed={true} />;
+  };
 };

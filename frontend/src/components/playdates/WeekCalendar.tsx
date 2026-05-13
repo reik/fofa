@@ -13,11 +13,12 @@ interface WeekCalendarProps {
   onSlotClick?: (slot: AvailabilitySlot) => void;
 }
 
-const HOURS = Array.from({ length: 14 }, (_, i) => i + 7); // 7am–8pm
+const GRID_START_HOUR = 7;
+const HOURS = Array.from({ length: 14 }, (_, i) => i + GRID_START_HOUR); // 7am–8pm
 
 function toMinutes(t: string): number {
-  const [h, m] = t.split(":").map(Number);
-  return h * 60 + m;
+  const parts = t.split(":").map(Number);
+  return (parts[0] ?? 0) * 60 + (parts[1] ?? 0);
 }
 
 function fmtHour(h: number): string {
@@ -27,7 +28,9 @@ function fmtHour(h: number): string {
 }
 
 function fmtTime(t: string): string {
-  const [h, m] = t.split(":").map(Number);
+  const parts = t.split(":").map(Number);
+  const h = parts[0] ?? 0;
+  const m = parts[1] ?? 0;
   const ampm = h < 12 ? "am" : "pm";
   const display = h % 12 === 0 ? 12 : h % 12;
   return m === 0 ? `${display}${ampm}` : `${display}:${String(m).padStart(2, "0")}${ampm}`;
@@ -71,12 +74,10 @@ export const WeekCalendar: React.FC<WeekCalendarProps> = ({
   // Group slots by date
   const slotsByDate: Record<string, AvailabilitySlot[]> = {};
   slots.forEach((s) => {
-    if (!slotsByDate[s.date]) slotsByDate[s.date] = [];
-    slotsByDate[s.date].push(s);
+    (slotsByDate[s.date] ??= []).push(s);
   });
 
-  const gridStart = HOURS[0] * 60; // earliest minute shown
-  const totalMinutes = HOURS.length * 60;
+  const gridStart = GRID_START_HOUR * 60; // earliest minute shown
 
   return (
     <div className="overflow-x-auto rounded-lg border-[1.5px] border-border bg-surface shadow-sm">
@@ -128,7 +129,7 @@ export const WeekCalendar: React.FC<WeekCalendarProps> = ({
             <div
               key={h}
               className="absolute w-full text-right pr-2 text-[0.68rem] text-muted leading-none"
-              style={{ top: (h - HOURS[0]) * SLOT_HEIGHT - 7 }}
+              style={{ top: (h - GRID_START_HOUR) * SLOT_HEIGHT - 7 }}
             >
               {fmtHour(h)}
             </div>
@@ -151,7 +152,7 @@ export const WeekCalendar: React.FC<WeekCalendarProps> = ({
                 <div
                   key={h}
                   className="absolute w-full border-t border-border/40"
-                  style={{ top: (h - HOURS[0]) * SLOT_HEIGHT }}
+                  style={{ top: (h - GRID_START_HOUR) * SLOT_HEIGHT }}
                 />
               ))}
 

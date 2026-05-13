@@ -34,6 +34,7 @@ const baseAnnouncement: Announcement = {
   mediaUrl: null,
   mediaType: null,
   createdAt: new Date().toISOString(),
+  updatedAt: new Date().toISOString(),
   author: { name: 'James Okafor', thumbnail: null },
   reactions: {},
   userReaction: null,

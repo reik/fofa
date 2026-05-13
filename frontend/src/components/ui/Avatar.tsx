@@ -30,7 +30,7 @@ function colorFor(name: string): string {
   let hash = 0;
   for (let i = 0; i < name.length; i++)
     hash = name.charCodeAt(i) + ((hash << 5) - hash);
-  return palette[Math.abs(hash) % palette.length];
+  return palette[Math.abs(hash) % palette.length] ?? palette[0] ?? "#3d7a4f";
 }
 
 export const Avatar: React.FC<AvatarProps> = ({

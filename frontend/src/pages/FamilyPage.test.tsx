@@ -29,7 +29,7 @@ function renderPage() {
 }
 
 describe('FamilyPage', () => {
-  beforeEach(() => vi.clearAllMocks());
+  beforeEach(() => { vi.clearAllMocks(); });
 
   it('renders the My Family heading', async () => {
     vi.mocked(familyService.getAll).mockResolvedValue([]);
@@ -45,8 +45,8 @@ describe('FamilyPage', () => {
 
   it('renders family member cards when members exist', async () => {
     vi.mocked(familyService.getAll).mockResolvedValue([
-      { id: 'fm-1', name: 'Emma', age: 7, thumbnail: null },
-      { id: 'fm-2', name: 'Liam', age: 5, thumbnail: null },
+      { id: 'fm-1', user_id: 'user-1', name: 'Emma', age: 7, thumbnail: null, created_at: '' },
+      { id: 'fm-2', user_id: 'user-1', name: 'Liam', age: 5, thumbnail: null, created_at: '' },
     ]);
     renderPage();
     expect(await screen.findByText('Emma')).toBeInTheDocument();

@@ -17,12 +17,8 @@ const mockPost = vi.mocked(api.post);
 const mockPut = vi.mocked(api.put);
 const mockDelete = vi.mocked(api.delete);
 
-function resolveWith(data: unknown) {
-  return Promise.resolve({ data });
-}
-
 describe('authService', () => {
-  beforeEach(() => vi.clearAllMocks());
+  beforeEach(() => { vi.clearAllMocks(); });
 
   it('login posts credentials and returns data', async () => {
     mockPost.mockResolvedValue({ data: { token: 'tok', user: {} } });
@@ -63,7 +59,7 @@ describe('authService', () => {
 });
 
 describe('userService', () => {
-  beforeEach(() => vi.clearAllMocks());
+  beforeEach(() => { vi.clearAllMocks(); });
 
   it('getMe calls GET /users/me', async () => {
     mockGet.mockResolvedValue({ data: {} });
@@ -85,7 +81,7 @@ describe('userService', () => {
 });
 
 describe('familyService', () => {
-  beforeEach(() => vi.clearAllMocks());
+  beforeEach(() => { vi.clearAllMocks(); });
 
   it('getAll calls GET /family', async () => {
     mockGet.mockResolvedValue({ data: [] });
@@ -101,7 +97,7 @@ describe('familyService', () => {
 });
 
 describe('announcementService', () => {
-  beforeEach(() => vi.clearAllMocks());
+  beforeEach(() => { vi.clearAllMocks(); });
 
   it('getAll calls GET with page param', async () => {
     mockGet.mockResolvedValue({ data: { items: [], total: 0 } });
@@ -129,7 +125,7 @@ describe('announcementService', () => {
 });
 
 describe('playdateService', () => {
-  beforeEach(() => vi.clearAllMocks());
+  beforeEach(() => { vi.clearAllMocks(); });
 
   it('getAvailability calls GET with userId', async () => {
     mockGet.mockResolvedValue({ data: [] });
@@ -151,7 +147,7 @@ describe('playdateService', () => {
 });
 
 describe('messageService', () => {
-  beforeEach(() => vi.clearAllMocks());
+  beforeEach(() => { vi.clearAllMocks(); });
 
   it('getConversations calls GET /messages', async () => {
     mockGet.mockResolvedValue({ data: [] });

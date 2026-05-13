@@ -22,6 +22,7 @@ import { announcementService } from '../../services';
 
 const stubComment: Comment = {
   id: 'c-1',
+  announcement_id: 'ann-1',
   user_id: 'user-2',
   author_name: 'James',
   author_thumbnail: null,

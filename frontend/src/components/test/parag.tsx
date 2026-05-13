@@ -9,7 +9,7 @@ function formatNewspaper(
   result.push(border);
 
   for (let i = 0; i < paragraphs.length; i++) {
-    const words = paragraphs[i];
+    const words = paragraphs[i]!;
     const align = aligns[i];
 
     // Word wrap - greedy

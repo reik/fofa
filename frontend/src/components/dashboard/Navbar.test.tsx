@@ -94,7 +94,7 @@ describe('Navbar', () => {
 
   it('shows pending badge on Playdates when pending requests exist', async () => {
     vi.mocked(playdateService.getRequests).mockResolvedValue([
-      { id: 'r-1', requester_id: 'user-2', owner_id: 'user-1', slot_id: 's-1', status: 'pending', message: '', created_at: '' },
+      { id: 'r-1', requester_id: 'user-2', owner_id: 'user-1', slot_id: 's-1', status: 'pending', message: null, created_at: '', updated_at: '', requester_name: 'Other User', requester_thumbnail: null, owner_name: 'Sarah Mitchell', owner_thumbnail: null, slot_date: '2025-06-16', slot_start_time: '10:00', slot_end_time: '11:00' },
     ]);
     renderNavbar();
     await waitFor(() => {

@@ -43,7 +43,7 @@ describe('WeekCalendar', () => {
     const [firstOverlay] = Array.from(
       document.querySelectorAll<HTMLElement>('[class*="hover:bg-brand-light/30"]')
     );
-    await userEvent.click(firstOverlay);
+    await userEvent.click(firstOverlay!);
     expect(onCellClick).toHaveBeenCalledWith('2025-06-16');
   });
 

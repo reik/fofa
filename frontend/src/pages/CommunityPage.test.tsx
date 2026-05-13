@@ -17,7 +17,7 @@ vi.mock('react-router-dom', async () => {
 import { userService } from '../services';
 
 describe('CommunityPage', () => {
-  beforeEach(() => vi.clearAllMocks());
+  beforeEach(() => { vi.clearAllMocks(); });
 
   it('renders the Community heading', async () => {
     vi.mocked(userService.search).mockResolvedValue([]);

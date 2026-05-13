@@ -24,7 +24,6 @@ vi.mock('../../services', () => ({
 
 // Import after mocks are set up
 import { userService } from '../../services';
-import { useAuthStore } from '../../contexts/authStore';
 
 describe('ProfileForm', () => {
   beforeEach(() => {
