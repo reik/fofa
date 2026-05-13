@@ -6,6 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="FoFa – Foster Families Community Platform" />
     <title>FoFa – Foster Families</title>
+    <script>
+      // Restore path redirected by 404.html for SPA routing on GitHub Pages
+      (function () {
+        var p = window.location.search.match(/[?&]p=([^&]*)/);
+        if (p) {
+          var q = window.location.search.match(/[?&]q=([^&]*)/);
+          window.history.replaceState(
+            null, null,
+            p[1].replace(/~and~/g, '&') +
+            (q ? '?' + q[1].replace(/~and~/g, '&') : '') +
+            window.location.hash
+          );
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

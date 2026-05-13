@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: fofa-backend
+    runtime: node
+    buildCommand: cd backend && npm install && npm run build
+    startCommand: node backend/dist/index.js
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: JWT_SECRET
+        generateValue: true
+      - key: FRONTEND_URL
+        value: https://reik.github.io/fofa
+      - key: DB_PATH
+        value: /var/data/fofa.db
+      - key: UPLOADS_DIR
+        value: /var/data/uploads
+      - key: GMAIL_USER
+        sync: false
+      - key: GMAIL_APP_PASSWORD
+        sync: false
+    disk:
+      name: fofa-data
+      mountPath: /var/data
+      sizeGB: 1

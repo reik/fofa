@@ -4,6 +4,7 @@ import path from 'path';
 
 export default defineConfig({
   plugins: [react()],
+  base: '/fofa/',
   resolve: { alias: { '@': path.resolve(__dirname, './src') } },
   server: {
     port: 5173,
