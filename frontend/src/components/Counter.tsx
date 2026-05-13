@@ -11,5 +11,5 @@ export const Counter = () => {
     setCount(prev => prev - 1)
   }
 
-  return <div><button onClick={handleAdd}>Add</button><button onClick={handleSub}>Add</button><h1>{count}</h1>/div></div>>;
+  return <div><button onClick={handleAdd}>Add</button><button onClick={handleSub}>Subtract</button><h1>{count}</h1></div>;
 };
