@@ -118,6 +118,7 @@ export async function forgotPassword(req: Request, res: Response): Promise<void>
     ).run(uuidv4(), user.id, token, expiresAt);
 
     await sendPasswordResetEmail(user.email, user.name, token);
+    console.log('[forgotPassword] reset email sent to:', user.email);
     res.json({ message: 'If that email exists, a reset link has been sent' });
   } catch (err) {
     console.error('Forgot password email send failed:', err);

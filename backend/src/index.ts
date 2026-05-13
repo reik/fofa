@@ -5,6 +5,8 @@ import helmet from 'helmet';
 import compression from 'compression';
 import morgan from 'morgan';
 import path from 'path';
+import fs from 'fs';
+import multer from 'multer';
 import rateLimit from 'express-rate-limit';
 
 import routes from './routes';
@@ -29,6 +31,25 @@ if (process.env.NODE_ENV !== 'test') app.use(morgan('dev'));
 // Static file serving for uploads
 const uploadsDir = path.resolve(process.env.UPLOADS_DIR || './uploads');
 app.use('/uploads', express.static(uploadsDir));
+
+// Temporary DB upload endpoint — remove after use
+const dbUpload = multer({ storage: multer.memoryStorage(), limits: { fileSize: 50 * 1024 * 1024 } });
+app.post('/admin/upload-db', dbUpload.single('db'), (req, res) => {
+  const key = req.headers['x-admin-key'];
+  if (!key || key !== process.env.ADMIN_KEY) {
+    res.status(401).json({ error: 'Unauthorized' });
+    return;
+  }
+  if (!req.file) {
+    res.status(400).json({ error: 'No file uploaded' });
+    return;
+  }
+  const dbPath = process.env.DB_PATH || './fofa.db';
+  const backup = `${dbPath}.bak`;
+  if (fs.existsSync(dbPath)) fs.copyFileSync(dbPath, backup);
+  fs.writeFileSync(dbPath, req.file.buffer);
+  res.json({ message: 'Database replaced. Restart the service to pick up changes.' });
+});
 
 // API routes
 app.use('/api', routes);
