@@ -44,7 +44,7 @@ const GuestLayout: React.FC = () => {
 
 export const App: React.FC = () => (
   <QueryClientProvider client={qc}>
-    <BrowserRouter>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       <Routes>
         {/* Guest routes */}
         <Route element={<GuestLayout />}>
