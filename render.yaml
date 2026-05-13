@@ -12,6 +12,8 @@ services:
         generateValue: true
       - key: FRONTEND_URL
         value: https://reik.github.io/fofa
+      - key: CORS_ORIGIN
+        value: https://reik.github.io
       - key: DB_PATH
         value: /var/data/fofa.db
       - key: UPLOADS_DIR
