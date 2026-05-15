@@ -105,6 +105,7 @@ export const MonthCalendar: React.FC<MonthCalendarProps> = ({
                     tabIndex: 0,
                     "aria-label": `Add availability slot on ${iso}`,
                     onKeyDown: (e: React.KeyboardEvent) => {
+                      if (e.repeat) return;
                       if (e.key === "Enter" || e.key === " ") {
                         e.preventDefault();
                         onCellClick?.(iso);
