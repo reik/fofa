@@ -100,7 +100,7 @@ describe('MonthCalendar', () => {
       <MonthCalendar monthDate={JUNE_2025} slots={[makeSlot({ status: 'busy' })]} mode="own" />
     );
     const chip = screen.getByRole('button', { name: /9am/i });
-    expect(chip.className).toMatch(/bg-gray/);
+    expect(chip.className).toMatch(/bg-border/);
   });
 
   it('busy slots are not clickable in view mode', async () => {
