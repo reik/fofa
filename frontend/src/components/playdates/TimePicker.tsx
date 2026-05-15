@@ -38,7 +38,7 @@ export const TimePicker: React.FC<TimePickerProps> = ({ label, value, onChange }
   }, [hour, minute, ampm]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const selectClass =
-    "appearance-none bg-transparent outline-none text-[0.92rem] font-semibold text-[color:var(--color-text)] cursor-pointer text-center";
+    "appearance-none bg-transparent outline-none focus-visible:ring-2 focus-visible:ring-brand text-[0.92rem] font-semibold text-[color:var(--color-text)] cursor-pointer text-center";
 
   return (
     <div>

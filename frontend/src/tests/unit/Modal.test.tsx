@@ -29,7 +29,7 @@ describe('Modal', () => {
   it('calls onClose when backdrop clicked', async () => {
     const onClose = vi.fn();
     render(<Modal open={true} onClose={onClose}><p>Body</p></Modal>);
-    await userEvent.click(screen.getByRole('dialog'));
+    await userEvent.click(screen.getByRole('presentation'));
     expect(onClose).toHaveBeenCalledOnce();
   });
 });

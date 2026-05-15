@@ -7,7 +7,6 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 .history/*
-.claude/*
 
 node_modules
 dist
@@ -29,6 +28,7 @@ dist-ssr
 
 # Test coverage artifacts
 backend/coverage/
+frontend/coverage/
 
 # Local SQLite sidecar files
 backend/*.db-shm

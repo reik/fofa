@@ -99,6 +99,20 @@ export const MonthCalendar: React.FC<MonthCalendarProps> = ({
               onClick={() => {
                 if (mode === "own" && isCurrentMonth) onCellClick?.(iso);
               }}
+              {...(mode === "own" && isCurrentMonth
+                ? {
+                    role: "button" as const,
+                    tabIndex: 0,
+                    "aria-label": `Add availability slot on ${iso}`,
+                    onKeyDown: (e: React.KeyboardEvent) => {
+                      if (e.repeat) return;
+                      if (e.key === "Enter" || e.key === " ") {
+                        e.preventDefault();
+                        onCellClick?.(iso);
+                      }
+                    },
+                  }
+                : {})}
             >
               {/* Date number */}
               <div className="flex justify-end">

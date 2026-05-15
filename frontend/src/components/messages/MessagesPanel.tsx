@@ -162,7 +162,7 @@ export const MessagesPanel: React.FC = () => {
                 role="combobox"
                 aria-expanded={searchResults.length > 0}
                 aria-autocomplete="list"
-                className="w-full px-3 py-2 rounded-md border-[1.5px] border-border text-[0.88rem] bg-bg font-body outline-none"
+                className="w-full px-3 py-2 rounded-md border-[1.5px] border-border text-[0.88rem] bg-bg font-body outline-none focus-visible:ring-2 focus-visible:ring-brand"
               />
               {searchResults.length > 0 && (
                 <div className="absolute top-[calc(100%+4px)] left-0 right-0 bg-surface border-[1.5px] border-border elevated-popover rounded-md shadow-md z-10">
@@ -333,7 +333,7 @@ export const MessagesPanel: React.FC = () => {
                 onChange={(e) => setNewMsg(e.target.value)}
                 placeholder="Type a message…"
                 aria-label={`Message ${activeConv?.partner_name ?? ""}`}
-                className="flex-1 px-4 py-[10px] rounded-xl border-[1.5px] border-border text-[0.93rem] font-body bg-bg outline-none"
+                className="flex-1 px-4 py-[10px] rounded-xl border-[1.5px] border-border text-[0.93rem] font-body bg-bg outline-none focus-visible:ring-2 focus-visible:ring-brand"
               />
               <Button type="submit" loading={sending} disabled={!newMsg.trim()}>
                 Send
