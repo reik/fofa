@@ -92,7 +92,7 @@ export const Modal: React.FC<ModalProps> = ({
 
   return createPortal(
     <div
-      aria-hidden="true"
+      role="presentation"
       onClick={onClose}
       className="fixed inset-0 bg-black/45 flex items-center justify-center z-[1000] p-4"
     >
