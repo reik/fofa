@@ -188,7 +188,7 @@ export const WeekCalendar: React.FC<WeekCalendarProps> = ({
                     key={slot.id}
                     type="button"
                     className={[
-                      "absolute left-[2px] right-[2px] rounded border-l-[3px] px-[5px] py-[3px] text-[0.7rem] leading-tight overflow-hidden z-10 transition-opacity text-left border-none",
+                      "absolute left-[2px] right-[2px] rounded border-l-[3px] border-solid px-[5px] py-[3px] text-[0.7rem] leading-tight overflow-hidden z-10 transition-opacity text-left",
                       baseColor,
                       isMatch ? "ring-2 ring-yellow-400 ring-offset-1" : "",
                       mode === "own" || (mode === "view" && isFree)
