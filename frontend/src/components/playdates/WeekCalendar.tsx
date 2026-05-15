@@ -161,6 +161,7 @@ export const WeekCalendar: React.FC<WeekCalendarProps> = ({
                 <button
                   type="button"
                   aria-label={`Add availability slot on ${iso}`}
+                  title={`Add availability slot on ${iso}`}
                   className="absolute inset-0 cursor-pointer hover:bg-brand-light/30 transition-colors border-none bg-transparent w-full"
                   onClick={() => onCellClick?.(iso)}
                 />
@@ -201,6 +202,11 @@ export const WeekCalendar: React.FC<WeekCalendarProps> = ({
                       onSlotClick?.(slot);
                     }}
                     aria-label={
+                      slot.note
+                        ? `${fmtTime(slot.start_time)}–${fmtTime(slot.end_time)}: ${slot.note}`
+                        : `${fmtTime(slot.start_time)}–${fmtTime(slot.end_time)}`
+                    }
+                    title={
                       slot.note
                         ? `${fmtTime(slot.start_time)}–${fmtTime(slot.end_time)}: ${slot.note}`
                         : `${fmtTime(slot.start_time)}–${fmtTime(slot.end_time)}`
