@@ -23,7 +23,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
           aria-describedby={error && errorId ? errorId : undefined}
           {...props}
           className={[
-            'w-full px-[14px] py-[10px] rounded-sm text-[0.95rem] outline-none transition-colors duration-150 bg-surface',
+            'w-full px-[14px] py-[10px] rounded-sm text-[0.95rem] outline-none focus-visible:ring-2 focus-visible:ring-brand transition-colors duration-150 bg-surface',
             error ? 'border-[1.5px] border-red-600' : 'border-[1.5px] border-border',
           ].join(' ')}
         />
@@ -57,7 +57,7 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
           aria-describedby={error && errorId ? errorId : undefined}
           {...props}
           className={[
-            'w-full px-[14px] py-[10px] rounded-sm text-[0.95rem] outline-none resize-y min-h-[90px] bg-surface font-body',
+            'w-full px-[14px] py-[10px] rounded-sm text-[0.95rem] outline-none focus-visible:ring-2 focus-visible:ring-brand resize-y min-h-[90px] bg-surface font-body',
             error ? 'border-[1.5px] border-red-600' : 'border-[1.5px] border-border',
           ].join(' ')}
         />

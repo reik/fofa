@@ -158,8 +158,10 @@ export const WeekCalendar: React.FC<WeekCalendarProps> = ({
 
               {/* Clickable background for own mode */}
               {mode === "own" && (
-                <div
-                  className="absolute inset-0 cursor-pointer hover:bg-brand-light/30 transition-colors"
+                <button
+                  type="button"
+                  aria-label={`Add availability slot on ${iso}`}
+                  className="absolute inset-0 cursor-pointer hover:bg-brand-light/30 transition-colors border-none bg-transparent w-full"
                   onClick={() => onCellClick?.(iso)}
                 />
               )}
@@ -182,10 +184,11 @@ export const WeekCalendar: React.FC<WeekCalendarProps> = ({
                   : "bg-border border-muted text-muted";
 
                 return (
-                  <div
+                  <button
                     key={slot.id}
+                    type="button"
                     className={[
-                      "absolute left-[2px] right-[2px] rounded border-l-[3px] px-[5px] py-[3px] text-[0.7rem] leading-tight overflow-hidden z-10 transition-opacity",
+                      "absolute left-[2px] right-[2px] rounded border-l-[3px] px-[5px] py-[3px] text-[0.7rem] leading-tight overflow-hidden z-10 transition-opacity text-left border-none",
                       baseColor,
                       isMatch ? "ring-2 ring-yellow-400 ring-offset-1" : "",
                       mode === "own" || (mode === "view" && isFree)
@@ -197,7 +200,7 @@ export const WeekCalendar: React.FC<WeekCalendarProps> = ({
                       e.stopPropagation();
                       onSlotClick?.(slot);
                     }}
-                    title={
+                    aria-label={
                       slot.note
                         ? `${fmtTime(slot.start_time)}–${fmtTime(slot.end_time)}: ${slot.note}`
                         : `${fmtTime(slot.start_time)}–${fmtTime(slot.end_time)}`
@@ -210,7 +213,7 @@ export const WeekCalendar: React.FC<WeekCalendarProps> = ({
                     {heightPx >= 36 && slot.note && (
                       <div className="truncate opacity-80">{slot.note}</div>
                     )}
-                  </div>
+                  </button>
                 );
               })}
             </div>

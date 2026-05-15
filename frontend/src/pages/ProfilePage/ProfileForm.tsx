@@ -45,11 +45,12 @@ export function ProfileForm() {
             {...register("city", { required: "City is required" })}
           />
           <div className="flex flex-col gap-[5px]">
-            <label className="font-semibold text-[0.88rem] text-muted">State</label>
+            <label htmlFor="profile-state" className="font-semibold text-[0.88rem] text-muted">State</label>
             <select
+              id="profile-state"
               {...register("state", { required: "State is required" })}
               className={[
-                "px-[14px] py-[10px] rounded-sm text-[0.95rem] bg-surface font-body outline-none",
+                "px-[14px] py-[10px] rounded-sm text-[0.95rem] bg-surface font-body outline-none focus-visible:ring-2 focus-visible:ring-brand",
                 errors.state
                   ? "border-[1.5px] border-red-600"
                   : "border-[1.5px] border-border",

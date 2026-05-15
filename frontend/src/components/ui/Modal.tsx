@@ -92,14 +92,15 @@ export const Modal: React.FC<ModalProps> = ({
 
   return createPortal(
     <div
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby={title ? titleId : undefined}
+      aria-hidden="true"
       onClick={onClose}
       className="fixed inset-0 bg-black/45 flex items-center justify-center z-[1000] p-4"
     >
       <div
         ref={containerRef}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby={title ? titleId : undefined}
         onClick={(e) => e.stopPropagation()}
         className="bg-surface rounded-lg border-[1.5px] border-border elevated-popover p-7 w-full shadow-lg fade-in max-h-[90vh] overflow-y-auto"
         style={{ maxWidth }}

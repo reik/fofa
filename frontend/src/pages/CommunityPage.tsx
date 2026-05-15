@@ -40,7 +40,7 @@ export const CommunityPage: React.FC = () => {
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         placeholder="Search by name, city, or state…"
-        className="w-full px-5 py-3 rounded-xl border-[1.5px] border-border text-[0.97rem] font-body mb-6 bg-surface shadow-sm outline-none"
+        className="w-full px-5 py-3 rounded-xl border-[1.5px] border-border text-[0.97rem] font-body mb-6 bg-surface shadow-sm outline-none focus-visible:ring-2 focus-visible:ring-brand"
       />
 
       {loading ? (

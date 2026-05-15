@@ -140,7 +140,7 @@ export const FamilyMemberForm: React.FC<FormProps> = ({
         {currentThumb ? (
           <img
             src={currentThumb}
-            alt="thumbnail"
+            alt={`${existing?.name ?? "Family member"} photo`}
             className="w-20 h-20 rounded-full object-cover"
           />
         ) : (

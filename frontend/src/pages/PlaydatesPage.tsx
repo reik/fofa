@@ -77,13 +77,14 @@ const SlotForm: React.FC<SlotFormProps> = ({
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-4">
       <div>
-        <label className="block text-[0.85rem] font-semibold mb-1">Date</label>
+        <label htmlFor="slot-date" className="block text-[0.85rem] font-semibold mb-1">Date</label>
         <input
+          id="slot-date"
           type="date"
           value={date}
           onChange={(e) => setDate(e.target.value)}
           required
-          className="w-full px-3 py-2 rounded-lg border-[1.5px] border-border text-[0.92rem] font-body outline-none focus:border-brand"
+          className="w-full px-3 py-2 rounded-lg border-[1.5px] border-border text-[0.92rem] font-body outline-none focus:border-brand focus-visible:ring-2 focus-visible:ring-brand"
         />
       </div>
 
@@ -122,13 +123,14 @@ const SlotForm: React.FC<SlotFormProps> = ({
       </div>
 
       <div>
-        <label className="block text-[0.85rem] font-semibold mb-1">Note <span className="text-muted font-normal">(optional)</span></label>
+        <label htmlFor="slot-note" className="block text-[0.85rem] font-semibold mb-1">Note <span className="text-muted font-normal">(optional)</span></label>
         <input
+          id="slot-note"
           type="text"
           value={note}
           onChange={(e) => setNote(e.target.value)}
           placeholder="e.g. Park visit, indoor only…"
-          className="w-full px-3 py-2 rounded-lg border-[1.5px] border-border text-[0.92rem] font-body outline-none focus:border-brand"
+          className="w-full px-3 py-2 rounded-lg border-[1.5px] border-border text-[0.92rem] font-body outline-none focus:border-brand focus-visible:ring-2 focus-visible:ring-brand"
         />
       </div>
 

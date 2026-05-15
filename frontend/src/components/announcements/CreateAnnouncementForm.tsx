@@ -87,7 +87,7 @@ export const CreateAnnouncementForm: React.FC<Props> = ({ onCreated }) => {
           onChange={e => setContent(e.target.value)}
           placeholder={`What's on your mind, ${user.name.split(' ')[0]}?`}
           rows={3}
-          className="flex-1 px-4 py-3 rounded-md border-[1.5px] border-border resize-none font-body text-[0.97rem] bg-bg outline-none"
+          className="flex-1 px-4 py-3 rounded-md border-[1.5px] border-border resize-none font-body text-[0.97rem] bg-bg outline-none focus-visible:ring-2 focus-visible:ring-brand"
         />
       </div>
 

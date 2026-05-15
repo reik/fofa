@@ -136,8 +136,9 @@ export const MemberProfilePage: React.FC = () => {
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           placeholder={`Send ${firstName} a message…`}
+          aria-label={`Write a message to ${firstName}`}
           rows={3}
-          className="w-full px-4 py-3 rounded-lg border-[1.5px] border-border bg-bg text-[0.95rem] font-body resize-none outline-none focus:border-brand transition-colors"
+          className="w-full px-4 py-3 rounded-lg border-[1.5px] border-border bg-bg text-[0.95rem] font-body resize-none outline-none focus:border-brand focus-visible:ring-2 focus-visible:ring-brand transition-colors"
           onKeyDown={(e) => { if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) handleSend(); }}
         />
         <div className="flex items-center justify-between mt-2">
@@ -234,15 +235,16 @@ export const MemberProfilePage: React.FC = () => {
             )}
 
             <div>
-              <label className="block text-[0.85rem] font-semibold mb-1">
+              <label htmlFor="playdate-request-message" className="block text-[0.85rem] font-semibold mb-1">
                 Message <span className="text-muted font-normal">(optional)</span>
               </label>
               <textarea
+                id="playdate-request-message"
                 value={requestMsg}
                 onChange={(e) => setRequestMsg(e.target.value)}
                 placeholder={`Say something to ${firstName}…`}
                 rows={3}
-                className="w-full px-3 py-2 rounded-lg border-[1.5px] border-border text-[0.92rem] font-body resize-none outline-none focus:border-brand"
+                className="w-full px-3 py-2 rounded-lg border-[1.5px] border-border text-[0.92rem] font-body resize-none outline-none focus:border-brand focus-visible:ring-2 focus-visible:ring-brand"
               />
             </div>
 
