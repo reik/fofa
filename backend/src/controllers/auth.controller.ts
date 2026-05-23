@@ -37,7 +37,10 @@ export async function register(req: Request, res: Response): Promise<void> {
       'INSERT INTO email_tokens (id, user_id, token, expires_at) VALUES (?, ?, ?, ?)'
     ).run(uuidv4(), userId, token, expiresAt);
 
-    await sendVerificationEmail(email, name, token);
+    // Send in the background so a slow/failing SMTP server can't hang the response.
+    sendVerificationEmail(email, name, token).catch((mailErr) => {
+      console.error('Verification email send failed:', mailErr);
+    });
 
     res.status(201).json({ message: 'Registration successful. Please check your email to verify your account.' });
   } catch (err) {
@@ -117,10 +120,14 @@ export async function forgotPassword(req: Request, res: Response): Promise<void>
       'INSERT INTO password_reset_tokens (id, user_id, token, expires_at) VALUES (?, ?, ?, ?)'
     ).run(uuidv4(), user.id, token, expiresAt);
 
-    await sendPasswordResetEmail(user.email, user.name, token);
+    // Send in the background so a slow/failing SMTP server can't hang the response,
+    // and so the real SMTP error is logged distinctly from DB errors below.
+    sendPasswordResetEmail(user.email, user.name, token).catch((mailErr) => {
+      console.error('Password reset email send failed:', mailErr);
+    });
     res.json({ message: 'If that email exists, a reset link has been sent' });
   } catch (err) {
-    console.error('Forgot password email send failed:', err);
+    console.error('Forgot password request failed:', err);
     // Keep generic success response to avoid account enumeration.
     res.json({ message: 'If that email exists, a reset link has been sent' });
   }
