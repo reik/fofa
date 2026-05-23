@@ -41,7 +41,7 @@ export const Avatar: React.FC<AvatarProps> = ({
 }) => {
   const apiBase =
     import.meta.env.VITE_API_URL?.replace("/api", "") ||
-    "http://localhost:4000";
+    "http://localhost:4005";
   const fullSrc = src
     ? src.startsWith("http")
       ? src

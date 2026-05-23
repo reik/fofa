@@ -6,7 +6,7 @@ window.HTMLElement.prototype.scrollIntoView = vi.fn();
 
 // Mock import.meta.env
 Object.defineProperty(import.meta, 'env', {
-  value: { VITE_API_URL: 'http://localhost:4000/api' },
+  value: { VITE_API_URL: 'http://localhost:4005/api' },
 });
 
 // Mock react-hot-toast
