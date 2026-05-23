@@ -1,6 +1,11 @@
 import nodemailer from 'nodemailer';
 
 function createTransport() {
+  if (!process.env.GMAIL_USER || !process.env.GMAIL_APP_PASSWORD) {
+    throw new Error(
+      'Email not configured: GMAIL_USER and/or GMAIL_APP_PASSWORD env vars are missing'
+    );
+  }
   return nodemailer.createTransport({
     host: 'smtp.gmail.com',
     port: 587,
@@ -9,6 +14,10 @@ function createTransport() {
       user: process.env.GMAIL_USER,
       pass: process.env.GMAIL_APP_PASSWORD,
     },
+    // Fail fast instead of hanging the request if SMTP is unreachable/blocked.
+    connectionTimeout: 10_000,
+    greetingTimeout: 10_000,
+    socketTimeout: 15_000,
   });
 }
 
