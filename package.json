@@ -1,5 +1,11 @@
 {
+  "scripts": {
+    "dev": "concurrently --names \"backend,frontend\" --prefix-colors \"blue,green\" \"npm run dev --prefix backend\" \"npm run dev --prefix frontend\""
+  },
   "dependencies": {
     "web-vitals": "^5.2.0"
+  },
+  "devDependencies": {
+    "concurrently": "^9.0.0"
   }
 }

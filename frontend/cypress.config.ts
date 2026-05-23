@@ -10,7 +10,7 @@ export default defineConfig({
         return launchOptions;
       });
     },
-    baseUrl: 'http://localhost:5174',
+    baseUrl: 'http://localhost:5170',
     specPattern: '../cypress/e2e/**/*.cy.ts',
     supportFile: '../cypress/support/e2e.ts',
     fixturesFolder: '../cypress/fixtures',
@@ -21,7 +21,7 @@ export default defineConfig({
     defaultCommandTimeout: 8000,
     requestTimeout: 10000,
     env: {
-      apiUrl: 'http://localhost:4000/api',
+      apiUrl: 'http://localhost:4005/api',
     },
   },
 });

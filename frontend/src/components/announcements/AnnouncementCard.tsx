@@ -27,7 +27,7 @@ export const AnnouncementCard: React.FC<Props> = ({ announcement, onUpdate }) =>
   const [showReactions, setShowReactions] = useState(false);
   const [reactions, setReactions] = useState(announcement.reactions);
   const [userReaction, setUserReaction] = useState(announcement.userReaction);
-  const apiBase = import.meta.env.VITE_API_URL?.replace('/api', '') || 'http://localhost:4000';
+  const apiBase = import.meta.env.VITE_API_URL?.replace('/api', '') || 'http://localhost:4005';
 
   const totalReactions = Object.values(reactions).reduce((a, b) => a + b, 0);
 
