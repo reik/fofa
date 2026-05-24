@@ -10,6 +10,7 @@ import rateLimit from 'express-rate-limit';
 import routes from './routes';
 import { runMigrations } from './utils/migrate';
 import { seedAdmin } from './utils/seedAdmin';
+import { seedDummyData } from './utils/seedDummyData';
 
 const app = express();
 
@@ -54,6 +55,7 @@ const PORT = parseInt(process.env.PORT || '4000');
 async function start() {
   runMigrations();
   await seedAdmin();
+  if (process.env.SEED_DUMMY_DATA === 'true') seedDummyData();
   app.listen(PORT, () => console.log(`🚀 FoFa API running on http://localhost:${PORT}`));
 }
 
