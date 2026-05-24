@@ -7,8 +7,8 @@ export default defineConfig({
   base: '/fofa/',
   resolve: { alias: { '@': path.resolve(__dirname, './src') } },
   server: {
-    port: 5174,
-    proxy: { '/api': 'http://localhost:4000', '/uploads': 'http://localhost:4000' },
+    port: 5170,
+    proxy: { '/api': 'http://localhost:4005', '/uploads': 'http://localhost:4005' },
   },
   test: {
     globals: true,

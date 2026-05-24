@@ -10,7 +10,7 @@ export default defineConfig({
         return launchOptions;
       });
     },
-    baseUrl: 'http://localhost:5174',
+    baseUrl: 'http://localhost:5170/fofa',
     specPattern: '../cypress/e2e/**/*.cy.ts',
     supportFile: '../cypress/support/e2e.ts',
     fixturesFolder: '../cypress/fixtures',
