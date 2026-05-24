@@ -6,10 +6,13 @@ function createTransport() {
       'Email not configured: GMAIL_USER and/or GMAIL_APP_PASSWORD env vars are missing'
     );
   }
+  // Port 465 (TLS-on-connect) is more reliable than 587/STARTTLS on hosts that
+  // filter outbound SMTP. Overridable via env without a code change.
+  const port = Number(process.env.SMTP_PORT) || 465;
   return nodemailer.createTransport({
     host: 'smtp.gmail.com',
-    port: 587,
-    secure: false,
+    port,
+    secure: port === 465,
     auth: {
       user: process.env.GMAIL_USER,
       pass: process.env.GMAIL_APP_PASSWORD,
