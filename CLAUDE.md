@@ -17,10 +17,10 @@ fofa/
 ## Running the Project
 
 ```bash
-# Backend (port 4000)
+# Backend (port 4005)
 cd backend && npm run dev
 
-# Frontend (port 5173, proxies /api to localhost:4000)
+# Frontend (port 5170, proxies /api to localhost:4005)
 cd frontend && npm run dev
 ```
 
@@ -71,7 +71,7 @@ backend/src/
 - Accent gold: `#f0b24f` → Tailwind class `accent-*`
 - Fonts: Nunito (body), Titan One (headings)
 
-**Environment Variable:** `VITE_API_URL` (defaults to `http://localhost:4000`)
+**Environment Variable:** `VITE_API_URL` (defaults to `http://localhost:4005`)
 
 ## Environment Files
 

@@ -53,7 +53,7 @@ cd backend
 npm install
 cp .env.example .env   # fill in your values
 npm run migrate        # initialise SQLite database
-npm run dev            # starts on http://localhost:4000
+npm run dev            # starts on http://localhost:4005
 ```
 
 ### Frontend Setup
@@ -61,7 +61,7 @@ npm run dev            # starts on http://localhost:4000
 cd frontend
 npm install
 cp .env.example .env
-npm run dev            # starts on http://localhost:5173
+npm run dev            # starts on http://localhost:5170
 ```
 
 ### Running Tests
@@ -80,16 +80,16 @@ cd frontend && npm run cypress:open
 
 ### Backend `.env`
 ```
-PORT=4000
+PORT=4005
 JWT_SECRET=your_jwt_secret_here
 JWT_EXPIRES_IN=7d
 GMAIL_USER=your@gmail.com
 GMAIL_APP_PASSWORD=your_app_password
-FRONTEND_URL=http://localhost:5173
+FRONTEND_URL=http://localhost:5170
 UPLOADS_DIR=./uploads
 ```
 
 ### Frontend `.env`
 ```
-VITE_API_URL=http://localhost:4000/api
+VITE_API_URL=http://localhost:4005/api
 ```
