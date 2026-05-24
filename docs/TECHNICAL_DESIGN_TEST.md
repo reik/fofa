@@ -358,7 +358,7 @@ All primary keys are UUIDs (TEXT). Timestamps are stored as ISO-8601 TEXT (SQLit
 
 ## 5. API Specification
 
-**Base URL:** `http://localhost:4000/api` (dev) / configured via `VITE_API_URL` (prod)
+**Base URL:** `http://localhost:4005/api` (dev) / configured via `VITE_API_URL` (prod)
 
 **Auth method:** `Authorization: Bearer <JWT>` header on all protected routes.
 
@@ -815,14 +815,14 @@ The content max-width is capped at `1100 px` (`max-w-[1100px]`).
 | `EMAIL_USER` | Yes | Gmail address for Nodemailer SMTP |
 | `EMAIL_PASS` | Yes | Gmail app password for SMTP |
 | `FRONTEND_URL` | Yes | Allowed CORS origin (e.g., `https://fofa.example.com`) |
-| `PORT` | No (default `4000`) | Port the API server listens on |
+| `PORT` | No (default `4005`) | Port the API server listens on |
 | `UPLOADS_DIR` | No (default `./uploads`) | Directory for Multer file storage |
 
 #### Frontend (`frontend/.env`)
 
 | Variable | Required | Description |
 |---|---|---|
-| `VITE_API_URL` | No (default `http://localhost:4000/api`) | Base URL for API calls |
+| `VITE_API_URL` | No (default `http://localhost:4005/api`) | Base URL for API calls |
 
 ### Build & Start
 

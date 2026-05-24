@@ -70,8 +70,8 @@ The platform is built as a monorepo containing an Express REST API, a React sing
 
 ```
 fofa/
-├── backend/        # Express 4 + TypeScript REST API  (port 4000)
-├── frontend/       # React 18 + TypeScript SPA        (port 5173)
+├── backend/        # Express 4 + TypeScript REST API  (port 4005)
+├── frontend/       # React 18 + TypeScript SPA        (port 5170)
 ├── mobile/         # React Native / Expo app          (Expo Go)
 └── cypress/        # End-to-end test suite
 ```
@@ -82,7 +82,7 @@ fofa/
 Browser (React SPA)
         │  HTTP + Axios
         ▼
-  Vite dev proxy  ──► Express API (port 4000)
+  Vite dev proxy  ──► Express API (port 4005)
                               │
                         SQLite file (fofa.db)
                               │
@@ -368,7 +368,7 @@ The auth store is accessed outside React via `useAuthStore.getState()` in the Ax
 ### 6.4 API Layer
 
 `src/services/api.ts` creates an Axios instance with:
-- `baseURL` from `VITE_API_URL` (defaults to `http://localhost:4000/api`).
+- `baseURL` from `VITE_API_URL` (defaults to `http://localhost:4005/api`).
 - Request interceptor: injects `Authorization: Bearer <token>` from the Zustand store.
 - Response interceptor: on 401 (excluding `/auth/` endpoints), clears the store and redirects to `/login`.
 
@@ -475,7 +475,7 @@ In `NODE_ENV=test`, the email functions log the URL to stdout and return without
 ```
 GMAIL_USER=your@gmail.com
 GMAIL_APP_PASSWORD=your_16_char_app_password
-FRONTEND_URL=http://localhost:5173   # used to build links in emails
+FRONTEND_URL=http://localhost:5170   # used to build links in emails
 ```
 
 ---
@@ -571,7 +571,7 @@ SQLite requires no separate database server. No managed cloud service (RDS, S3, 
 Create `backend/.env` from `backend/.env.example`:
 
 ```env
-PORT=4000
+PORT=4005
 JWT_SECRET=<long random string, min 32 chars>
 JWT_EXPIRES_IN=7d
 GMAIL_USER=your@gmail.com
@@ -649,14 +649,14 @@ server {
 
     # Proxy API calls
     location /api/ {
-        proxy_pass http://localhost:4000;
+        proxy_pass http://localhost:4005;
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
     }
 
     # Proxy uploaded files
     location /uploads/ {
-        proxy_pass http://localhost:4000;
+        proxy_pass http://localhost:4005;
     }
 }
 ```
