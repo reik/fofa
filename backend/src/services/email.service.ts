@@ -1,18 +1,24 @@
 import nodemailer from 'nodemailer';
+import { lookup } from 'node:dns/promises';
 
-function createTransport() {
+const SMTP_HOST = 'smtp.gmail.com';
+
+async function createTransport() {
   if (!process.env.GMAIL_USER || !process.env.GMAIL_APP_PASSWORD) {
     throw new Error(
       'Email not configured: GMAIL_USER and/or GMAIL_APP_PASSWORD env vars are missing'
     );
   }
-  // Port 465 (TLS-on-connect) is more reliable than 587/STARTTLS on hosts that
-  // filter outbound SMTP. Overridable via env without a code change.
+  // Render has no public IPv6 route, so connecting to Gmail's IPv6 address fails
+  // with ENETUNREACH. Resolve to IPv4 explicitly and pass the literal as host,
+  // keeping `servername` so TLS/SNI cert validation still matches smtp.gmail.com.
+  const { address } = await lookup(SMTP_HOST, { family: 4 });
   const port = Number(process.env.SMTP_PORT) || 465;
   return nodemailer.createTransport({
-    host: 'smtp.gmail.com',
+    host: address,
     port,
     secure: port === 465,
+    tls: { servername: SMTP_HOST },
     auth: {
       user: process.env.GMAIL_USER,
       pass: process.env.GMAIL_APP_PASSWORD,
@@ -36,7 +42,7 @@ export async function sendVerificationEmail(
     return;
   }
 
-  const transporter = createTransport();
+  const transporter = await createTransport();
   await transporter.sendMail({
     from: `"FoFa Community" <${process.env.GMAIL_USER}>`,
     to,
@@ -66,7 +72,7 @@ export async function sendPasswordResetEmail(
     return;
   }
 
-  const transporter = createTransport();
+  const transporter = await createTransport();
   await transporter.sendMail({
     from: `"FoFa Community" <${process.env.GMAIL_USER}>`,
     to,
