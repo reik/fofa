@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { formatDistanceToNow } from 'date-fns';
 import { Link } from 'react-router-dom';
 import { Announcement, ReactionType } from '../../types';
@@ -32,10 +32,15 @@ export const AnnouncementCard: React.FC<Props> = ({ announcement, onUpdate, onHe
 
   const totalReactions = Object.values(reactions).reduce((a, b) => a + b, 0);
 
-  // Re-measure the virtualized row whenever our height can change.
+  // Re-measure the virtualized row whenever our height can change. Hold the
+  // callback in a ref so its per-render identity is NOT an effect dependency —
+  // the feed passes a fresh inline onHeightChange each render, and depending on
+  // it caused an infinite render loop (recompute → re-render → new fn → repeat).
+  const onHeightChangeRef = useRef(onHeightChange);
+  onHeightChangeRef.current = onHeightChange;
   useEffect(() => {
-    onHeightChange?.();
-  }, [showComments, reactions, onHeightChange]);
+    onHeightChangeRef.current?.();
+  }, [showComments, reactions]);
 
   const handleReaction = async (type: ReactionType) => {
     try {
