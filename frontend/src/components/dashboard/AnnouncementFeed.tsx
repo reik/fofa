@@ -14,7 +14,7 @@ interface Props {
   onUpdate: () => void;
 }
 
-export const AnnouncementFeed: React.FC<Props> = ({ onUpdate }) => {
+export const AnnouncementFeed = ({ onUpdate }: Props) => {
   const { data, isLoading, fetchNextPage, hasNextPage, isFetchingNextPage } = useInfiniteQuery({
     queryKey: ['announcements', 'infinite'],
     queryFn: ({ pageParam }) => announcementService.getAll(pageParam as number),
