@@ -1,23 +1,16 @@
-import React, { useState, useCallback } from "react";
+import React, { useCallback } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { Announcement } from "../types";
-import { announcementService, userService, familyService } from "../services";
-import { AnnouncementCard } from "../components/announcements/AnnouncementCard";
+import { userService, familyService } from "../services";
 import { CreateAnnouncementForm } from "../components/announcements/CreateAnnouncementForm";
+import { AnnouncementFeed } from "../components/dashboard/AnnouncementFeed";
 import { Avatar } from "../components/ui/Avatar";
-import { Button, Spinner } from "../components/ui/Button";
+import { Button } from "../components/ui/Button";
 import { useAuthStore } from "../contexts/authStore";
 import { Link } from "react-router-dom";
 
 export const DashboardPage: React.FC = () => {
   const { user } = useAuthStore();
   const qc = useQueryClient();
-  const [page, setPage] = useState(1);
-
-  const { data, isLoading } = useQuery({
-    queryKey: ["announcements", page],
-    queryFn: () => announcementService.getAll(page),
-  });
 
   const { data: familyData } = useQuery({
     queryKey: ["family"],
@@ -30,7 +23,6 @@ export const DashboardPage: React.FC = () => {
   });
 
   const handleCreated = useCallback(() => {
-    setPage(1);
     qc.invalidateQueries({ queryKey: ["announcements"] });
   }, [qc]);
 
@@ -99,55 +91,7 @@ export const DashboardPage: React.FC = () => {
       {/* Feed */}
       <main className="flex flex-col gap-4 min-w-0">
         <CreateAnnouncementForm onCreated={handleCreated} />
-
-        {isLoading ? (
-          <div className="flex justify-center py-10">
-            <Spinner size={32} />
-          </div>
-        ) : data?.data.length === 0 ? (
-          <div className="text-center py-[60px] px-5 bg-surface rounded-lg border-[1.5px] border-border">
-            <div className="text-[3rem] mb-3">🌿</div>
-            <h3 className="font-heading">The feed is quiet</h3>
-            <p className="text-muted mt-2">
-              Be the first to post an announcement!
-            </p>
-          </div>
-        ) : (
-          <>
-            {data?.data.map((ann: Announcement) => (
-              <AnnouncementCard
-                key={ann.id}
-                announcement={ann}
-                onUpdate={handleUpdate}
-              />
-            ))}
-
-            {/* Pagination */}
-            {data && data.pagination.pages > 1 && (
-              <div className="flex justify-center gap-[10px]">
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  disabled={page === 1}
-                  onClick={() => setPage((p) => p - 1)}
-                >
-                  ← Previous
-                </Button>
-                <span className="px-4 py-2 text-[0.9rem] text-muted">
-                  Page {page} of {data.pagination.pages}
-                </span>
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  disabled={page === data.pagination.pages}
-                  onClick={() => setPage((p) => p + 1)}
-                >
-                  Next →
-                </Button>
-              </div>
-            )}
-          </>
-        )}
+        <AnnouncementFeed onUpdate={handleUpdate} />
       </main>
 
       {/* Right sidebar — hidden on mobile */}

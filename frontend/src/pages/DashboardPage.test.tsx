@@ -16,10 +16,8 @@ vi.mock('../contexts/authStore', () => ({
   }),
 }));
 
-vi.mock('../components/announcements/AnnouncementCard', () => ({
-  AnnouncementCard: ({ announcement }: { announcement: { content: string } }) => (
-    <div data-testid="announcement-card">{announcement.content}</div>
-  ),
+vi.mock('../components/dashboard/AnnouncementFeed', () => ({
+  AnnouncementFeed: () => <div data-testid="feed" />,
 }));
 
 vi.mock('../components/announcements/CreateAnnouncementForm', () => ({
@@ -30,19 +28,6 @@ vi.mock('../components/announcements/CreateAnnouncementForm', () => ({
 
 import { announcementService, familyService, userService } from '../services';
 
-const stubAnnouncement = {
-  id: 'ann-1',
-  userId: 'user-2',
-  content: 'Hello community!',
-  mediaUrl: null,
-  mediaType: null,
-  createdAt: new Date().toISOString(),
-  updatedAt: new Date().toISOString(),
-  author: { name: 'James', thumbnail: null },
-  reactions: {},
-  userReaction: null,
-  commentCount: 0,
-};
 
 function renderPage() {
   const qc = new QueryClient({ defaultOptions: { queries: { retry: false } } });
@@ -68,25 +53,13 @@ describe('DashboardPage', () => {
     expect(await screen.findByTestId('create-form')).toBeInTheDocument();
   });
 
-  it('renders announcement cards when data is loaded', async () => {
-    vi.mocked(announcementService.getAll).mockResolvedValue({ data: [stubAnnouncement], pagination: { page: 1, limit: 10, pages: 1, total: 1 } });
+  it('renders the feed region', async () => {
     renderPage();
-    expect(await screen.findByText('Hello community!')).toBeInTheDocument();
-  });
-
-  it('shows empty feed message when no announcements', async () => {
-    renderPage();
-    expect(await screen.findByText(/the feed is quiet/i)).toBeInTheDocument();
+    expect(await screen.findByTestId('feed')).toBeInTheDocument();
   });
 
   it('shows user name in sidebar', async () => {
     renderPage();
     await waitFor(() => expect(screen.getByText('Sarah Mitchell')).toBeInTheDocument());
-  });
-
-  it('renders pagination next button when multiple pages exist', async () => {
-    vi.mocked(announcementService.getAll).mockResolvedValue({ data: [stubAnnouncement], pagination: { page: 1, limit: 10, pages: 2, total: 20 } });
-    renderPage();
-    expect(await screen.findByRole('button', { name: /next/i })).toBeInTheDocument();
   });
 });
