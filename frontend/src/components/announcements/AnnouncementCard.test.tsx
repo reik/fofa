@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from '@testing-library/react';
+import { render, screen, waitFor, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { MemoryRouter } from 'react-router-dom';
@@ -124,5 +124,17 @@ describe('AnnouncementCard', () => {
     // Chips render as "👍 2" and "❤️ 1" — use custom matcher to find by substring
     expect(screen.getByText((content) => content.includes('👍') && content.includes('2'))).toBeInTheDocument();
     expect(screen.getByText((content) => content.includes('❤️') && content.includes('1'))).toBeInTheDocument();
+  });
+
+  it('calls onHeightChange when comments are toggled', () => {
+    const onHeightChange = vi.fn();
+    render(
+      <MemoryRouter>
+        <AnnouncementCard announcement={baseAnnouncement} onUpdate={() => {}} onHeightChange={onHeightChange} />
+      </MemoryRouter>
+    );
+    onHeightChange.mockClear(); // ignore mount-time call
+    fireEvent.click(screen.getByRole('button', { name: /comment/i }));
+    expect(onHeightChange).toHaveBeenCalled();
   });
 });
