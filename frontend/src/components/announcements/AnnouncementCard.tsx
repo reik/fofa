@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { formatDistanceToNow } from 'date-fns';
 import { Link } from 'react-router-dom';
 import { Announcement, ReactionType } from '../../types';
@@ -19,9 +19,10 @@ const REACTIONS: { type: ReactionType; emoji: string; label: string }[] = [
 interface Props {
   announcement: Announcement;
   onUpdate: () => void;
+  onHeightChange?: () => void;
 }
 
-export const AnnouncementCard: React.FC<Props> = ({ announcement, onUpdate }) => {
+export const AnnouncementCard: React.FC<Props> = ({ announcement, onUpdate, onHeightChange }) => {
   const { user } = useAuthStore();
   const [showComments, setShowComments] = useState(false);
   const [showReactions, setShowReactions] = useState(false);
@@ -30,6 +31,16 @@ export const AnnouncementCard: React.FC<Props> = ({ announcement, onUpdate }) =>
   const apiBase = import.meta.env.VITE_API_URL?.replace('/api', '') || 'http://localhost:4005';
 
   const totalReactions = Object.values(reactions).reduce((a, b) => a + b, 0);
+
+  // Re-measure the virtualized row whenever our height can change. Hold the
+  // callback in a ref so its per-render identity is NOT an effect dependency —
+  // the feed passes a fresh inline onHeightChange each render, and depending on
+  // it caused an infinite render loop (recompute → re-render → new fn → repeat).
+  const onHeightChangeRef = useRef(onHeightChange);
+  onHeightChangeRef.current = onHeightChange;
+  useEffect(() => {
+    onHeightChangeRef.current?.();
+  }, [showComments, reactions]);
 
   const handleReaction = async (type: ReactionType) => {
     try {
@@ -108,12 +119,14 @@ export const AnnouncementCard: React.FC<Props> = ({ announcement, onUpdate }) =>
               src={`${apiBase}${announcement.mediaUrl}`}
               controls
               className="w-full max-h-[420px] object-contain"
+              onLoadedData={() => onHeightChange?.()}
             />
           ) : (
             <img
               src={`${apiBase}${announcement.mediaUrl}`}
               alt={`Photo shared by ${announcement.author.name}`}
               className="w-full max-h-[420px] object-cover"
+              onLoad={() => onHeightChange?.()}
             />
           )}
         </div>
