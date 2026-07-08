@@ -29,6 +29,9 @@ export const AnnouncementCard: React.FC<Props> = ({ announcement, onUpdate, onHe
   const [reactions, setReactions] = useState(announcement.reactions);
   const [userReaction, setUserReaction] = useState(announcement.userReaction);
   const apiBase = import.meta.env.VITE_API_URL?.replace('/api', '') || 'http://localhost:4005';
+  const mediaSrc = announcement.mediaUrl?.startsWith('http')
+    ? announcement.mediaUrl
+    : `${apiBase}${announcement.mediaUrl}`;
 
   const totalReactions = Object.values(reactions).reduce((a, b) => a + b, 0);
 
@@ -116,14 +119,14 @@ export const AnnouncementCard: React.FC<Props> = ({ announcement, onUpdate, onHe
         <div className="bg-black">
           {announcement.mediaType === 'video' ? (
             <video
-              src={`${apiBase}${announcement.mediaUrl}`}
+              src={mediaSrc}
               controls
               className="w-full max-h-[420px] object-contain"
               onLoadedData={() => onHeightChange?.()}
             />
           ) : (
             <img
-              src={`${apiBase}${announcement.mediaUrl}`}
+              src={mediaSrc}
               alt={`Photo shared by ${announcement.author.name}`}
               className="w-full max-h-[420px] object-cover"
               onLoad={() => onHeightChange?.()}
