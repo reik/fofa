@@ -2,12 +2,19 @@ import bcrypt from 'bcryptjs';
 import { v4 as uuid } from 'uuid';
 import { db } from './db';
 
+const SEED_MARKER_KEY = 'dummy_data_seeded';
+
 /**
  * Inserts a large demo dataset (20 families, family members, announcements,
  * comments, reactions, messages, availability + playdate requests) so an
- * empty environment looks alive. Idempotent: if the first demo user already
- * exists, it skips entirely — safe to leave running across restarts. All
- * seeded users share password `Password123!`.
+ * empty environment looks alive. Idempotent via a dedicated `seed_meta`
+ * marker row — deliberately not keyed off any seeded user's existence, since
+ * that couples idempotency to data an operator (or an unrelated real
+ * registration reusing a seed email) could delete or create independently.
+ * Runs as a single transaction: if any insert fails partway through, nothing
+ * is committed and the marker isn't set, so the next boot retries cleanly
+ * instead of leaving orphaned rows. All seeded users share password
+ * `Password123!`.
  *
  * Thumbnails/photos use https://i.pravatar.cc and https://picsum.photos —
  * external placeholder image services — rather than local files, since
@@ -18,13 +25,21 @@ export function seedDummyData(): void {
   const conn = db();
 
   const already = conn
-    .prepare('SELECT 1 FROM users WHERE email = ?')
-    .get('sarah.mitchell@email.com');
+    .prepare('SELECT 1 FROM seed_meta WHERE key = ?')
+    .get(SEED_MARKER_KEY);
   if (already) {
     console.log('🌱 Dummy data already present — skipping seed');
     return;
   }
 
+  const seed = conn.transaction(() => {
+    seedDummyDataInner(conn);
+    conn.prepare('INSERT INTO seed_meta (key, value) VALUES (?, ?)').run(SEED_MARKER_KEY, '1');
+  });
+  seed();
+}
+
+function seedDummyDataInner(conn: ReturnType<typeof db>): void {
   const PASSWORD_HASH = bcrypt.hashSync('Password123!', 12);
 
   const daysAgo = (n: number) => {
@@ -74,8 +89,15 @@ export function seedDummyData(): void {
     INSERT OR IGNORE INTO users (id, email, password, name, city, state, thumbnail, verified, created_at, updated_at)
     VALUES (@id, @email, @password, @name, @city, @state, @thumbnail, 1, @created_at, @updated_at)
   `);
+  const getUserIdByEmail = conn.prepare<[string]>('SELECT id FROM users WHERE email = ?');
   users.forEach((u, i) => {
     insertUser.run({ ...u, password: PASSWORD_HASH, created_at: daysAgo(200 - i * 2), updated_at: daysAgo(200 - i * 2) });
+    // A pre-existing row with this email (real user, or an unrelated probe)
+    // makes INSERT OR IGNORE a no-op — always resolve the id that's actually
+    // persisted rather than trusting the uuid() generated above, so
+    // downstream family_members/announcements/etc. inserts never reference a
+    // phantom id and trip the foreign key constraint.
+    u.id = (getUserIdByEmail.get(u.email) as { id: string }).id;
   });
 
   // ── Family members (1-6 per family) ─────────────────────────────────────────

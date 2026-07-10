@@ -127,6 +127,13 @@ export function runMigrations(): void {
       updated_at   TEXT NOT NULL DEFAULT (datetime('now'))
     );
 
+    -- Seed bookkeeping (decoupled from actual seeded rows so it can't collide
+    -- with real registrations reusing a seed email/username)
+    CREATE TABLE IF NOT EXISTS seed_meta (
+      key   TEXT PRIMARY KEY,
+      value TEXT NOT NULL
+    );
+
     -- Indexes
     CREATE INDEX IF NOT EXISTS idx_announcements_user    ON announcements(user_id);
     CREATE INDEX IF NOT EXISTS idx_announcements_created ON announcements(created_at DESC);
