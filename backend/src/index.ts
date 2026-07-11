@@ -14,6 +14,9 @@ import { seedDummyData } from './utils/seedDummyData';
 
 const app = express();
 
+// Render sits behind a single reverse proxy; trust its X-Forwarded-For for correct client IPs (rate limiting)
+app.set('trust proxy', 1);
+
 // Security
 app.use(helmet({ crossOriginResourcePolicy: { policy: 'cross-origin' } }));
 const corsOrigin = process.env.CORS_ORIGIN || process.env.FRONTEND_URL || 'http://localhost:5170';
