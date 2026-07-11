@@ -56,18 +56,20 @@ describe('UC-05: Direct Messaging', () => {
       body: { id: 'current-user', name: 'Jane', email: 'jane@test.com', city: 'LA', state: 'CA', thumbnail: null, verified: true },
     });
 
-    window.localStorage.setItem(
-      'fofa-auth',
-      JSON.stringify({
-        state: {
-          user: { id: 'current-user', name: 'Jane', email: 'jane@test.com', city: 'LA', state: 'CA', thumbnail: null },
-          token: 'test-token',
-        },
-        version: 0,
-      })
-    );
-
-    cy.visit('/messages');
+    cy.visit('/messages', {
+      onBeforeLoad(win) {
+        win.localStorage.setItem(
+          'fofa-auth',
+          JSON.stringify({
+            state: {
+              user: { id: 'current-user', name: 'Jane', email: 'jane@test.com', city: 'LA', state: 'CA', thumbnail: null },
+              token: 'test-token',
+            },
+            version: 0,
+          })
+        );
+      },
+    });
     cy.wait('@getConversations');
   });
 

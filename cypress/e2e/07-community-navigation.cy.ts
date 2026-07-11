@@ -30,18 +30,20 @@ describe('UC-07: Community & Navigation', () => {
       body: { id: 'current-user', name: 'Jane', email: 'jane@test.com', city: 'LA', state: 'CA', thumbnail: null, verified: true },
     });
 
-    window.localStorage.setItem(
-      'fofa-auth',
-      JSON.stringify({
-        state: {
-          user: { id: 'current-user', name: 'Jane', email: 'jane@test.com', city: 'LA', state: 'CA', thumbnail: null },
-          token: 'test-token',
-        },
-        version: 0,
-      })
-    );
-
-    cy.visit('/community');
+    cy.visit('/community', {
+      onBeforeLoad(win) {
+        win.localStorage.setItem(
+          'fofa-auth',
+          JSON.stringify({
+            state: {
+              user: { id: 'current-user', name: 'Jane', email: 'jane@test.com', city: 'LA', state: 'CA', thumbnail: null },
+              token: 'test-token',
+            },
+            version: 0,
+          })
+        );
+      },
+    });
     cy.wait('@searchMembers');
   });
 
@@ -99,17 +101,6 @@ describe('UC-07b: Route Protection & Logout', () => {
   });
 
   it('logs out user and redirects to login', () => {
-    window.localStorage.setItem(
-      'fofa-auth',
-      JSON.stringify({
-        state: {
-          user: { id: 'u1', name: 'Jane', email: 'jane@test.com', city: 'LA', state: 'CA', thumbnail: null },
-          token: 'test-token',
-        },
-        version: 0,
-      })
-    );
-
     cy.intercept('GET', '**/announcements*', {
       statusCode: 200,
       body: { data: [], pagination: { page: 1, limit: 20, total: 0, pages: 0 } },
@@ -122,7 +113,20 @@ describe('UC-07b: Route Protection & Logout', () => {
       body: { id: 'u1', name: 'Jane', email: 'jane@test.com', city: 'LA', state: 'CA', thumbnail: null, verified: true },
     });
 
-    cy.visit('/dashboard');
+    cy.visit('/dashboard', {
+      onBeforeLoad(win) {
+        win.localStorage.setItem(
+          'fofa-auth',
+          JSON.stringify({
+            state: {
+              user: { id: 'u1', name: 'Jane', email: 'jane@test.com', city: 'LA', state: 'CA', thumbnail: null },
+              token: 'test-token',
+            },
+            version: 0,
+          })
+        );
+      },
+    });
     cy.get('button[aria-label="Open profile menu"]').click();
     cy.contains('Sign out').click();
     cy.url().should('include', '/login');

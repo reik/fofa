@@ -28,15 +28,17 @@ describe('UC-06: Profile Management', () => {
   beforeEach(() => {
     cy.intercept('GET', '**/users/me', { statusCode: 200, body: currentUser }).as('getMe');
 
-    window.localStorage.setItem(
-      'fofa-auth',
-      JSON.stringify({
-        state: { user: currentUser, token: 'test-token' },
-        version: 0,
-      })
-    );
-
-    cy.visit('/profile');
+    cy.visit('/profile', {
+      onBeforeLoad(win) {
+        win.localStorage.setItem(
+          'fofa-auth',
+          JSON.stringify({
+            state: { user: currentUser, token: 'test-token' },
+            version: 0,
+          })
+        );
+      },
+    });
   });
 
   it('shows the profile edit form with pre-filled data', () => {

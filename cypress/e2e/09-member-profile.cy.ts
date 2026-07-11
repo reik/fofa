@@ -73,8 +73,8 @@ const myFreeSlot = {
   note: '',
 };
 
-function setupAuth() {
-  window.localStorage.setItem('fofa-auth', JSON.stringify(AUTH_STATE));
+function withAuth(win: Window) {
+  win.localStorage.setItem('fofa-auth', JSON.stringify(AUTH_STATE));
 }
 
 function setupBaseIntercepts() {
@@ -89,7 +89,6 @@ function setupBaseIntercepts() {
 
 describe('UC-09: Member Profile Page', () => {
   beforeEach(() => {
-    setupAuth();
     setupBaseIntercepts();
     cy.intercept('GET', `**/playdates/availability/${TARGET_USER.id}`, {
       statusCode: 200,
@@ -99,7 +98,7 @@ describe('UC-09: Member Profile Page', () => {
       statusCode: 200,
       body: [myFreeSlot],
     }).as('getMySlots');
-    cy.visit(`/members/${TARGET_USER.id}`);
+    cy.visit(`/members/${TARGET_USER.id}`, { onBeforeLoad: withAuth });
     cy.wait('@getTargetUser');
   });
 
@@ -129,7 +128,6 @@ describe('UC-09: Member Profile Page', () => {
 
 describe('UC-09: Member Profile – Playdate Request', () => {
   beforeEach(() => {
-    setupAuth();
     setupBaseIntercepts();
     cy.intercept('GET', `**/playdates/availability/${TARGET_USER.id}`, {
       statusCode: 200,
@@ -139,7 +137,7 @@ describe('UC-09: Member Profile – Playdate Request', () => {
       statusCode: 200,
       body: [myFreeSlot],
     }).as('getMySlots');
-    cy.visit(`/members/${TARGET_USER.id}`);
+    cy.visit(`/members/${TARGET_USER.id}`, { onBeforeLoad: withAuth });
     cy.wait('@getTargetUser');
     cy.wait('@getTargetSlots');
     cy.wait('@getMySlots');
@@ -222,7 +220,6 @@ describe('UC-09: Member Profile – Playdate Request', () => {
 
 describe('UC-09: Member Profile – Navigation from Dashboard', () => {
   beforeEach(() => {
-    setupAuth();
     cy.intercept('GET', '**/messages/unread/count', { statusCode: 200, body: { count: 0 } });
     cy.intercept('GET', '**/playdates/requests', { statusCode: 200, body: [] });
     cy.intercept('GET', '**/announcements*', {
@@ -251,7 +248,7 @@ describe('UC-09: Member Profile – Navigation from Dashboard', () => {
     cy.intercept('GET', `**/playdates/availability/${TARGET_USER.id}`, { statusCode: 200, body: [] });
     cy.intercept('GET', `**/playdates/availability/${CURRENT_USER.id}`, { statusCode: 200, body: [] });
     cy.intercept('GET', '**/family*', { statusCode: 200, body: [] });
-    cy.visit('/dashboard');
+    cy.visit('/dashboard', { onBeforeLoad: withAuth });
     cy.wait('@getAnnouncements');
   });
 
