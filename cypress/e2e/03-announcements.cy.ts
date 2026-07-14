@@ -80,17 +80,20 @@ describe('UC-03: Dashboard & Announcements', () => {
     cy.intercept('GET', '**/users/search*', { statusCode: 200, body: [] });
     cy.intercept('GET', '**/messages/unread/count', { statusCode: 200, body: { count: 0 } });
 
-    window.localStorage.setItem(
-      'fofa-auth',
-      JSON.stringify({
-        state: {
-          user: { id: 'current-user', name: user.name, email: user.email, city: user.city, state: user.state, thumbnail: null },
-          token: 'test-token',
-        },
-        version: 0,
-      })
-    );
-    cy.visit('/dashboard');
+    cy.visit('/dashboard', {
+      onBeforeLoad(win) {
+        win.localStorage.setItem(
+          'fofa-auth',
+          JSON.stringify({
+            state: {
+              user: { id: 'current-user', name: user.name, email: user.email, city: user.city, state: user.state, thumbnail: null },
+              token: 'test-token',
+            },
+            version: 0,
+          })
+        );
+      },
+    });
     cy.wait('@getAnnouncements');
   });
 

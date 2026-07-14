@@ -76,8 +76,8 @@ const pendingRequest = {
   slot_end: '11:00',
 };
 
-function setupAuth() {
-  window.localStorage.setItem('fofa-auth', JSON.stringify(AUTH_STATE));
+function withAuth(win: Window) {
+  win.localStorage.setItem('fofa-auth', JSON.stringify(AUTH_STATE));
 }
 
 function setupBaseIntercepts() {
@@ -87,13 +87,12 @@ function setupBaseIntercepts() {
 
 describe('UC-08: Playdate Scheduling – Calendar', () => {
   beforeEach(() => {
-    setupAuth();
     setupBaseIntercepts();
     cy.intercept('GET', '**/playdates/availability/current-user', {
       statusCode: 200,
       body: [freeSlot, busySlot],
     }).as('getSlots');
-    cy.visit('/playdates');
+    cy.visit('/playdates', { onBeforeLoad: withAuth });
     cy.wait('@getSlots');
   });
 
@@ -139,13 +138,12 @@ describe('UC-08: Playdate Scheduling – Calendar', () => {
 
 describe('UC-08: Playdate Scheduling – Add Slot', () => {
   beforeEach(() => {
-    setupAuth();
     setupBaseIntercepts();
     cy.intercept('GET', '**/playdates/availability/current-user', {
       statusCode: 200,
       body: [],
     }).as('getSlots');
-    cy.visit('/playdates');
+    cy.visit('/playdates', { onBeforeLoad: withAuth });
     cy.wait('@getSlots');
   });
 
@@ -178,13 +176,12 @@ describe('UC-08: Playdate Scheduling – Add Slot', () => {
 
 describe('UC-08: Playdate Scheduling – Manage Existing Slot', () => {
   beforeEach(() => {
-    setupAuth();
     setupBaseIntercepts();
     cy.intercept('GET', '**/playdates/availability/current-user', {
       statusCode: 200,
       body: [freeSlot],
     }).as('getSlots');
-    cy.visit('/playdates');
+    cy.visit('/playdates', { onBeforeLoad: withAuth });
     cy.wait('@getSlots');
   });
 
@@ -225,7 +222,6 @@ describe('UC-08: Playdate Scheduling – Manage Existing Slot', () => {
 
 describe('UC-08: Playdate Scheduling – Requests Panel', () => {
   beforeEach(() => {
-    setupAuth();
     cy.intercept('GET', '**/messages/unread/count', { statusCode: 200, body: { count: 0 } });
     cy.intercept('GET', '**/playdates/availability/current-user', {
       statusCode: 200,
@@ -235,7 +231,7 @@ describe('UC-08: Playdate Scheduling – Requests Panel', () => {
       statusCode: 200,
       body: [pendingRequest],
     }).as('getRequests');
-    cy.visit('/playdates');
+    cy.visit('/playdates', { onBeforeLoad: withAuth });
     cy.wait('@getSlots');
     cy.wait('@getRequests');
   });
@@ -276,7 +272,7 @@ describe('UC-08: Playdate Scheduling – Requests Panel', () => {
 
   it('shows empty state when no requests exist', () => {
     cy.intercept('GET', '**/playdates/requests', { statusCode: 200, body: [] }).as('emptyRequests');
-    cy.visit('/playdates');
+    cy.visit('/playdates', { onBeforeLoad: withAuth });
     cy.wait('@emptyRequests');
     cy.contains(/no (pending )?requests|no playdate requests/i).should('be.visible');
   });

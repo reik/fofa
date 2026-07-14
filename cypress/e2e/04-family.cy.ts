@@ -33,18 +33,20 @@ describe('UC-04: Family Member Management', () => {
       body: { id: 'current-user', name: 'Jane', email: 'jane@test.com', city: 'LA', state: 'CA', thumbnail: null, verified: true },
     });
 
-    window.localStorage.setItem(
-      'fofa-auth',
-      JSON.stringify({
-        state: {
-          user: { id: 'current-user', name: 'Jane', email: 'jane@test.com', city: 'LA', state: 'CA', thumbnail: null },
-          token: 'test-token',
-        },
-        version: 0,
-      })
-    );
-
-    cy.visit('/family');
+    cy.visit('/family', {
+      onBeforeLoad(win) {
+        win.localStorage.setItem(
+          'fofa-auth',
+          JSON.stringify({
+            state: {
+              user: { id: 'current-user', name: 'Jane', email: 'jane@test.com', city: 'LA', state: 'CA', thumbnail: null },
+              token: 'test-token',
+            },
+            version: 0,
+          })
+        );
+      },
+    });
     cy.wait('@getFamily');
   });
 
